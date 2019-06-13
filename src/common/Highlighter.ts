@@ -1,4 +1,4 @@
-import { window, OverviewRulerLane, workspace } from 'vscode'
+import { window, OverviewRulerLane, workspace, Range, Position } from 'vscode'
 import Annotations from './Annotations'
 import TodoBase from './TodoBase'
 
@@ -13,7 +13,6 @@ export default class Highlighter extends TodoBase {
     this.colors = {}
 
     this.settings = workspace.getConfiguration('todolens')
-    // TODO: setup all the colors
     this.setupColors()
   }
 
@@ -23,7 +22,7 @@ export default class Highlighter extends TodoBase {
       this.colors[h.keyword] = {
         decoration: window.createTextEditorDecorationType({
           backgroundColor: h.backgroundColor,
-          isWholeLine: false,
+          isWholeLine: h.isWholeLine,
           color: h.color,
           overviewRulerLane: OverviewRulerLane.Right,
           overviewRulerColor: h.overviewRulerColor
@@ -37,10 +36,9 @@ export default class Highlighter extends TodoBase {
       let r = []
       this.annotations.get(h.keyword).forEach(e => {
         r.push({
-          range: e.range
+          range: (h.colorSpaceAfter ? new Range(e.range.start, new Position(e.range.end.line, e.range.end.character + 1)) : e.range)
         })
       })
-      // console.log(this.colors[h.keyword])
       window.activeTextEditor.setDecorations(this.colors[h.keyword].decoration, r)
     })
 

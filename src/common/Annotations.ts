@@ -19,13 +19,6 @@ export default class Annotations {
   }
 
   public get(key) {
-    let activeEditor = window.activeTextEditor
-    if (!activeEditor) {
-      return []
-    }
-
-    // this._ann[activeEditor.document.uri.path] = {}
-    // this._ann[activeEditor.document.uri.path][key] = this.find(key)
     this._ann = {}
     this._ann[key] = this.find(key)
     return this._ann[key]
@@ -39,15 +32,13 @@ export default class Annotations {
     let activeEditor = window.activeTextEditor
     let text = activeEditor.document.getText()
     let t = []
-    let match
-    let regex
+    let match, regex
     // if case sensetive
     if(this.settings.get('caseSensitive', false)) {    
       regex = new RegExp(`\\b(${key})\\b`, 'gm')
     } else {
       regex = new RegExp(`\\b(${key})\\b`, 'igm')
     }
-
     while(match = regex.exec(text)) {
       let pos = activeEditor.document.positionAt(match.index)
       t.push({

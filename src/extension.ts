@@ -1,6 +1,5 @@
 import {commands, languages, window, QuickPickItem, Selection, workspace} from 'vscode'
 import TodoLensProvider from './lens/TodoLensProvider'
-import Utils from './common/Utils'
 import Annotations from './common/Annotations'
 import Highlighter from './common/Highlighter'
 
@@ -13,9 +12,6 @@ function activate(context) {
 	annotations = new Annotations()
 	highlight = new Highlighter(annotations)
 	lens = new TodoLensProvider(annotations)
-	
-	update()
-
 
 	// list command
 	disposables.push(
@@ -34,7 +30,7 @@ function activate(context) {
 					})
 				})
 			})
-			
+			// show the quick picker
 			window.showQuickPick(arr, {canPickMany: false})
 			.then((v) => {
 				if(!v) return
@@ -46,6 +42,7 @@ function activate(context) {
 		})
 	)
 
+	// events
 	window.onDidChangeActiveTextEditor((e) => {
 		activeEditor = e
 		if(e) {
@@ -72,6 +69,7 @@ function activate(context) {
 		)
 	)
 
+	update()
 	context.subscriptions.push(...disposables)
 }
 exports.activate = activate

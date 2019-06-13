@@ -1,14 +1,14 @@
 TODO LENS
 ===
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens) [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens)
 
 Create a list of keywords at the top of each file. This makes it easy to see how many `Notes` or `TODOs` there are.
 
 ### Preview
 
+Code lens & Syntax highlighting
 ![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/sample.png)
-
 
 ### Commands
 
@@ -25,6 +25,8 @@ You can customize the keywords and other stuff with the following settings in yo
 | todolens.hideWhenZero | boolean | true | Hide the lens if there are no items in the open file |
 | todolens.caseSensitive | boolean | false | If the keywords need to be case sensetive |
 
+### Lens
+
 The different types can be set by using `todolens.types` property.
 For example:
 ```json
@@ -40,6 +42,37 @@ For example:
   "types": [
     "NOTE"
   ]
+}]
+```
+
+### Syntax Highlighting
+
+For the syntax highlighting you can change the `todolens.highlights` property.
+For example:
+```json
+"todolens.highlights": [{
+  "keyword": "TODO",
+  "color": "#fff",
+  "backgroundColor": "#f2b01f",
+  "overviewRulerColor": "rgba(242, 176, 31, 0.8)",
+  "isWholeLine": false,
+  "colorSpaceAfter": false
+},
+{
+  "keyword": "FIXME",
+  "color": "#fff",
+  "backgroundColor": "#d85f88",
+  "overviewRulerColor": "rgba(216, 95, 136, 0.8)",
+  "isWholeLine": false,
+  "colorSpaceAfter": false
+},
+{
+  "keyword": "NOTE",
+  "color": "#aaa",
+  "backgroundColor": "#434343",
+  "overviewRulerColor": "rgba(67, 67, 67, 0.8)",
+  "isWholeLine": false,
+  "colorSpaceAfter": false
 }]
 ```
 

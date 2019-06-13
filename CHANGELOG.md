@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.2.0] - 2019-06-13
+### New
+- Syntax highlighting
+
 ## [1.1.0] - 2019-06-13
 ### Changed
 - Improved searching for keywords

@@ -10,8 +10,14 @@
     "vscode",
     "code",
 		"todo",
+		"fixme",
+		"note",
 		"notes",
-		"lens"
+		"lens",
+		"keyword",
+		"highlight",
+		"syntax",
+		"annotation"
   ],
 	"homepage": "https://gitlab.com/fooxly/vscode-todo-lens",
 	"repository": {
@@ -26,7 +32,7 @@
 			"color": "#272729",
 			"theme": "dark"
 	},
-	"version": "1.1.0",
+	"version": "1.2.1",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
@@ -115,14 +121,38 @@
 									"keyword": {
 											"type": "string",
 											"description": "The keyword that needs to be colored"    
+									},
+									"isWholeLine": {
+											"type": "boolean",
+											"description": "If the whole line needs to be colored or just the keyword"    
+									},
+									"colorSpaceAfter": {
+											"type": "boolean",
+											"description": "If the space just after the keyword (most likely a colon (:) needs to be colored as well"    
 									}
 							}
 					},
 					"default": [{
-						"keyword": "NOTE",
+						"keyword": "TODO",
 						"color": "#fff",
-						"backgroundColor": "#02612D",
-						"overviewRulerColor": "#02612D"
+						"backgroundColor": "#f2b01f",
+						"overviewRulerColor": "rgba(242, 176, 31, 0.8)",
+						"isWholeLine": false,
+						"colorSpaceAfter": false
+					},{
+						"keyword": "FIXME",
+						"color": "#fff",
+						"backgroundColor": "#d85f88",
+						"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
+						"isWholeLine": false,
+						"colorSpaceAfter": false
+					},{
+						"keyword": "NOTE",
+						"color": "#aaa",
+						"backgroundColor": "#434343",
+						"overviewRulerColor": "rgba(67, 67, 67, 0.8)",
+						"isWholeLine": false,
+						"colorSpaceAfter": false
 					}],
 					"description": "All the different types of highlights"
 				}
