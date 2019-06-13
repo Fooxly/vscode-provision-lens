@@ -1,9 +1,17 @@
 # Change Log
 
-All notable changes to the "vscode-git" extension will be documented in this file.
+## [1.0.2] - 2019-06-13
+### Added
+- New logo
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [1.0.1] - 2019-06-13
+### Changed
+- Updated README for the Visual Studio Marketplace
+### Fixed
+- Default configurations are now setup correctly
 
-## [Unreleased]
-
-- Initial release
+## [1.0.0] - 2019-06-13
+### Added
+- Custom keywords and sections
+- Options to disable a lens when there are no items
+- Option to make the keywords case sensitive
