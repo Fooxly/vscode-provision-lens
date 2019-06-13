@@ -17,6 +17,7 @@ export default class Highlighter extends TodoBase {
   }
 
   public setupColors() {
+    if(!this.settings.get('useHighlighting', true)) return
     this.colors = {}
     this.settings.get('highlights', []).forEach(h => {
       this.colors[h.keyword] = {
@@ -32,6 +33,7 @@ export default class Highlighter extends TodoBase {
   }
 
   public update() {
+    if(!this.settings.get('useHighlighting', true)) return
     this.settings.get('highlights', []).forEach(h => {
       let r = []
       this.annotations.get(h.keyword).forEach(e => {

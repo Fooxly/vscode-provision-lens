@@ -24,6 +24,7 @@ You can customize the keywords and other stuff with the following settings in yo
 |---|---|---|---|
 | todolens.hideWhenZero | boolean | true | Hide the lens if there are no items in the open file |
 | todolens.caseSensitive | boolean | false | If the keywords need to be case sensetive |
+| todolens.useHighlighting | boolean | true | If you want to use another syntax highlighter you can disable ours |
 
 ### Lens
 

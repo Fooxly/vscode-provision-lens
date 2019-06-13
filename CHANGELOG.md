@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.2.2] - 2019-06-13
+### New
+- Option to disable the syntax highlighting
+
+## [1.2.1] - 2019-06-13
+### New
+- Added rating, version and installs button to the README
+- Added the syntax highlighting to the README
+
+
 ## [1.2.0] - 2019-06-13
 ### New
 - Syntax highlighting

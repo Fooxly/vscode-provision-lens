@@ -3,11 +3,12 @@ import TodoLensProvider from './lens/TodoLensProvider'
 import Annotations from './common/Annotations'
 import Highlighter from './common/Highlighter'
 
-var lens, highlight, annotations, activeEditor
+var lens, highlight, annotations, activeEditor, settings
 
 function activate(context) {
 	const disposables = []
 
+	settings = workspace.getConfiguration('todolens')
 	activeEditor = window.activeTextEditor
 	annotations = new Annotations()
 	highlight = new Highlighter(annotations)
@@ -76,11 +77,12 @@ exports.activate = activate
 
 function update() {
 	annotations.update()
-	highlight.update()
+	if(settings.get('useHighlighting', true)) highlight.update()
 }
 function configChanged() {
+	settings = workspace.getConfiguration('todolens')
 	// annotations.configChanged()
-	highlight.configChanged()
+	if(settings.get('useHighlighting', true)) highlight.configChanged()
 	this.update()
 }
 
