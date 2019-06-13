@@ -156,7 +156,7 @@
 						"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
 						"isWholeLine": false,
 						"colorSpaceAfter": false,
-						"caseSensitive": false
+						"caseSensitive": true
 					},{
 						"keyword": "NOTE",
 						"color": "#aaa",
