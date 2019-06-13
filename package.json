@@ -4,21 +4,32 @@
 	"description": "A TODO/Notes lens based on keywords",
   "author": "Fooxly",
   "publisher": "Fooxly",
-  "license": "MIT",
+	"license": "MIT",
+	"icon": "assets/icon.png",
+  "keywords": [
+    "vscode",
+    "code",
+		"todo",
+		"notes",
+		"lens"
+  ],
+	"homepage": "https://gitlab.com/fooxly/todo-lens",
+	"repository": {
+		"type": "git",
+		"url": "https://gitlab.com/fooxly/todo-lens.git"
+	},
+	"bugs": {
+		"url": "https://gitlab.com/fooxly/todo-lens/issues",
+		"email": "services@fooxly.com"
+	},
+	"galleryBanner": {
+			"color": "#272729",
+			"theme": "dark"
+	},
 	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
-  "keywords": [
-    "vscode",
-    "code",
-    "metrics",
-    "typescript",
-		"javascript",
-		"php",
-		"todo",
-		"highlight"
-  ],
 	"categories": [
 		"Other"
 	],
@@ -27,12 +38,6 @@
 	],
 	"main": "./lib/extension.js",
 	"contributes": {
-		"commands": [
-      {
-        "command": "todolens.toggleLens",
-        "title": "toggle Todo lens"
-      }
-		],
 		"configuration": {
 			"type": "object",
 			"title": "TODO lens",

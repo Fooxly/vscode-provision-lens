@@ -12,14 +12,14 @@ import TodoLensProvider from '../lib/todolens/TodoLensProvider';
  */
 function activate(context) {
 	// const config = new App
-	const disposables = []
+	// const disposables = []
 	
-	disposables.push(
-		commands.registerCommand("todolens.toggleLens", () => {
-				// config.codeMetricsDisplayed = !config.codeMetricsDisplayed;
-				// triggerCodeLensComputation();
-		})
-	)
+	// disposables.push(
+	// 	commands.registerCommand("todolens.toggleLens", () => {
+	// 			// config.codeMetricsDisplayed = !config.codeMetricsDisplayed;
+	// 			// triggerCodeLensComputation();
+	// 	})
+	// )
 	let docSelector = {
     language: "*",
     scheme: "file"
@@ -30,7 +30,7 @@ function activate(context) {
 		new TodoLensProvider()
 	)
 
-	context.subscriptions.push(...disposables)
+	// context.subscriptions.push(...disposables)
 }
 exports.activate = activate
 
