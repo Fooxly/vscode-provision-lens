@@ -3,17 +3,24 @@ TODO-LENS
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
-List all the `TODOs` and `notes` on top of each file for a quick overview.
+Create a list of keywords at the top of each file. This makes it easy to see how many `notes` or `TODOs` there are.
 
-## Preview
+### Preview
 
+![](https://gitlab.com/fooxly/todo-lens/raw/master/assets/sample.png)
 
-## Extension Settings
+### Config
 
-You can set all the different types of todos/notes you want to set.
+You can customize the keywords and other stuff with the following settings in your `settings.json`.
 
+| | type | default | description |
+|---|---|---|---|
+| todolens.hideWhenZero | boolean | true | Hide the lens if there are no items in the open file |
+| todolens.caseSensitive | boolean | false | If the keywords need to be case sensetive |
+
+The different types can be set by using `todolens.types` property.
 For example:
-```
+```json
 "todolens.types": [{
   "title": "📝 {0} Todos",
   "types": [
@@ -28,9 +35,3 @@ For example:
   ]
 }]
 ```
-
-## Release Notes
-
-### 1.0.0
-
-First version of the TODO lens
