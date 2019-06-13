@@ -1,0 +1,26 @@
+{
+    "todolens.dropdownOrdering": "line_numbers_asc",
+    "todolens.useHighlighting": true,
+    "todolens.hideWhenZero": true,
+    "todolens.keywords": {
+        "TODO": {
+            "color": "#fff",
+            "backgroundColor": "#f2b01f",
+            "overviewRulerColor": "rgba(242, 176, 31, 0.8)",
+            "isWholeLine": false,
+            "colorSpaceAfter": false,
+            "caseSensitive": true
+        }
+    },
+    "todolens.groups": [{
+        "keywords": ["TODO", "FIXME"],
+        "text": {
+            "one": "📝 {0} TODO",
+            "multiple": "📝 {0} TODOs"
+        }
+    },
+    {
+        "keywords": ["NOTE"],
+        "text": "📝 {0} Notes"
+    }]
+}

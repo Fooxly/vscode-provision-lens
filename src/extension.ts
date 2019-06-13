@@ -1,7 +1,8 @@
-import {commands, languages, window, QuickPickItem, Selection, workspace} from 'vscode'
+import {commands, languages, window, QuickPickItem, Selection, workspace, Uri, FileSystemError} from 'vscode'
+import * as _ from 'lodash'
 import TodoLensProvider from './lens/TodoLensProvider'
 import Annotations from './common/Annotations'
-import Highlighter from './common/Highlighter'
+import Highlighter from './syntax/Highlighter'
 
 var lens, highlight, annotations, activeEditor, settings
 
@@ -19,10 +20,16 @@ function activate(context) {
 		commands.registerCommand("todolens.list", (args) => {
 			// get all the items
 			let arr : Array<QuickPickItem> = []
-			let an = Object.keys(lens.annotations)
+			let an
 			if(args != undefined) {
 				an = args.split('|')
+			} else {
+				// get all annotations
+				an = annotations.getAll()
 			}
+			// filter out possible duplicates
+			an = _.uniqBy(an, (e) => {return e})
+			// get all the values by the given types
 			an.forEach(a => {
 				annotations.get(a).forEach(t => {
 					arr.push({
@@ -31,6 +38,17 @@ function activate(context) {
 					})
 				})
 			})
+			let o = settings.get('dropdownOrdering', 'category')
+			switch(o) {
+				case 'line_numbers_asc': {
+					arr = _.orderBy(arr, [(r) => {return Number(r.label)}], ['asc'])
+					break
+				}
+				case 'line_numbers_desc': {
+					arr = _.orderBy(arr, [(r) => {return Number(r.label)}], ['desc'])
+					break
+				}
+			}
 			// show the quick picker
 			window.showQuickPick(arr, {canPickMany: false})
 			.then((v) => {

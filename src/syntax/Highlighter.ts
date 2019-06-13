@@ -1,6 +1,6 @@
 import { window, OverviewRulerLane, workspace, Range, Position } from 'vscode'
-import Annotations from './Annotations'
-import TodoBase from './TodoBase'
+import Annotations from '../common/Annotations'
+import TodoBase from '../common/TodoBase'
 
 export default class Highlighter extends TodoBase {
   private settings
@@ -17,16 +17,19 @@ export default class Highlighter extends TodoBase {
   }
 
   public setupColors() {
+    // TODO: if there are old highlights we need to remove them for the user so they don't have to restart
     if(!this.settings.get('useHighlighting', true)) return
+    
     this.colors = {}
-    this.settings.get('highlights', []).forEach(h => {
-      this.colors[h.keyword] = {
+    let kw = this.settings.get('keywords', {})
+    Object.keys(kw).forEach(k => {
+      this.colors[k] = {
         decoration: window.createTextEditorDecorationType({
-          backgroundColor: h.backgroundColor,
-          isWholeLine: h.isWholeLine,
-          color: h.color,
+          backgroundColor: kw[k].backgroundColor,
+          isWholeLine: kw[k].isWholeLine,
+          color: kw[k].color,
           overviewRulerLane: OverviewRulerLane.Right,
-          overviewRulerColor: h.overviewRulerColor
+          overviewRulerColor: kw[k].overviewRulerColor
         })
       }
     })
@@ -34,14 +37,15 @@ export default class Highlighter extends TodoBase {
 
   public update() {
     if(!this.settings.get('useHighlighting', true)) return
-    this.settings.get('highlights', []).forEach(h => {
+    let kw = this.settings.get('keywords', {})
+    Object.keys(kw).forEach(k => {
       let r = []
-      this.annotations.get(h.keyword, h.caseSensitive).forEach(e => {
+      this.annotations.get(k, kw[k].caseSensitive).forEach(e => {
         r.push({
-          range: (h.colorSpaceAfter ? new Range(e.range.start, new Position(e.range.end.line, e.range.end.character + 1)) : e.range)
+          range: (kw[k].colorSpaceAfter ? new Range(e.range.start, new Position(e.range.end.line, e.range.end.character + 1)) : e.range)
         })
       })
-      window.activeTextEditor.setDecorations(this.colors[h.keyword].decoration, r)
+      window.activeTextEditor.setDecorations(this.colors[k].decoration, r)
     })
 
   }

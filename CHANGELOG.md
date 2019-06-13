@@ -1,5 +1,20 @@
 # Change Log
 
+## [1.2.5] - 2019-06-14
+### New
+- Made the lens and highlighting more to 1
+- Case sensitive groups based on the keywords case sensitive boolean
+
+### Changed
+- Updated readme properties and previews
+
+## [1.2.4] - 2019-06-14
+### New
+- Different order types in the dropdown
+
+### Fixed
+- Small bug in the README
+
 ## [1.2.3] - 2019-06-13
 ### New
 - Case sensitive seperate for each keyword in the syntax highlighter

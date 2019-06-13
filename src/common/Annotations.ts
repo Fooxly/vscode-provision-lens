@@ -18,6 +18,15 @@ export default class Annotations {
     this._ann[activeEditor.document.uri.path] = {}
   }
 
+  public getAll() {
+    // let r = []
+    // let t = this.settings.get('types', [])
+    // t.forEach(e => {
+    //   r.push(...e.types)
+    // })
+    return Object.keys(this.settings.get('keywords'))
+  }
+
   public get(key, caseSensitive) {
     this._ann = {}
     this._ann[key] = this.find(key, caseSensitive)

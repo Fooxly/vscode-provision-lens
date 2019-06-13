@@ -10,26 +10,27 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
     this.annotations = ann
   }
 
-  public configChanged() {
-    
-  }
+  public configChanged() {}
 
   async provideCodeLenses(doc : TextDocument) : Promise<CodeLens[]> {
-
     this.settings = workspace.getConfiguration('todolens')
     let r = new Range(0,0,0,0)
     let lenses = []
-    this.settings.get('types', []).forEach(type => {
+    
+    this.settings.get('groups', []).forEach(g => {
       let c = 0
-      type.types.forEach(t => {
-        c += this.annotations.get(t, this.settings.get('caseSensitive', false)).length
+      g.keywords.forEach(k => {
+        let kw = this.settings.get('keywords', {})[k]
+        let cs = (!kw ? true : kw.caseSensitive)
+        c += this.annotations.get(k.toUpperCase(), cs).length
+        
       })
-      let s = this.createString(type,c)
+      let s = this.createString(g.text,c)
       if(s != null) {
         lenses.push(new CodeLens(r, {
           command: "todolens.list",
-          arguments: [type.types.join('|')],
-          title: this.createString(type, c)
+          arguments: [g.keywords.join('|')],
+          title: s
         }))
       }
     })
@@ -38,9 +39,17 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
 
 
   createString(t, c) {
-    let r = t.title
+    let rt
+    if(typeof t == 'object') {
+      rt = t.multiple
+      if(c == 1) {
+        rt = t.one
+      }
+    } else {
+      rt = t
+    }
     if(this.settings.get('hideWhenZero', true) && !c) return null
-    if(r == null) return r
-    return r.replace('{0}', c)
+    if(rt == null) return rt
+    return rt.replace('{0}', c)
   }
 }

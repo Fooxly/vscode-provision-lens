@@ -2,13 +2,13 @@
 	"name": "todo-lens",
 	"displayName": "TODO lens",
 	"description": "A TODO/Notes lens based on keywords",
-  "author": "Fooxly",
-  "publisher": "Fooxly",
+	"author": "Fooxly",
+	"publisher": "Fooxly",
 	"license": "MIT",
 	"icon": "assets/icon.png",
-  "keywords": [
-    "vscode",
-    "code",
+	"keywords": [
+		"vscode",
+		"code",
 		"todo",
 		"fixme",
 		"note",
@@ -18,7 +18,7 @@
 		"highlight",
 		"syntax",
 		"annotation"
-  ],
+	],
 	"homepage": "https://gitlab.com/fooxly/vscode-todo-lens",
 	"repository": {
 		"type": "git",
@@ -29,10 +29,10 @@
 		"email": "services@fooxly.com"
 	},
 	"galleryBanner": {
-			"color": "#272729",
-			"theme": "dark"
+		"color": "#272729",
+		"theme": "dark"
 	},
-	"version": "1.2.3",
+	"version": "1.2.5",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
@@ -40,7 +40,7 @@
 		"Other"
 	],
 	"activationEvents": [
-    "*"
+		"*"
 	],
 	"main": "./lib/extension.js",
 	"contributes": {
@@ -54,128 +54,106 @@
 			"type": "object",
 			"title": "TODO lens",
 			"properties": {
-				"todolens.hideWhenZero": {
-					"type": "boolean",
-					"default": true,
-					"description": "If there are 0 TODOs in a single section it will not be shown"
+				"todolens.dropdownOrdering": {
+					"type": "string",
+					"enum": [
+						"line_numbers_asc",
+						"line_numbers_desc",
+						"category"
+					],
+					"default": "line_numbers_asc",
+					"description": "The way the dropdown needs to be organized"
 				},
 				"todolens.useHighlighting": {
 					"type": "boolean",
 					"default": true,
 					"description": "If you want to use our syntax highlighting"
 				},
-				"todolens.caseSensitive": {
+				"todolens.hideWhenZero": {
 					"type": "boolean",
-					"default": false,
-					"description": "If the keywords need to be case sensitive or not"
+					"default": true,
+					"description": "If there are 0 results in a single group the lens won't be visible"
 				},
-				"todolens.types": {
+				"todolens.keywords": {
+					"type": "object",
+					"description": "All the keywords that need to be tracked",
+					"default": {
+						"TODO": {
+							"color": "#fff",
+							"backgroundColor": "#f2b01f",
+							"overviewRulerColor": "rgba(242, 176, 31, 0.8)",
+							"isWholeLine": false,
+							"colorSpaceAfter": false,
+							"caseSensitive": true
+						},
+						"FIXME": {
+							"color": "#fff",
+							"backgroundColor": "#d85f88",
+							"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
+							"isWholeLine": false,
+							"colorSpaceAfter": false,
+							"caseSensitive": true
+						},
+						"NOTE": {
+							"color": "#aaa",
+							"backgroundColor": "#434343",
+							"overviewRulerColor": "rgba(67, 67, 67, 0.8)",
+							"isWholeLine": false,
+							"colorSpaceAfter": false,
+							"caseSensitive": true
+						}
+					}
+				},
+				"todolens.groups": {
 					"type": "array",
+					"description": "The different groups for the keywords",
 					"items": {
 						"type": "object",
-						"title": "A single todo object",
+						"title": "A keyword group object",
 						"properties": {
-							"title": {
-								"type": "string",
-								"description": "The title that will be used at the top of each file"
-							},
-							"types": {
+							"keywords": {
 								"type": "array",
+								"description": "The keywords that belong to this group",
 								"items": {
 									"type": "string",
-									"title": "Keyword"
+									"title": "The keyword that belongs to the group (not case sensitive)"
+								}
+							},
+							"text": {
+								"type": "object",
+								"description": "The text color of the keyword",
+								"properties": {
+									"one": {
+										"type": "string",
+										"description": "The text that will be shown when there is only 1 item"
+									},
+									"multiple": {
+										"type": "string",
+										"description": "The text that will be shown when there are 0 or more than 1 items"
+									}
 								}
 							}
-							
 						}
 					},
 					"default": [{
-							"title": "📝 {0} TODOs",
-							"types": [
-								"TODO",
-								"FIXME"
-							]
-						},
-						{
-							"title": "📝 {0} Notes",
-							"types": [
-								"NOTE"
-							]
+						"keywords": ["TODO", "FIXME"],
+						"text": {
+								"one": "📝 {0} TODO",
+								"multiple": "📝 {0} TODOs"
 						}
-					],
-					"description": "All the different types of lenses"
-				},
-				"todolens.highlights": {
-					"type": "array",
-					"items": {
-							"type": "object",
-							"title": "A single highlight object",
-							"properties": {
-									"color": {
-											"type": "string",
-											"description": "The color of the keyword"
-									},
-									"backgroundColor": {
-											"type": "string",
-											"description": "The background color behind the keyword"
-									},
-									"overviewRulerColor": {
-											"type": "string",
-											"description": "The color that will be shown in the overview ruler"
-									},
-									"keyword": {
-											"type": "string",
-											"description": "The keyword that needs to be colored"    
-									},
-									"isWholeLine": {
-											"type": "boolean",
-											"description": "If the whole line needs to be colored or just the keyword"    
-									},
-									"colorSpaceAfter": {
-											"type": "boolean",
-											"description": "If the space just after the keyword (most likely a colon (:) needs to be colored as well"    
-									},
-									"caseSensitive": {
-											"type": "boolean",
-											"description": "If the keyword needs to be case sensitive"    
-									}
-							}
 					},
-					"default": [{
-						"keyword": "TODO",
-						"color": "#fff",
-						"backgroundColor": "#f2b01f",
-						"overviewRulerColor": "rgba(242, 176, 31, 0.8)",
-						"isWholeLine": false,
-						"colorSpaceAfter": false,
-						"caseSensitive": true
-					},{
-						"keyword": "FIXME",
-						"color": "#fff",
-						"backgroundColor": "#d85f88",
-						"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
-						"isWholeLine": false,
-						"colorSpaceAfter": false,
-						"caseSensitive": true
-					},{
-						"keyword": "NOTE",
-						"color": "#aaa",
-						"backgroundColor": "#434343",
-						"overviewRulerColor": "rgba(67, 67, 67, 0.8)",
-						"isWholeLine": false,
-						"colorSpaceAfter": false,
-						"caseSensitive": true
-					}],
-					"description": "All the different types of highlights"
+					{
+							"keywords": ["NOTE"],
+							"text": "📝 {0} Notes"
+					}]
 				}
 			}
-		}	
+		}
 	},
-
 	"scripts": {
 		"postinstall": "node ./node_modules/vscode/bin/install",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
 		"test": "node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
@@ -186,5 +164,8 @@
 		"eslint": "^5.13.0",
 		"typescript": "^3.3.1",
 		"vscode": "^1.1.28"
+	},
+	"dependencies": {
+		"lodash": "^4.17.11"
 	}
 }
