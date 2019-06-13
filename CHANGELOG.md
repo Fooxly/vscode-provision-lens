@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.2.3] - 2019-06-13
+### New
+- Case sensitive seperate for each keyword in the syntax highlighter
+
 ## [1.2.2] - 2019-06-13
 ### New
 - Option to disable the syntax highlighting

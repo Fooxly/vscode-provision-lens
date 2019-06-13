@@ -32,7 +32,7 @@
 			"color": "#272729",
 			"theme": "dark"
 	},
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
@@ -134,6 +134,10 @@
 									"colorSpaceAfter": {
 											"type": "boolean",
 											"description": "If the space just after the keyword (most likely a colon (:) needs to be colored as well"    
+									},
+									"caseSensitive": {
+											"type": "boolean",
+											"description": "If the keyword needs to be case sensitive"    
 									}
 							}
 					},
@@ -143,21 +147,24 @@
 						"backgroundColor": "#f2b01f",
 						"overviewRulerColor": "rgba(242, 176, 31, 0.8)",
 						"isWholeLine": false,
-						"colorSpaceAfter": false
+						"colorSpaceAfter": false,
+						"caseSensitive": true
 					},{
 						"keyword": "FIXME",
 						"color": "#fff",
 						"backgroundColor": "#d85f88",
 						"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
 						"isWholeLine": false,
-						"colorSpaceAfter": false
+						"colorSpaceAfter": false,
+						"caseSensitive": false
 					},{
 						"keyword": "NOTE",
 						"color": "#aaa",
 						"backgroundColor": "#434343",
 						"overviewRulerColor": "rgba(67, 67, 67, 0.8)",
 						"isWholeLine": false,
-						"colorSpaceAfter": false
+						"colorSpaceAfter": false,
+						"caseSensitive": true
 					}],
 					"description": "All the different types of highlights"
 				}

@@ -57,7 +57,8 @@ For example:
   "backgroundColor": "#f2b01f",
   "overviewRulerColor": "rgba(242, 176, 31, 0.8)",
   "isWholeLine": false,
-  "colorSpaceAfter": false
+  "colorSpaceAfter": false,
+  "caseSensitive": true
 },
 {
   "keyword": "FIXME",
@@ -65,7 +66,8 @@ For example:
   "backgroundColor": "#d85f88",
   "overviewRulerColor": "rgba(216, 95, 136, 0.8)",
   "isWholeLine": false,
-  "colorSpaceAfter": false
+  "colorSpaceAfter": false,
+  "caseSensitive": true
 },
 {
   "keyword": "NOTE",
@@ -73,7 +75,8 @@ For example:
   "backgroundColor": "#434343",
   "overviewRulerColor": "rgba(67, 67, 67, 0.8)",
   "isWholeLine": false,
-  "colorSpaceAfter": false
+  "colorSpaceAfter": false,
+  "caseSensitive": true
 }]
 ```
 

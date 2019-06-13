@@ -18,9 +18,9 @@ export default class Annotations {
     this._ann[activeEditor.document.uri.path] = {}
   }
 
-  public get(key) {
+  public get(key, caseSensitive) {
     this._ann = {}
-    this._ann[key] = this.find(key)
+    this._ann[key] = this.find(key, caseSensitive)
     return this._ann[key]
   }
 
@@ -28,13 +28,13 @@ export default class Annotations {
     delete this._ann[path]
   }
 
-  private find(key) : Object {
+  private find(key, caseSensitive) : Object {
     let activeEditor = window.activeTextEditor
     let text = activeEditor.document.getText()
     let t = []
     let match, regex
     // if case sensetive
-    if(this.settings.get('caseSensitive', false)) {    
+    if(caseSensitive) {    
       regex = new RegExp(`\\b(${key})\\b`, 'gm')
     } else {
       regex = new RegExp(`\\b(${key})\\b`, 'igm')

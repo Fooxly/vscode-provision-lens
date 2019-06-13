@@ -22,7 +22,7 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
     this.settings.get('types', []).forEach(type => {
       let c = 0
       type.types.forEach(t => {
-        c += this.annotations.get(t).length
+        c += this.annotations.get(t, this.settings.get('caseSensitive', false)).length
       })
       let s = this.createString(type,c)
       if(s != null) {
