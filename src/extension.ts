@@ -1,18 +1,45 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-// const vscode = require('vscode')
-import {commands, languages, window, QuickPickItem, Selection} from 'vscode'
-import TodoLensProvider from './todolens/TodoLensProvider';
+import {commands, languages, window, QuickPickItem, Selection, workspace} from 'vscode'
+import TodoLensProvider from './lens/TodoLensProvider'
+import Utils from './common/Utils'
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+var lens, highlight, annotations, activeEditor
 
-/**
- * @param {vscode.ExtensionContext} context
- */
 function activate(context) {
 	const disposables = []
-	const lens = new TodoLensProvider()
+
+	activeEditor = window.activeTextEditor
+
+	annotations = Utils.searchAnnotations()
+	lens = new TodoLensProvider()
+	// lens
+	
+	
+	disposables.push(
+		languages.registerCodeLensProvider({
+				language: "*",
+				scheme: "file"
+			},
+			lens
+		)
+	)
+
+	if(activeEditor) {
+		updateAnnotations()
+	}
+
+	window.onDidChangeActiveTextEditor((e) => {
+		activeEditor = e
+		if(e) {
+			updateAnnotations()
+		}
+	}, null, context.subscriptions)
+	workspace.onDidChangeTextDocument((e) => {
+		if(activeEditor && e.document == activeEditor.document) {
+			updateAnnotations()
+		}
+	}, null, context.subscriptions)
+
+	// list command
 	disposables.push(
 		commands.registerCommand("todolens.list", (args) => {
 			// get all the items
@@ -24,12 +51,12 @@ function activate(context) {
 			an.forEach(a => {
 				lens.annotations[a].forEach(t => {
 					arr.push({
-						label: t.i + '',
-						description: t.l.trim()
+						label: t.index + '',
+						description: t.text.trim()
 					})
 				})
 			})
-
+			
 			window.showQuickPick(arr, {canPickMany: false})
 			.then((v) => {
 				if(!v) return
@@ -40,19 +67,15 @@ function activate(context) {
 			})
 		})
 	)
-	let docSelector = {
-    language: "*",
-    scheme: "file"
-	}
-	
-	languages.registerCodeLensProvider(
-		docSelector,
-		lens
-	)
 
 	context.subscriptions.push(...disposables)
 }
 exports.activate = activate
+
+function updateAnnotations() {
+	annotations = Utils.searchAnnotations()
+	lens.Update(annotations)
+}
 
 // this method is called when your extension is deactivated
 function deactivate() {}

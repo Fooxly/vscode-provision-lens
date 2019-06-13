@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.1.0] - 2019-06-13
+### Changed
+- Improved searching for keywords
+### Fixed
+- Replace error if there were 0 items
+
 ## [1.0.6] - 2019-06-13
 ### Changed
 - Readme updated to reposity name change
