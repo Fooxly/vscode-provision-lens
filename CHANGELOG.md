@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.5] - 2019-06-13
+### Added
+- Get a list of all the TODOs in the file by clicking on the code lens
+- Added command to view all notes and TODOs in a dropdown
+
 ## [1.0.2] - 2019-06-13
 ### Added
 - New logo

@@ -26,7 +26,7 @@
 			"color": "#272729",
 			"theme": "dark"
 	},
-	"version": "1.0.2",
+	"version": "1.0.5",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
@@ -38,6 +38,12 @@
 	],
 	"main": "./lib/extension.js",
 	"contributes": {
+		"commands": [
+			{
+				"command": "todolens.list",
+				"title": "todolens: List"
+			}
+		],
 		"configuration": {
 			"type": "object",
 			"title": "TODO lens",
