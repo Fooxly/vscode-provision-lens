@@ -45,7 +45,7 @@ For example:
 
 ---
 
-## :heart: Support our projects
+## ❤️ Support our projects
 
 You can support us by donating through BuyMeACoffee [here](https://www.buymeacoffee.com/fooxly).
 

@@ -93,6 +93,38 @@
 						}
 					],
 					"description": "All the different types of lenses"
+				},
+				"todolens.highlights": {
+					"type": "array",
+					"items": {
+							"type": "object",
+							"title": "A single highlight object",
+							"properties": {
+									"color": {
+											"type": "string",
+											"description": "The color of the keyword"
+									},
+									"backgroundColor": {
+											"type": "string",
+											"description": "The background color behind the keyword"
+									},
+									"overviewRulerColor": {
+											"type": "string",
+											"description": "The color that will be shown in the overview ruler"
+									},
+									"keyword": {
+											"type": "string",
+											"description": "The keyword that needs to be colored"    
+									}
+							}
+					},
+					"default": [{
+						"keyword": "NOTE",
+						"color": "#fff",
+						"backgroundColor": "#02612D",
+						"overviewRulerColor": "#02612D"
+					}],
+					"description": "All the different types of highlights"
 				}
 			}
 		}	

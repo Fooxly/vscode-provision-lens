@@ -1,6 +1,7 @@
 import { Range, window, workspace } from 'vscode'
+import Annotations from './Annotations';
 
-function searchAnnotations() : Object {
+function searchAnnotations() {
   let settings = workspace.getConfiguration('todolens')
   let activeEditor = window.activeTextEditor
   if (!activeEditor) {

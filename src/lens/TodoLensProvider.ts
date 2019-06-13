@@ -1,29 +1,29 @@
 import { workspace, CodeLensProvider, Range, Command, CodeLens, TextDocument, CancellationToken, window, OverviewRulerLane } from 'vscode'
-export default class TodoLensProvider implements CodeLensProvider {
-
+import Annotations from '../common/Annotations'
+import TodoBase from '../common/TodoBase'
+export default class TodoLensProvider extends TodoBase implements CodeLensProvider {
   private settings
-  private annotations = {
+  private annotations : Annotations
 
+  constructor(ann) {
+    super()
+    this.annotations = ann
   }
 
-  public Update(annotations) {
-    this.annotations = annotations
+  public configChanged() {
+    
   }
 
   async provideCodeLenses(doc : TextDocument) : Promise<CodeLens[]> {
-    if (!window.activeTextEditor) {
-      return
-    }
+
     this.settings = workspace.getConfiguration('todolens')
     let r = new Range(0,0,0,0)
     let lenses = []
-
     this.settings.get('types', []).forEach(type => {
       let c = 0
       type.types.forEach(t => {
-        c += this.annotations[t].length
+        c += this.annotations.get(t).length
       })
-
       let s = this.createString(type,c)
       if(s != null) {
         lenses.push(new CodeLens(r, {

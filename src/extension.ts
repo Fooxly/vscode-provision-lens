@@ -1,6 +1,8 @@
 import {commands, languages, window, QuickPickItem, Selection, workspace} from 'vscode'
 import TodoLensProvider from './lens/TodoLensProvider'
 import Utils from './common/Utils'
+import Annotations from './common/Annotations'
+import Highlighter from './common/Highlighter'
 
 var lens, highlight, annotations, activeEditor
 
@@ -8,36 +10,12 @@ function activate(context) {
 	const disposables = []
 
 	activeEditor = window.activeTextEditor
-
-	annotations = Utils.searchAnnotations()
-	lens = new TodoLensProvider()
-	// lens
+	annotations = new Annotations()
+	highlight = new Highlighter(annotations)
+	lens = new TodoLensProvider(annotations)
 	
-	
-	disposables.push(
-		languages.registerCodeLensProvider({
-				language: "*",
-				scheme: "file"
-			},
-			lens
-		)
-	)
+	update()
 
-	if(activeEditor) {
-		updateAnnotations()
-	}
-
-	window.onDidChangeActiveTextEditor((e) => {
-		activeEditor = e
-		if(e) {
-			updateAnnotations()
-		}
-	}, null, context.subscriptions)
-	workspace.onDidChangeTextDocument((e) => {
-		if(activeEditor && e.document == activeEditor.document) {
-			updateAnnotations()
-		}
-	}, null, context.subscriptions)
 
 	// list command
 	disposables.push(
@@ -49,7 +27,7 @@ function activate(context) {
 				an = args.split('|')
 			}
 			an.forEach(a => {
-				lens.annotations[a].forEach(t => {
+				annotations.get(a).forEach(t => {
 					arr.push({
 						label: t.index + '',
 						description: t.text.trim()
@@ -68,16 +46,46 @@ function activate(context) {
 		})
 	)
 
+	window.onDidChangeActiveTextEditor((e) => {
+		activeEditor = e
+		if(e) {
+			update()
+		}
+	}, null, context.subscriptions)
+	
+	workspace.onDidChangeTextDocument((e) => {
+		if(activeEditor && e.document == activeEditor.document) {
+			update()
+		}
+	}, null, context.subscriptions)
+
+	workspace.onDidChangeConfiguration(() => {
+		configChanged()
+	}, null, context.subscriptions)
+
+	disposables.push(
+		languages.registerCodeLensProvider({
+				language: "*",
+				scheme: "file"
+			},
+			lens
+		)
+	)
+
 	context.subscriptions.push(...disposables)
 }
 exports.activate = activate
 
-function updateAnnotations() {
-	annotations = Utils.searchAnnotations()
-	lens.Update(annotations)
+function update() {
+	annotations.update()
+	highlight.update()
+}
+function configChanged() {
+	// annotations.configChanged()
+	highlight.configChanged()
+	this.update()
 }
 
-// this method is called when your extension is deactivated
 function deactivate() {}
 
 module.exports = {
