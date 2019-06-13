@@ -14,6 +14,7 @@ Code lens & Syntax highlighting
 
 This extension contributes the following commands to the Command palette.
 - `List`: show all the `TODOs` and `notes` in the current file.
+
 ![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/list_sample.gif)
 
 ### Config
