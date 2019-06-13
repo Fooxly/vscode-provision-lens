@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.6] - 2019-06-13
+### Changed
+- Readme updated to reposity name change
+
 ## [1.0.5] - 2019-06-13
 ### Added
 - Get a list of all the TODOs in the file by clicking on the code lens

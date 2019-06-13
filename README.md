@@ -7,14 +7,14 @@ Create a list of keywords at the top of each file. This makes it easy to see how
 
 ### Preview
 
-![](https://gitlab.com/fooxly/todo-lens/raw/master/assets/sample.png)
+![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/sample.png)
 
 
 ### Commands
 
 This extension contributes the following commands to the Command palette.
 - `List`: show all the `TODOs` and `notes` in the current file.
-![](https://gitlab.com/fooxly/todo-lens/raw/master/assets/list_sample.gif)
+![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/list_sample.gif)
 
 ### Config
 

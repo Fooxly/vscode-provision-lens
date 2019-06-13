@@ -13,20 +13,20 @@
 		"notes",
 		"lens"
   ],
-	"homepage": "https://gitlab.com/fooxly/todo-lens",
+	"homepage": "https://gitlab.com/fooxly/vscode-todo-lens",
 	"repository": {
 		"type": "git",
-		"url": "https://gitlab.com/fooxly/todo-lens.git"
+		"url": "https://gitlab.com/fooxly/vscode-todo-lens.git"
 	},
 	"bugs": {
-		"url": "https://gitlab.com/fooxly/todo-lens/issues",
+		"url": "https://gitlab.com/fooxly/vscode-todo-lens/issues",
 		"email": "services@fooxly.com"
 	},
 	"galleryBanner": {
 			"color": "#272729",
 			"theme": "dark"
 	},
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
