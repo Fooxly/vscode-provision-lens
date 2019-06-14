@@ -1,7 +1,14 @@
 # Change Log
 
+## [1.2.6] - 2019-06-14
+### Changed
+- Updated the README for a more in depth overview of the extension
+- Showing the selection more to the top of the file when it needs to be scrolled instead of the very bottom
+- Made alle the section headers the correct naming (Some where **New** instead of **Added**)
+- Fixed a bug where the dropdown showed more values than the lens because of the case sensitive property
+
 ## [1.2.5] - 2019-06-14
-### New
+### Added
 - Made the lens and highlighting more to 1
 - Case sensitive groups based on the keywords case sensitive boolean
 
@@ -9,35 +16,34 @@
 - Updated readme properties and previews
 
 ## [1.2.4] - 2019-06-14
-### New
+### Added
 - Different order types in the dropdown
 
-### Fixed
+### Changed
 - Small bug in the README
 
 ## [1.2.3] - 2019-06-13
-### New
+### Added
 - Case sensitive seperate for each keyword in the syntax highlighter
 
 ## [1.2.2] - 2019-06-13
-### New
+### Added
 - Option to disable the syntax highlighting
 
 ## [1.2.1] - 2019-06-13
-### New
+### Added
 - Added rating, version and installs button to the README
 - Added the syntax highlighting to the README
 
 
 ## [1.2.0] - 2019-06-13
-### New
+### Added
 - Syntax highlighting
 
 ## [1.1.0] - 2019-06-13
 ### Changed
 - Improved searching for keywords
-### Fixed
-- Replace error if there were 0 items
+- Fixed the replace error if there were 0 items
 
 ## [1.0.6] - 2019-06-13
 ### Changed
@@ -55,7 +61,6 @@
 ## [1.0.1] - 2019-06-13
 ### Changed
 - Updated README for the Visual Studio Marketplace
-### Fixed
 - Default configurations are now setup correctly
 
 ## [1.0.0] - 2019-06-13

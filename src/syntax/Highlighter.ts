@@ -40,7 +40,7 @@ export default class Highlighter extends TodoBase {
     let kw = this.settings.get('keywords', {})
     Object.keys(kw).forEach(k => {
       let r = []
-      this.annotations.get(k, kw[k].caseSensitive).forEach(e => {
+      this.annotations.get(k).forEach(e => {
         r.push({
           range: (kw[k].colorSpaceAfter ? new Range(e.range.start, new Position(e.range.end.line, e.range.end.character + 1)) : e.range)
         })

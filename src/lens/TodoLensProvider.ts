@@ -20,9 +20,7 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
     this.settings.get('groups', []).forEach(g => {
       let c = 0
       g.keywords.forEach(k => {
-        let kw = this.settings.get('keywords', {})[k]
-        let cs = (!kw ? true : kw.caseSensitive)
-        c += this.annotations.get(k.toUpperCase(), cs).length
+        c += this.annotations.get(k).length
         
       })
       let s = this.createString(g.text,c)

@@ -27,9 +27,12 @@ export default class Annotations {
     return Object.keys(this.settings.get('keywords'))
   }
 
-  public get(key, caseSensitive) {
+  public get(key) {
+    let k = key.toUpperCase()
+    let kw = this.settings.get('keywords', {})[k]
+    let cs = (!kw ? true : kw.caseSensitive)
     this._ann = {}
-    this._ann[key] = this.find(key, caseSensitive)
+    this._ann[key] = this.find(k, cs)
     return this._ann[key]
   }
 

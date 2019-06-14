@@ -1,4 +1,4 @@
-import {commands, languages, window, QuickPickItem, Selection, workspace, Uri, FileSystemError} from 'vscode'
+import {commands, languages, window, QuickPickItem, Selection, workspace, Uri, FileSystemError, Range, Position} from 'vscode'
 import * as _ from 'lodash'
 import TodoLensProvider from './lens/TodoLensProvider'
 import Annotations from './common/Annotations'
@@ -56,7 +56,7 @@ function activate(context) {
 				let editor = window.activeTextEditor
 				let range = editor.document.lineAt(Number(v.label)-1).range
 				editor.selection =  new Selection(range.start, range.start)
-				editor.revealRange(range)
+				editor.revealRange(new Range(range.start, new Position(range.end.line + (editor.visibleRanges[0].end.line - editor.visibleRanges[0].start.line) - 3, range.end.character)))
 			})
 		})
 	)

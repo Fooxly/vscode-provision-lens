@@ -1,19 +1,32 @@
-TODO LENS
-===
+![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/icon_banner.png=100x100)
+<p align="center">
+  <br />
+  <a title="Learn more about the TODO Lens" href="https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens"><img src="https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/icon_banner.png" alt="TODO Lens Logo" width="50%" /></a>
+</p><br/>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens) [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens)
 
-Highlight all the `TODOs` and `Notes` in your file and get a easy to use and very customizable code lens with a overview of all the thing you have to do.
+# What's new
+* Show **highlights** of the keywords specified
+* Show all the keywords of the current files in a dropdown
+* Localization support
+* `Jump to Next` and `Jump to Previous` commands (also available in context menu)
 
-### Preview
+<br/>
 
-Code lens & Syntax highlighting
-![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/sample.png)
+# TODO Lens
+
+The `TODO Lens` provides a simple way to view all of your `notes` in your workspace. At the top of each file (if they are not ignored by the `.gitignore` or `.ignore` file) there will be a single or multiple lenses with a overview of all the notes found in the current file.
+
+Here are some functions the extension provides:
+* Overview of the keywords provided in the settings.json
+* **Customizable** syntax highlighting for the keywords with colors in the **overview ruler**
+* **Jump** between notes by using the context menu or commands
+
+## Features
 
 ### Commands
-
-This extension contributes the following commands to the Command palette.
-- `List`: show all the `TODOs` and `Notes` in the current file.
+`todolens: List` Shows all the notes in the current file
 
 ![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/list_sample.gif)
 
@@ -27,7 +40,9 @@ You can customize the keywords and other stuff with the following settings in yo
 | todolens.useHighlighting | boolean | true | true<br/>false | If you want to use another syntax highlighter you can disable ours |
 | todolens.hideWhenZero | boolean | true | true<br/>false | Hide the lens if there are no items in the open file |
 
-All the different keywords need to be defined in the `todolens.keywords` property. For example:
+<br/>
+
+All the different keywords need to be defined in the `todolens.keywords` property. <br/> For example:
 
 ```json
 "todolens.keywords": {
@@ -58,8 +73,10 @@ All the different keywords need to be defined in the `todolens.keywords` propert
 }
 ```
 
+<br/>
+
 All the lens groups need to be specified in the `todolens.groups` property.
-For example:
+<br/> For example:
 
 ```json
 "todolens.groups": [{
@@ -75,8 +92,15 @@ For example:
 }]
 ```
 
----
+<br/>
 
+### Preview
+
+![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/sample.png)
+
+<br/>
+
+---
 ## ❤️ Support our projects
 
 You can support us by donating through BuyMeACoffee [here](https://www.buymeacoffee.com/fooxly).
