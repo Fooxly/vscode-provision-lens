@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.2.8] - 2019-06-14
+### Added
+- Information message if there are no notes found past the current cursor point [#6](https://gitlab.com/fooxly/vscode-todo-lens/issues/6)
+- Translation keys for all the texts
+
+### Changed
+- Made the title object for a group possible to be a string and object for in the `settings.json`
+
 ## [1.2.7] - 2019-06-14
 ### Added
 - possibility to move to the next note in the file

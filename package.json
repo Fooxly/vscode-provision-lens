@@ -72,6 +72,19 @@
 			"type": "object",
 			"title": "TODO lens",
 			"properties": {
+				
+				"todolens.translations": {
+					"type": "object",
+					"title": "Translations",
+					"description": "All the language keys for the TODO Lens",
+					"properties": {
+						"noNoteFound": {
+							"type": "string",
+							"description": "The text that will be shown when there are no more notes found past the current cursor point"
+						}
+					}
+				},
+
 				"todolens.dropdownOrdering": {
 					"type": "string",
 					"enum": [
@@ -138,7 +151,7 @@
 								}
 							},
 							"text": {
-								"type": "object",
+								"type": ["object", "string"],
 								"description": "The text color of the keyword",
 								"properties": {
 									"one": {

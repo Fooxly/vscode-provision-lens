@@ -54,11 +54,17 @@ export default class Commands extends TodoBase {
     })
     
     let last = commands.registerCommand('todolens.lastNote', () => {
-      this.moveToLine(this.annotations.getPreviousNoteLocation())
+      let l = this.annotations.getPreviousNoteLocation()
+      // return a info message if there are no notes found above the cursors position
+      if(!l) return window.showInformationMessage(this.language.noNoteFound)
+      this.moveToLine(l)
     })
 
     let next = commands.registerCommand('todolens.nextNote', () => {
-      this.moveToLine(this.annotations.getNextNoteLocation())
+      let l = this.annotations.getNextNoteLocation()
+      // return a info message if there are no notes found below the cursors position
+      if(!l) return window.showInformationMessage(this.language.noNoteFound)
+      this.moveToLine(l)
     })
     return [list, last, next]
   }
@@ -71,5 +77,4 @@ export default class Commands extends TodoBase {
     editor.revealRange(new Range(range.start, new Position(range.end.line + (editor.visibleRanges[0].end.line - editor.visibleRanges[0].start.line) - 3, range.end.character)))
   
   }
-
 }

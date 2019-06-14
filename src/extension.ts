@@ -7,12 +7,10 @@ import TodoBase from './common/TodoBase'
 
 const modules : TodoBase[] = []
 
-var lens, highlight, commands, annotations, activeEditor, settings
+var lens, highlight, commands, annotations, activeEditor
 
 function activate(context) {
 	const disposables = []
-
-	settings = workspace.getConfiguration('todolens')
 	activeEditor = window.activeTextEditor
 
 	annotations = new Annotations()
@@ -78,7 +76,6 @@ function update() {
  * Apply the config changes to the modules
  */
 function configChanged() {
-	settings = workspace.getConfiguration('todolens')
 	modules.forEach(m => {
 		m.configChanged()
 	})
