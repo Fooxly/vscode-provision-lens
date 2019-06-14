@@ -2,7 +2,7 @@
 
 ## [1.2.8] - 2019-06-14
 ### Added
-- Information message if there are no notes found past the current cursor point [#6](https://gitlab.com/fooxly/vscode-todo-lens/issues/6)
+- Information message if there are no notes found past the current cursor position [#6](https://gitlab.com/fooxly/vscode-todo-lens/issues/6)
 - Translation keys for all the texts
 
 ### Changed
