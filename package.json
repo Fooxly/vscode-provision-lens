@@ -1,7 +1,7 @@
 {
 	"name": "todo-lens",
 	"displayName": "TODO lens",
-	"description": "A TODO/Notes lens based on keywords",
+	"description": "A TODO / Notes lens based on keywords",
 	"author": "Fooxly",
 	"publisher": "Fooxly",
 	"license": "MIT",
@@ -32,7 +32,7 @@
 		"color": "#272729",
 		"theme": "dark"
 	},
-	"version": "1.2.6",
+	"version": "1.2.7",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
@@ -47,9 +47,27 @@
 		"commands": [
 			{
 				"command": "todolens.list",
-				"title": "todolens: List"
+				"title": "TODO Lens: List"
+			},
+			{
+				"command": "todolens.lastNote",
+				"title": "TODO Lens: Previous Note"
+			},
+			{
+				"command": "todolens.nextNote",
+				"title": "TODO Lens: Next Note"
 			}
 		],
+		"menus": {
+			"editor/context": [{
+				"command": "todolens.lastNote",
+				"group": "todolens@1"
+			},
+			{
+				"command": "todolens.nextNote",
+				"group": "todolens@2"
+			}]
+		},
 		"configuration": {
 			"type": "object",
 			"title": "TODO lens",

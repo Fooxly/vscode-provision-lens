@@ -10,7 +10,11 @@
 * Show **highlights** of the keywords specified
 * Show all the keywords of the current files in a dropdown
 * Localization support
-* `Jump to Next` and `Jump to Previous` commands (also available in context menu)
+* `Next Note` and `Previous Note` commands (also available in context menu) based on the current cursor position
+
+<br/>
+
+![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/list_sample.gif)
 
 <br/>
 
@@ -26,9 +30,9 @@ Here are some functions the extension provides:
 ## Features
 
 ### Commands
-`todolens: List` Shows all the notes in the current file
-
-![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/list_sample.gif)
+* `TODO Lens: List` Shows all the notes in the current file
+* `TODO Lens: Previous Note` Move tho the **previous** note based on the cursor position
+* `TODO Lens: Next Note` Move tho the **next** note based on the cursor position
 
 ### Config
 
@@ -73,7 +77,8 @@ All the different keywords need to be defined in the `todolens.keywords` propert
 }
 ```
 
-<br/>
+*`NOTE:`* The keyword property is case insensitive, this is handeld in the code itself.
+<br/><br/>
 
 All the lens groups need to be specified in the `todolens.groups` property.
 <br/> For example:
@@ -91,6 +96,9 @@ All the lens groups need to be specified in the `todolens.groups` property.
   "text": "📝 {0} Notes"
 }]
 ```
+
+*`NOTE:`* The keywords property is case insensitive, this is handeld in the code itself.
+You just need to make sure the keyword exists in the keywords property.
 
 <br/>
 

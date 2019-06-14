@@ -2,15 +2,12 @@ import { workspace, CodeLensProvider, Range, Command, CodeLens, TextDocument, Ca
 import Annotations from '../common/Annotations'
 import TodoBase from '../common/TodoBase'
 export default class TodoLensProvider extends TodoBase implements CodeLensProvider {
-  private settings
   private annotations : Annotations
 
   constructor(ann) {
     super()
     this.annotations = ann
   }
-
-  public configChanged() {}
 
   async provideCodeLenses(doc : TextDocument) : Promise<CodeLens[]> {
     this.settings = workspace.getConfiguration('todolens')

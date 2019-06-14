@@ -1,52 +1,85 @@
 import { workspace, window, Range } from 'vscode';
+import TodoBase from './TodoBase';
 
-export default class Annotations {
-  private settings
+export default class Annotations extends TodoBase {
   private _ann = {}
 
   constructor() {
-    this.settings = workspace.getConfiguration('todolens')
+    super()
     this._ann = {}
   }
 
+  
   public update() {
     // content changed for the file
     let activeEditor = window.activeTextEditor
     if (!activeEditor) {
       return []
     }
-    this._ann[activeEditor.document.uri.path] = {}
+    this._ann = {}
+    let s = this.settings.get('keywords', {})
+    // get all the notes from the current file
+    Object.keys(s).forEach(k => {
+      this._ann[k.toUpperCase()] = this.find(k)
+    })
   }
 
-  public getAll() {
-    // let r = []
-    // let t = this.settings.get('types', [])
-    // t.forEach(e => {
-    //   r.push(...e.types)
-    // })
-    return Object.keys(this.settings.get('keywords'))
+
+  public getPreviousNoteLocation() {
+    let c = window.activeTextEditor.selection.anchor.line + 1
+    let closest
+    Object.keys(this._ann).forEach(k => {
+      this._ann[k].forEach(o => {
+        if(!closest && o.index < c) {
+          closest = o.index
+        }
+        if(o.index > closest && o.index < c) {
+          closest = o.index
+        }
+      })
+    })
+    return closest
+  }
+  public getNextNoteLocation() {
+    let c = window.activeTextEditor.selection.anchor.line + 1
+    let closest
+    Object.keys(this._ann).forEach(k => {
+      this._ann[k].forEach(o => {
+        if(!closest && o.index > c) {
+          closest = o.index
+        }
+        if(o.index < closest && o.index > c) {
+          closest = o.index
+        }
+      })
+    })
+    return closest
+  }
+
+  public getKeywords() {
+    return Object.keys(this.settings.get('keywords', {}))
   }
 
   public get(key) {
     let k = key.toUpperCase()
-    let kw = this.settings.get('keywords', {})[k]
-    let cs = (!kw ? true : kw.caseSensitive)
-    this._ann = {}
-    this._ann[key] = this.find(k, cs)
-    return this._ann[key]
+    if(!this._ann[k]) this._ann[k] = this.find(k)
+    return this._ann[k]
   }
 
   public remove(path) {
     delete this._ann[path]
   }
 
-  private find(key, caseSensitive) : Object {
+  private find(key) : Object {
     let activeEditor = window.activeTextEditor
     let text = activeEditor.document.getText()
     let t = []
     let match, regex
     // if case sensetive
-    if(caseSensitive) {    
+
+    let kw = this.settings.get('keywords', {})[key.toUpperCase()]
+    let cs = (!kw ? true : kw.caseSensitive)
+    if(cs) {    
       regex = new RegExp(`\\b(${key})\\b`, 'gm')
     } else {
       regex = new RegExp(`\\b(${key})\\b`, 'igm')

@@ -3,7 +3,6 @@ import Annotations from '../common/Annotations'
 import TodoBase from '../common/TodoBase'
 
 export default class Highlighter extends TodoBase {
-  private settings
   private colors
   private annotations : Annotations
 
@@ -11,8 +10,6 @@ export default class Highlighter extends TodoBase {
     super()
     this.annotations = ann
     this.colors = {}
-
-    this.settings = workspace.getConfiguration('todolens')
     this.setupColors()
   }
 
@@ -51,7 +48,7 @@ export default class Highlighter extends TodoBase {
   }
 
   public configChanged() {
-    this.settings = workspace.getConfiguration('todolens')
+    super.configChanged()
     this.setupColors()
   }
 }

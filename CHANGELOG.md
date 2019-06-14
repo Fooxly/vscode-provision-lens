@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.2.7] - 2019-06-14
+### Added
+- possibility to move to the next note in the file
+- possibility to move to the previous note in the file
+
+### Changed
+- Making modules use the same base class for settings and updating
+- Updated the command titles to `TODO Lens:`
+- Commands to a seperate class
+
 ## [1.2.6] - 2019-06-14
 ### Changed
 - Updated the README for a more in depth overview of the extension
