@@ -4,6 +4,7 @@
 ### Added
 - Information message if there are no notes found past the current cursor position [#6](https://gitlab.com/fooxly/vscode-todo-lens/issues/6)
 - Translation keys for all the texts
+- Exlude all the files and folders that are in a `.gitignore` or `.ignore` file [#3](https://gitlab.com/fooxly/vscode-todo-lens/issues/3)
 
 ### Changed
 - Made the title object for a group possible to be a string and object for in the `settings.json`
