@@ -36,7 +36,7 @@ function activate(context) {
 	)
 
 	setupEvents(context)
-	update()
+	exludedFilesUpdate()
 
 	context.subscriptions.push(...disposables)
 }
@@ -58,6 +58,12 @@ function setupEvents(context) {
 		}
 	}, null, context.subscriptions)
 
+	workspace.onDidSaveTextDocument(async (doc) => {
+		if(annotations.checkIgnoreUpdate(doc)) {
+			exludedFilesUpdate()
+		}
+	})
+
 	workspace.onDidChangeConfiguration(() => {
 		configChanged()
 	}, null, context.subscriptions)
@@ -70,6 +76,11 @@ function update() {
 	modules.forEach(m => {
 		m.update()
 	})
+}
+
+async function exludedFilesUpdate() {
+	await annotations.updateIgnore()
+	update()
 }
 
 /*

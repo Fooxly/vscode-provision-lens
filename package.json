@@ -59,20 +59,21 @@
 			}
 		],
 		"menus": {
-			"editor/context": [{
-				"command": "todolens.lastNote",
-				"group": "todolens@1"
-			},
-			{
-				"command": "todolens.nextNote",
-				"group": "todolens@2"
-			}]
+			"editor/context": [
+				{
+					"command": "todolens.lastNote",
+					"group": "todolens@1"
+				},
+				{
+					"command": "todolens.nextNote",
+					"group": "todolens@2"
+				}
+			]
 		},
 		"configuration": {
 			"type": "object",
 			"title": "TODO lens",
 			"properties": {
-				
 				"todolens.translations": {
 					"type": "object",
 					"title": "Translations",
@@ -82,6 +83,14 @@
 							"type": "string",
 							"description": "The text that will be shown when there are no more notes found past the current cursor point"
 						}
+					}
+				},
+				"todolens.excluded": {
+					"type": "array",
+					"description": "All the excluded files and folders",
+					"items": {
+						"type": "string",
+						"description": "The path to the file or folder from the root of the workspace"
 					}
 				},
 
@@ -105,7 +114,6 @@
 					"default": true,
 					"description": "If there are 0 results in a single group the lens won't be visible"
 				},
-
 				"todolens.keywords": {
 					"type": "object",
 					"description": "All the keywords that need to be tracked",
@@ -152,7 +160,10 @@
 								}
 							},
 							"text": {
-								"type": ["object", "string"],
+								"type": [
+									"object",
+									"string"
+								],
 								"description": "The text color of the keyword",
 								"properties": {
 									"one": {
@@ -167,17 +178,24 @@
 							}
 						}
 					},
-					"default": [{
-						"keywords": ["TODO", "FIXME"],
-						"text": {
+					"default": [
+						{
+							"keywords": [
+								"TODO",
+								"FIXME"
+							],
+							"text": {
 								"one": "📝 {0} TODO",
 								"multiple": "📝 {0} TODOs"
-						}
-					},
-					{
-							"keywords": ["NOTE"],
+							}
+						},
+						{
+							"keywords": [
+								"NOTE"
+							],
 							"text": "📝 {0} Notes"
-					}]
+						}
+					]
 				}
 			}
 		}
@@ -198,6 +216,7 @@
 		"vscode": "^1.1.28"
 	},
 	"dependencies": {
+		"fs": "^0.0.1-security",
 		"lodash": "^4.17.11"
 	}
 }

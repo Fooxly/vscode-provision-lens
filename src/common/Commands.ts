@@ -1,4 +1,4 @@
-import { commands, window, Selection, Range, Position, workspace, QuickPickItem } from 'vscode'
+import { commands, window, Selection, Range, Position, workspace, QuickPickItem, Command, Disposable } from 'vscode'
 import * as _ from 'lodash'
 import TodoBase from './TodoBase'
 import Annotations from './annotations/Annotations'
@@ -6,12 +6,15 @@ import Annotations from './annotations/Annotations'
 export default class Commands extends TodoBase {
   private annotations : Annotations
 
-  constructor(ann) {
+  constructor(annotations : Annotations) {
     super()
-    this.annotations = ann
-  }
-
-  public get() {
+    this.annotations = annotations
+	}
+	
+	/**
+	 * Create and get all the commands for this extension
+	 */
+  public get() : Array<Disposable> {
     // list all the notes from the current file in a dropdown
     let list = commands.registerCommand('todolens.list', (args) => {
 			// get all the items
@@ -71,12 +74,15 @@ export default class Commands extends TodoBase {
     return [list, last, next]
   }
 
+	/**
+	 * Move the cursor to the specified line
+	 * @param line: The line where it needs to go
+	 */
   private moveToLine(line) {
     let editor = window.activeTextEditor
     if(!editor) return
     let range = editor.document.lineAt(line-1).range
     editor.selection =  new Selection(range.start, range.start)
     editor.revealRange(new Range(range.start, new Position(range.end.line + (editor.visibleRanges[0].end.line - editor.visibleRanges[0].start.line) - 3, range.end.character)))
-  
   }
 }

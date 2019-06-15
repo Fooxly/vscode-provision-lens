@@ -4,9 +4,9 @@ import TodoBase from '../common/TodoBase'
 export default class TodoLensProvider extends TodoBase implements CodeLensProvider {
   private annotations : Annotations
 
-  constructor(ann) {
+  constructor(annotations : Annotations) {
     super()
-    this.annotations = ann
+    this.annotations = annotations
   }
 
   async provideCodeLenses(doc : TextDocument) : Promise<CodeLens[]> {
@@ -17,8 +17,11 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
     return lenses
   }
 
-
-  async createLenses(position : Position) {
+  /**
+   * Create all the lenses based on the given position
+   * @param position: The position (line) where the lenses needs to be
+   */
+  async createLenses(position : Position) : Promise<Array<CodeLens>> {
     // if a custom position is given place it there, otherwise at the top of the file
     let r = (!position ? new Range(0,0,0,0) : new Range(position, position))
     let lenses = []
@@ -27,6 +30,8 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
       let c = 0
       // check how many times the keyword is found
       for(let k of g.keywords) {
+        let f = (await this.annotations.getAsync(k))
+        if(!f) return []
         c += (await this.annotations.getAsync(k)).length
       }
       // create the actual string for the group
@@ -43,8 +48,12 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
     return lenses
   }
 
-
-  createString(t, c) {
+  /**
+   * Create the actual string for the lens
+   * @param t: a object or string with the text
+   * @param c: the amount of notes
+   */
+  createString(t, c) : string {
     let rt
     if(typeof t == 'object') {
       rt = t.multiple

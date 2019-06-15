@@ -3,12 +3,12 @@ import Annotations from '../common/annotations/Annotations'
 import TodoBase from '../common/TodoBase'
 
 export default class Highlighter extends TodoBase {
-  private colors
+  private colors : Object
   private annotations : Annotations
 
-  constructor(ann) {
+  constructor(annotations : Annotations) {
     super()
-    this.annotations = ann
+    this.annotations = annotations
     this.colors = {}
     this.setupColors()
   }
@@ -44,6 +44,8 @@ export default class Highlighter extends TodoBase {
           })
         })
         window.activeTextEditor.setDecorations(this.colors[k].decoration, r)
+      }).catch(() => {
+
       })
     })
 
