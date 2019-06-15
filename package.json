@@ -105,6 +105,7 @@
 					"default": true,
 					"description": "If there are 0 results in a single group the lens won't be visible"
 				},
+
 				"todolens.keywords": {
 					"type": "object",
 					"description": "All the keywords that need to be tracked",

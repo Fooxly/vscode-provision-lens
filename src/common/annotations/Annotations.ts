@@ -1,5 +1,6 @@
-import { workspace, window, Range } from 'vscode';
-import TodoBase from './TodoBase';
+import { workspace, window, Range, Position } from 'vscode';
+import TodoBase from '../TodoBase';
+import Annotation from './Annotation';
 
 export default class Annotations extends TodoBase {
   private _ann = {}
@@ -60,19 +61,36 @@ export default class Annotations extends TodoBase {
     return Object.keys(this.settings.get('keywords', {}))
   }
 
-  public get(key) {
-    let k = key.toUpperCase()
-    if(!this._ann[k]) this._ann[k] = this.find(k)
-    return this._ann[k]
+  public async getAsync(key, fText = null) {
+    let r : Array<Annotation> = []
+    await this.get(key,fText).then(f => {
+      r = f
+    })
+    return r 
+  }
+
+  public get(key, fText = null) : Promise<Array<Annotation>> {
+    return new Promise((resolve, reject) => {
+      let k = key.toUpperCase()
+      if(!fText) {
+        if(!this._ann[k]) this._ann[k] = this.find(k)
+        return resolve(this._ann[k])
+      }
+      return resolve(this.find(k, fText))
+    })
+
+    // find keys inside the given text
+
   }
 
   public remove(path) {
     delete this._ann[path]
   }
 
-  private find(key) : Object {
+  private find(key, fText = null) : Array<Annotation> {
     let activeEditor = window.activeTextEditor
-    let text = activeEditor.document.getText()
+    
+    let text = (!fText ? activeEditor.document.getText() : fText)
     let t = []
     let match, regex
     // if case sensetive

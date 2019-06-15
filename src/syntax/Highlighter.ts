@@ -1,5 +1,5 @@
 import { window, OverviewRulerLane, workspace, Range, Position } from 'vscode'
-import Annotations from '../common/Annotations'
+import Annotations from '../common/annotations/Annotations'
 import TodoBase from '../common/TodoBase'
 
 export default class Highlighter extends TodoBase {
@@ -37,12 +37,14 @@ export default class Highlighter extends TodoBase {
     let kw = this.settings.get('keywords', {})
     Object.keys(kw).forEach(k => {
       let r = []
-      this.annotations.get(k).forEach(e => {
-        r.push({
-          range: (kw[k].colorSpaceAfter ? new Range(e.range.start, new Position(e.range.end.line, e.range.end.character + 1)) : e.range)
+      this.annotations.get(k).then((files) => {
+        files.forEach(e => {
+          r.push({
+            range: (kw[k].colorSpaceAfter ? new Range(e.range.start, new Position(e.range.end.line, e.range.end.character + 1)) : e.range)
+          })
         })
+        window.activeTextEditor.setDecorations(this.colors[k].decoration, r)
       })
-      window.activeTextEditor.setDecorations(this.colors[k].decoration, r)
     })
 
   }

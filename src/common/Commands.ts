@@ -1,7 +1,7 @@
 import { commands, window, Selection, Range, Position, workspace, QuickPickItem } from 'vscode'
 import * as _ from 'lodash'
 import TodoBase from './TodoBase'
-import Annotations from './Annotations'
+import Annotations from './annotations/Annotations'
 
 export default class Commands extends TodoBase {
   private annotations : Annotations
@@ -27,10 +27,12 @@ export default class Commands extends TodoBase {
 			an = _.uniqBy(an, (e) => {return e})
 			// get all the values by the given types
 			an.forEach(a => {
-				this.annotations.get(a).forEach(t => {
-					arr.push({
-						label: t.index + '',
-						description: t.text.trim()
+				this.annotations.get(a).then((files) => {
+					files.forEach(t => {
+						arr.push({
+							label: t.index + '',
+							description: t.text.trim()
+						})
 					})
 				})
 			})

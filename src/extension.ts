@@ -1,6 +1,6 @@
 import {languages, window, QuickPickItem, Selection, workspace, Uri, FileSystemError, Range, Position} from 'vscode'
 import TodoLensProvider from './lens/TodoLensProvider'
-import Annotations from './common/Annotations'
+import Annotations from './common/annotations/Annotations'
 import Highlighter from './syntax/Highlighter'
 import Commands from './common/Commands'
 import TodoBase from './common/TodoBase'
