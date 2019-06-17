@@ -1,7 +1,7 @@
 import { workspace, CodeLensProvider, Range, Command, CodeLens, TextDocument, CancellationToken, window, OverviewRulerLane, Position } from 'vscode'
 import Annotations from '../common/annotations/Annotations'
 import TodoBase from '../common/TodoBase'
-import DocumentReader from '../common/DocumentReader';
+import DocumentReader from '../common/DocumentReader'
 export default class TodoLensProvider extends TodoBase implements CodeLensProvider {
   private annotations : Annotations
   private reader : DocumentReader = new DocumentReader()
@@ -16,21 +16,27 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
     
     let lenses = []
 
-    let cls = await (this.reader.getClasses(doc))
-    if(cls.length == 1) {
-      lenses.push(...(await this.createLenses(cls[0].location.range)))
-    } else if(cls.length > 1) {
-      lenses.push(...(await this.createLenses(null)))
-      for(let c of cls) {
-        lenses.push(...(await this.createLenses(c.location.range)))
+    if(this.settings.get('showLensAboveClasses', true)) {
+      let cls = await (this.reader.getClasses(doc))
+      if(cls.length == 1) {
+        lenses.push(...(await this.createLenses(cls[0].location.range)))
+      } else if(cls.length > 1) {
+        lenses.push(...(await this.createLenses(null)))
+        for(let c of cls) {
+          lenses.push(...(await this.createLenses(c.location.range)))
+        }
+      } else {
+        lenses.push(...(await this.createLenses(null)))
       }
     } else {
       lenses.push(...(await this.createLenses(null)))
     }
-    
-    let fs = await (this.reader.getFunctions(doc))
-    for(let f of fs) {
-      lenses.push(...(await this.createLenses(f.location.range)))
+
+    if(this.settings.get('showLensAboveFunctions', true)) {
+      let fs = await (this.reader.getFunctions(doc))
+      for(let f of fs) {
+        lenses.push(...(await this.createLenses(f.location.range)))
+      }
     }
     
     return lenses

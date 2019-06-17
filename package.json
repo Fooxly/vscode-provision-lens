@@ -94,6 +94,16 @@
 					}
 				},
 
+				"todolens.showLensAboveClasses": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show a seperate lens above each class with the scope set to that class and its childs"
+				},
+				"todolens.showLensAboveFunctions": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show a seperate lens above each function with the scope set to that function and its childs"
+				},
 				"todolens.dropdownOrdering": {
 					"type": "string",
 					"enum": [

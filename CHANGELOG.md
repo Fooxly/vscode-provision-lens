@@ -1,11 +1,13 @@
 # Change Log
 
-## [1.2.9] - 2019-06-17
+## [1.2.8] - 2019-06-17
 ### Added
 - Information message if there are no notes found past the current cursor position [#6](https://gitlab.com/fooxly/vscode-todo-lens/issues/6)
 - Translation keys for all the texts
 - Exlude all the files and folders that are in a `.gitignore` or `.ignore` file [#3](https://gitlab.com/fooxly/vscode-todo-lens/issues/3)
 - Notes per function and class [#7](https://gitlab.com/fooxly/vscode-todo-lens/issues/7)
+- Option to disable the lens above functions [#10](https://gitlab.com/fooxly/vscode-todo-lens/issues/10)
+- Option to disable the lens above classes [#11](https://gitlab.com/fooxly/vscode-todo-lens/issues/11)
 
 ### Changed
 - Dropdown now only shows the items within its range [#9](https://gitlab.com/fooxly/vscode-todo-lens/issues/9)
