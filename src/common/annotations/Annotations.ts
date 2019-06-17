@@ -187,10 +187,16 @@ export default class Annotations extends TodoBase {
     }
     while(match = regex.exec(text)) {
       let pos = activeEditor.document.positionAt(match.index)
+      let r = new Range(pos, activeEditor.document.positionAt(match.index + match[0].length))
+      if(range != null) {
+        pos = activeEditor.document.positionAt(match.index + activeEditor.document.offsetAt(range.start))
+        r = new Range(pos, activeEditor.document.positionAt(match.index + activeEditor.document.offsetAt(range.start) + match[0].length))
+      }
+
       t.push({
         text: activeEditor.document.lineAt(pos).text,
         index: pos.line + 1,
-        range: new Range(pos, activeEditor.document.positionAt(match.index + match[0].length))
+        range: r
       })
     }
     return t

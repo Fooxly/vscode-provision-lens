@@ -21,7 +21,7 @@ export default class Commands extends TodoBase {
 			let arr : Array<QuickPickItem> = []
 			let an
 			if(args != undefined) {
-				an = args.split('|')
+				an = args.keywords
 			} else {
 				// get all keywords
 				an = this.annotations.getKeywords()
@@ -30,7 +30,7 @@ export default class Commands extends TodoBase {
 			an = _.uniqBy(an, (e) => {return e})
 			// get all the values by the given types
 			an.forEach(a => {
-				this.annotations.get(a).then((files) => {
+				this.annotations.get(a, (!args ? null : args.range)).then((files) => {
 					files.forEach(t => {
 						arr.push({
 							label: t.index + '',

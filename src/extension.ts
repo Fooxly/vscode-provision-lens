@@ -4,7 +4,6 @@ import Annotations from './common/annotations/Annotations'
 import Highlighter from './syntax/Highlighter'
 import Commands from './common/Commands'
 import TodoBase from './common/TodoBase'
-import DocumentReader from './common/DocumentReader'
 
 const modules : TodoBase[] = []
 

@@ -59,7 +59,10 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
         // add the lens for this group
         lenses.push(new CodeLens(r, {
           command: "todolens.list",
-          arguments: [g.keywords.join('|')],
+          arguments: [{
+            keywords: g.keywords,
+            range: range
+          }],
           title: s
         }))
       }
