@@ -7,6 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens) [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens)
 
 # What's new
+* Lenses for each class and function (can be disabled)
 * Show **highlights** of the keywords specified
 * Show all the keywords of the current files in a dropdown
 * Localization support
@@ -26,6 +27,7 @@ Here are some functions the extension provides:
 * Overview of the keywords provided in the settings.json
 * **Customizable** syntax highlighting for the keywords with colors in the **overview ruler**
 * **Jump** between notes by using the context menu or commands
+* **View** all your notes in a long and complex file in just seconds
 
 ## Features
 
@@ -43,6 +45,9 @@ You can customize the keywords and other stuff with the following settings in yo
 | todolens.dropdownOrdering | enum | line_numbers_asc | line_numbers_asc<br/>  line_numbers_desc<br/>category | The order in which the items need to be shown in the dropdown |
 | todolens.useHighlighting | boolean | true | true<br/>false | If you want to use another syntax highlighter you can disable ours |
 | todolens.hideWhenZero | boolean | true | true<br/>false | Hide the lens if there are no items in the open file |
+| todolens.ignoreFiles | array | [.gitignore, .ignore] | - | A list of the ignore files you use (in your workspace or by default) |
+| todolens.showLensAboveClasses | boolean | true | true<br/>false | Show a lens above each class |
+| todolens.showLensAboveFunctions | boolean | true | true<br/>false | Show a lens above each function |
 
 <br/>
 
