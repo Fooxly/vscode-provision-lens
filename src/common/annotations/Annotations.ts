@@ -78,8 +78,9 @@ export default class Annotations extends TodoBase {
    * @param doc: The document which needs to be checked
    */
   public checkIgnoreUpdate(doc : TextDocument) : boolean {
-    if(doc.fileName.endsWith('.ignore') || doc.fileName.endsWith('.gitignore')) {
-      return true
+    for(let i of this.settings.get('ignoreFiles', [])) {
+      console.log(i)
+      if(doc.fileName.endsWith(i)) return true
     }
     return false
   }
@@ -89,9 +90,11 @@ export default class Annotations extends TodoBase {
    */
   public async updateIgnore() {
     this.ignored = []
-
-    var ignores = await workspace.findFiles('**/.gitignore')
-    ignores.push(...(await workspace.findFiles('**/.ignore')))
+    var ignores = []
+    for(let i of this.settings.get('ignoreFiles', [])) {
+      ignores.push(...(await workspace.findFiles('**/' + i)))
+    }
+    // var ignores = await workspace.findFiles('**/.gitignore')
     if (!ignores.length) return
     
     const ip = ignores.map((f) => {

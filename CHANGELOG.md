@@ -8,6 +8,7 @@
 - Notes per function and class [#7](https://gitlab.com/fooxly/vscode-todo-lens/issues/7)
 - Option to disable the lens above functions [#10](https://gitlab.com/fooxly/vscode-todo-lens/issues/10)
 - Option to disable the lens above classes [#11](https://gitlab.com/fooxly/vscode-todo-lens/issues/11)
+- Possibility to change the ignore files list [#12](https://gitlab.com/fooxly/vscode-todo-lens/issues/12)
 
 ### Changed
 - Dropdown now only shows the items within its range [#9](https://gitlab.com/fooxly/vscode-todo-lens/issues/9)

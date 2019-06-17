@@ -94,6 +94,15 @@
 					}
 				},
 
+				"todolens.ignoreFiles": {
+					"type": "array",
+					"description": "All the different ignore files you have in your projects and which we will use to exclude files/folders",
+					"items": {
+						"type": "string",
+						"description": "The file name where the excluded files are listed in"
+					},
+					"default": [".gitignore", ".ignore"]
+				},
 				"todolens.showLensAboveClasses": {
 					"type": "boolean",
 					"default": true,
