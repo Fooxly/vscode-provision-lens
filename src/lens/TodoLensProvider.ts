@@ -4,22 +4,35 @@ import TodoBase from '../common/TodoBase'
 import DocumentReader from '../common/DocumentReader';
 export default class TodoLensProvider extends TodoBase implements CodeLensProvider {
   private annotations : Annotations
+  private reader : DocumentReader = new DocumentReader()
 
   constructor(annotations : Annotations) {
     super()
     this.annotations = annotations
   }
 
-  private async provideCodeLenses(doc : TextDocument) : Promise<CodeLens[]> {
+  async provideCodeLenses(doc : TextDocument) : Promise<CodeLens[]> {
     this.settings = workspace.getConfiguration('todolens')
     
     let lenses = []
-    lenses.push(...(await this.createLenses(null)))
 
-    let fs = await (new DocumentReader().getFunctions(doc))
+    let cls = await (this.reader.getClasses(doc))
+    if(cls.length == 1) {
+      lenses.push(...(await this.createLenses(cls[0].location.range)))
+    } else if(cls.length > 1) {
+      lenses.push(...(await this.createLenses(null)))
+      for(let c of cls) {
+        lenses.push(...(await this.createLenses(c.location.range)))
+      }
+    } else {
+      lenses.push(...(await this.createLenses(null)))
+    }
+    
+    let fs = await (this.reader.getFunctions(doc))
     for(let f of fs) {
       lenses.push(...(await this.createLenses(f.location.range)))
     }
+    
     return lenses
   }
 

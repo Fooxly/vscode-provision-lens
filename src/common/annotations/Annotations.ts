@@ -135,8 +135,8 @@ export default class Annotations extends TodoBase {
 
   /**
    * Find all the annotations inside of the provided text (otherwise the whole document)
-   * @param key: the keyword which needs to be found
-   * @param fText: a string of text where we need to search in 
+   * @param key: The keyword which needs to be found
+   * @param range: The range of text where the words need to be found
    */
   public async getAsync(key : string, range : Range = null) : Promise<Array<Annotation>> {
     let r : Array<Annotation> = []
@@ -150,8 +150,8 @@ export default class Annotations extends TodoBase {
 
   /**
    * Find all the annotations inside of the provided text (otherwise the whole document)
-   * @param key: the keyword which needs to be found
-   * @param fText: a string of text where we need to search in 
+   * @param key: The keyword which needs to be found
+   * @param range: The range of text where the words need to be found
    */
   public get(key : string, range : Range = null) : Promise<Array<Annotation>> {
     return new Promise((resolve, reject) => {
@@ -169,8 +169,8 @@ export default class Annotations extends TodoBase {
 
   /**
    * Find the actual keyword 
-   * @param key: the keyword which needs to be found
-   * @param fText: a string of text where we need to search in 
+   * @param key: The keyword which needs to be found
+   * @param range: The range of text where the words need to be found
    */
   private find(key, range : Range = null) : Array<Annotation> {
     let activeEditor = window.activeTextEditor
