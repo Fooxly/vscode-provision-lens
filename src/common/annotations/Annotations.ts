@@ -138,9 +138,9 @@ export default class Annotations extends TodoBase {
    * @param key: the keyword which needs to be found
    * @param fText: a string of text where we need to search in 
    */
-  public async getAsync(key : string, fText : string = null) : Promise<Array<Annotation>> {
+  public async getAsync(key : string, range : Range = null) : Promise<Array<Annotation>> {
     let r : Array<Annotation> = []
-    await this.get(key,fText).then(f => {
+    await this.get(key,range).then(f => {
       r = f
     }).catch(() => {
       r = null
@@ -153,17 +153,17 @@ export default class Annotations extends TodoBase {
    * @param key: the keyword which needs to be found
    * @param fText: a string of text where we need to search in 
    */
-  public get(key : string, fText : string = null) : Promise<Array<Annotation>> {
+  public get(key : string, range : Range = null) : Promise<Array<Annotation>> {
     return new Promise((resolve, reject) => {
       if(this.isExcluded()) return reject(null)
       let k = key.toUpperCase()
       // if there is no text specified, search the whole file
-      if(!fText) {
+      if(!range) {
         if(!this._ann[k]) this._ann[k] = this.find(k)
         return resolve(this._ann[k])
       }
       // find keys inside the given text
-      return resolve(this.find(k, fText))
+      return resolve(this.find(k, range))
     })
   }
 
@@ -172,9 +172,9 @@ export default class Annotations extends TodoBase {
    * @param key: the keyword which needs to be found
    * @param fText: a string of text where we need to search in 
    */
-  private find(key, fText = null) : Array<Annotation> {
+  private find(key, range : Range = null) : Array<Annotation> {
     let activeEditor = window.activeTextEditor
-    let text = (!fText ? activeEditor.document.getText() : fText)
+    let text = (!range ? activeEditor.document.getText() : activeEditor.document.getText(range))
     let t = []
     let match, regex
     let kw = this.settings.get('keywords', {})[key.toUpperCase()]

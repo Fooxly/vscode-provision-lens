@@ -1,6 +1,7 @@
 import { workspace, CodeLensProvider, Range, Command, CodeLens, TextDocument, CancellationToken, window, OverviewRulerLane, Position } from 'vscode'
 import Annotations from '../common/annotations/Annotations'
 import TodoBase from '../common/TodoBase'
+import DocumentReader from '../common/DocumentReader';
 export default class TodoLensProvider extends TodoBase implements CodeLensProvider {
   private annotations : Annotations
 
@@ -9,11 +10,16 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
     this.annotations = annotations
   }
 
-  async provideCodeLenses(doc : TextDocument) : Promise<CodeLens[]> {
+  private async provideCodeLenses(doc : TextDocument) : Promise<CodeLens[]> {
     this.settings = workspace.getConfiguration('todolens')
     
     let lenses = []
     lenses.push(...(await this.createLenses(null)))
+
+    let fs = await (new DocumentReader().getFunctions(doc))
+    for(let f of fs) {
+      lenses.push(...(await this.createLenses(f.location.range)))
+    }
     return lenses
   }
 
@@ -21,18 +27,18 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
    * Create all the lenses based on the given position
    * @param position: The position (line) where the lenses needs to be
    */
-  async createLenses(position : Position) : Promise<Array<CodeLens>> {
+  private async createLenses(range : Range) : Promise<CodeLens[]> {
     // if a custom position is given place it there, otherwise at the top of the file
-    let r = (!position ? new Range(0,0,0,0) : new Range(position, position))
+    let r = (!range ? new Range(0,0,0,0) : range)
     let lenses = []
     // loop trough all the groups
     for(let g of this.settings.get('groups', [])) {
       let c = 0
       // check how many times the keyword is found
       for(let k of g.keywords) {
-        let f = (await this.annotations.getAsync(k))
+        let f = (await this.annotations.getAsync(k, (!range ? null : r)))
         if(!f) return []
-        c += (await this.annotations.getAsync(k)).length
+        c += f.length
       }
       // create the actual string for the group
       let s = this.createString(g.text,c)
@@ -53,7 +59,7 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
    * @param t: a object or string with the text
    * @param c: the amount of notes
    */
-  createString(t, c) : string {
+  private createString(t, c) : string {
     let rt
     if(typeof t == 'object') {
       rt = t.multiple
