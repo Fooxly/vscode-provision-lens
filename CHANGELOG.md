@@ -2,6 +2,7 @@
 
 ## [1.2.8] - 2019-06-17
 ### Added
+- Rename project to Provision Lens
 - Information message if there are no notes found past the current cursor position [#6](https://gitlab.com/fooxly/vscode-todo-lens/issues/6)
 - Translation keys for all the texts
 - Exlude all the files and folders that are in a `.gitignore` or `.ignore` file [#3](https://gitlab.com/fooxly/vscode-todo-lens/issues/3)
