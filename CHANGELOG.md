@@ -4,6 +4,8 @@
 ### Added
 - **Include** option which override ignore files [#13](https://gitlab.com/fooxly/vscode-provision-lens/issues/13)
 - Keyboard shortcuts for moving to the next and last note [#5](https://gitlab.com/fooxly/vscode-provision-lens/issues/5)
+- Statusbar overview [#21](https://gitlab.com/fooxly/vscode-provision-lens/issues/21)
+- Option to change the overview type for files, options are: top, statusbar, both, off
 
 ## [1.2.11] - 2019-06-18
 ### Changed
