@@ -1,8 +1,8 @@
 import { workspace, CodeLensProvider, Range, Command, CodeLens, TextDocument, CancellationToken, window, OverviewRulerLane, Position } from 'vscode'
 import Annotations from '../common/annotations/Annotations'
-import TodoBase from '../common/TodoBase'
+import ProvisionBase from '../common/ProvisionBase'
 import DocumentReader from '../common/DocumentReader'
-export default class TodoLensProvider extends TodoBase implements CodeLensProvider {
+export default class provisionlensProvider extends ProvisionBase implements CodeLensProvider {
   private annotations : Annotations
   private reader : DocumentReader = new DocumentReader()
 
@@ -12,7 +12,7 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
   }
 
   async provideCodeLenses(doc : TextDocument) : Promise<CodeLens[]> {
-    this.settings = workspace.getConfiguration('todolens')
+    this.settings = workspace.getConfiguration('provisionlens')
     
     let lenses = []
 
@@ -64,7 +64,7 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
       if(s != null) {
         // add the lens for this group
         lenses.push(new CodeLens(r, {
-          command: "todolens.list",
+          command: "provisionlens.list",
           arguments: [{
             keywords: g.keywords,
             range: range

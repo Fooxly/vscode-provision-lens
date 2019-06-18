@@ -1,11 +1,11 @@
 import {languages, window, QuickPickItem, Selection, workspace, Uri, FileSystemError, Range, Position} from 'vscode'
-import TodoLensProvider from './lens/TodoLensProvider'
+import provisionlensProvider from './lens/provisionlensProvider'
 import Annotations from './common/annotations/Annotations'
 import Highlighter from './syntax/Highlighter'
 import Commands from './common/Commands'
-import TodoBase from './common/TodoBase'
+import ProvisionBase from './common/ProvisionBase'
 
-const modules : TodoBase[] = []
+const modules : ProvisionBase[] = []
 
 var lens, highlight, commands, annotations, activeEditor
 
@@ -17,7 +17,7 @@ function activate(context) {
 	modules.push(annotations)
 	highlight = new Highlighter(annotations)
 	modules.push(highlight)
-	lens = new TodoLensProvider(annotations)
+	lens = new provisionlensProvider(annotations)
 	modules.push(lens)
 	commands = new Commands(annotations)
 	modules.push(commands)

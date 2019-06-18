@@ -1,9 +1,9 @@
 import { commands, window, Selection, Range, Position, workspace, QuickPickItem, Command, Disposable } from 'vscode'
 import * as _ from 'lodash'
-import TodoBase from './TodoBase'
+import ProvisionBase from './ProvisionBase'
 import Annotations from './annotations/Annotations'
 
-export default class Commands extends TodoBase {
+export default class Commands extends ProvisionBase {
   private annotations : Annotations
 
   constructor(annotations : Annotations) {
@@ -16,7 +16,7 @@ export default class Commands extends TodoBase {
 	 */
   public get() : Array<Disposable> {
     // list all the notes from the current file in a dropdown
-    let list = commands.registerCommand('todolens.list', (args) => {
+    let list = commands.registerCommand('provisionlens.list', (args) => {
 			// get all the items
 			let arr : Array<QuickPickItem> = []
 			let an
@@ -58,14 +58,14 @@ export default class Commands extends TodoBase {
       })
     })
     
-    let last = commands.registerCommand('todolens.lastNote', () => {
+    let last = commands.registerCommand('provisionlens.lastNote', () => {
       let l = this.annotations.getPreviousNoteLocation()
       // return a info message if there are no notes found above the cursors position
       if(!l) return window.showInformationMessage(this.language.noNoteFound)
       this.moveToLine(l)
     })
 
-    let next = commands.registerCommand('todolens.nextNote', () => {
+    let next = commands.registerCommand('provisionlens.nextNote', () => {
       let l = this.annotations.getNextNoteLocation()
       // return a info message if there are no notes found below the cursors position
       if(!l) return window.showInformationMessage(this.language.noNoteFound)

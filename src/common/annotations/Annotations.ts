@@ -1,10 +1,10 @@
 import { workspace, window, Range, Position, TextDocument } from 'vscode'
 import * as fs from 'fs'
-import TodoBase from '../TodoBase'
+import ProvisionBase from '../ProvisionBase'
 import Annotation from './Annotation'
 import { dirname } from 'path'
 
-export default class Annotations extends TodoBase {
+export default class Annotations extends ProvisionBase {
   private _ann = {}
   private ignored = []
 

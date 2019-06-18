@@ -1,8 +1,8 @@
 import { window, OverviewRulerLane, workspace, Range, Position } from 'vscode'
 import Annotations from '../common/annotations/Annotations'
-import TodoBase from '../common/TodoBase'
+import ProvisionBase from '../common/ProvisionBase'
 
-export default class Highlighter extends TodoBase {
+export default class Highlighter extends ProvisionBase {
   private colors : Object
   private annotations : Annotations
 

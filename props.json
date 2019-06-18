@@ -1,8 +1,8 @@
 {
-    "todolens.dropdownOrdering": "line_numbers_asc",
-    "todolens.useHighlighting": true,
-    "todolens.hideWhenZero": true,
-    "todolens.keywords": {
+    "provisionlens.dropdownOrdering": "line_numbers_asc",
+    "provisionlens.useHighlighting": true,
+    "provisionlens.hideWhenZero": true,
+    "provisionlens.keywords": {
         "TODO": {
             "color": "#fff",
             "backgroundColor": "#f2b01f",
@@ -12,7 +12,7 @@
             "caseSensitive": true
         }
     },
-    "todolens.groups": [{
+    "provisionlens.groups": [{
         "keywords": ["TODO", "FIXME"],
         "text": {
             "one": "📝 {0} TODO",
