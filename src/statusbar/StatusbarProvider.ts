@@ -18,6 +18,7 @@ export default class Statusbarprovider extends ProvisionBase {
 
     let s = window.createStatusBarItem(StatusBarAlignment.Left, 1)
     s.command = 'provisionlens.list.' + key
+    s.tooltip = group.tooltip
     this.items[key] = s
     s.show()
   }

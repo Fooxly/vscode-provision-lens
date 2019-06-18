@@ -90,7 +90,8 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
             await Statusbarprovider.getInstance().change(group, s)
             lens = new CodeLens(r, {
               command: 'provisionlens.list.' + key,
-              title: s
+              title: s,
+              tooltip: group.tooltip
             })
             break
           }
@@ -114,7 +115,8 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
           arguments: [{
             items
           }],
-          title: s
+          title: s,
+          tooltip: group.tooltip
         })
       }
 

@@ -6,6 +6,7 @@
 - Keyboard shortcuts for moving to the next and last note [#5](https://gitlab.com/fooxly/vscode-provision-lens/issues/5)
 - Statusbar overview [#21](https://gitlab.com/fooxly/vscode-provision-lens/issues/21)
 - Option to change the overview type for files, options are: top, statusbar, both, off
+- Added tooltip options for the statusbar (options are group bases) [#23](https://gitlab.com/fooxly/vscode-provision-lens/issues/23)
 
 ### Changed
 - The move to line will now always try to center the note on screen instead of at the top [#22](https://gitlab.com/fooxly/vscode-provision-lens/issues/22)
