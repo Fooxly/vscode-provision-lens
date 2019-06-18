@@ -1,6 +1,10 @@
 # Change Log
 
-## [1.2.8] - 2019-06-17
+## [1.2.11] - 2019-06-18
+### Changed
+- All the ignored files and directories will only be in memory and not in the settings
+
+## [1.2.8] - 2019-06-18
 ### Added
 - Rename project to Provision Lens
 - Information message if there are no notes found past the current cursor position [#6](https://gitlab.com/fooxly/vscode-todo-lens/issues/6)
