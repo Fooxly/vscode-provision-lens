@@ -85,14 +85,6 @@
 						}
 					}
 				},
-				"provisionlens.excluded": {
-					"type": "array",
-					"description": "List of excluded files and folders",
-					"items": {
-						"type": "string",
-						"description": "The path to the file or folder from the root of the workspace"
-					}
-				},
 				"provisionlens.ignoreFiles": {
 					"type": "array",
 					"description": "List of different ignore files you have in your workspaces to exclude files/folders",

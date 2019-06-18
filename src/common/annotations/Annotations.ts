@@ -1,5 +1,4 @@
-import { workspace, window, Range, Position, TextDocument } from 'vscode'
-import * as fs from 'fs'
+import { workspace, window, Range, TextDocument } from 'vscode'
 import ProvisionBase from '../ProvisionBase'
 import Annotation from './Annotation'
 import { dirname } from 'path'
@@ -11,7 +10,7 @@ export default class Annotations extends ProvisionBase {
   constructor() {
     super()
     this._ann = {}
-    this.ignored = this.settings.get('excluded')
+    this.updateIgnore()
   }
 
   public update() {
@@ -116,7 +115,6 @@ export default class Annotations extends ProvisionBase {
         }
       }
     })
-    this.settings.update('excluded', this.ignored, false)
   }
 
   /**
