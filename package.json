@@ -85,6 +85,14 @@
 						}
 					}
 				},
+				"provisionlens.include": {
+					"type": "array",
+					"description": "A list of files and folders which should not be excluded but are inside a ignore file",
+					"items": {
+						"type": "string",
+						"description": "The path or filename "
+					}
+				},
 				"provisionlens.ignoreFiles": {
 					"type": "array",
 					"description": "List of different ignore files you have in your workspaces to exclude files/folders",

@@ -1,22 +1,25 @@
 # Change Log
 
 ## [1.2.11] - 2019-06-18
+### Added
+- **Include** option which override ignore files [#13](https://gitlab.com/fooxly/vscode-provision-lens/issues/13)
+
 ### Changed
-- All the ignored files and directories will only be in memory and not in the settings
+- All the ignored files and directories will only be in memory and not in the settings [#19](https://gitlab.com/fooxly/vscode-provision-lens/issues/19)
 
 ## [1.2.8] - 2019-06-18
 ### Added
 - Rename project to Provision Lens
-- Information message if there are no notes found past the current cursor position [#6](https://gitlab.com/fooxly/vscode-todo-lens/issues/6)
+- Information message if there are no notes found past the current cursor position [#6](https://gitlab.com/fooxly/vscode-provision-lens/issues/6)
 - Translation keys for all the texts
-- Exclude all the files and folders that are in a `.gitignore` or `.ignore` file [#3](https://gitlab.com/fooxly/vscode-todo-lens/issues/3)
-- Notes per function and class [#7](https://gitlab.com/fooxly/vscode-todo-lens/issues/7)
-- Option to disable the lens above functions [#10](https://gitlab.com/fooxly/vscode-todo-lens/issues/10)
-- Option to disable the lens above classes [#11](https://gitlab.com/fooxly/vscode-todo-lens/issues/11)
-- Possibility to change the ignore files list [#12](https://gitlab.com/fooxly/vscode-todo-lens/issues/12)
+- Exclude all the files and folders that are in a `.gitignore` or `.ignore` file [#3](https://gitlab.com/fooxly/vscode-provision-lens/issues/3)
+- Notes per function and class [#7](https://gitlab.com/fooxly/vscode-provision-lens/issues/7)
+- Option to disable the lens above functions [#10](https://gitlab.com/fooxly/vscode-provision-lens/issues/10)
+- Option to disable the lens above classes [#11](https://gitlab.com/fooxly/vscode-provision-lens/issues/11)
+- Possibility to change the ignore files list [#12](https://gitlab.com/fooxly/vscode-provision-lens/issues/12)
 
 ### Changed
-- Dropdown now only shows the items within its range [#9](https://gitlab.com/fooxly/vscode-todo-lens/issues/9)
+- Dropdown now only shows the items within its range [#9](https://gitlab.com/fooxly/vscode-provision-lens/issues/9)
 - Made the title object for a group possible to be a string and object for in the `settings.json`
 
 ## [1.2.7] - 2019-06-14

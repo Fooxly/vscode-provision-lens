@@ -27,6 +27,11 @@ export default class Annotations extends ProvisionBase {
     })
   }
 
+  public configChanged() {
+    super.configChanged()
+    this.updateIgnore()
+  }
+
   /**
    * Get the closest note based on the cursor position (above)
    */
@@ -98,6 +103,7 @@ export default class Annotations extends ProvisionBase {
     const ip = ignores.map((f) => {
       return workspace.openTextDocument(f.path)
     })
+    const includes = this.settings.get('include', [])
     const docs = await Promise.all(ip)
     docs.forEach((doc) => {
       const relativePath = workspace.asRelativePath(doc.fileName)
@@ -111,7 +117,7 @@ export default class Annotations extends ProvisionBase {
           if (dir !== '.') {
             p = dir + '/' + t
           }
-          this.ignored.push(p)
+          if(!includes.includes(p)) this.ignored.push(p)
         }
       }
     })

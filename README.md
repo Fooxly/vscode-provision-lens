@@ -55,6 +55,7 @@ You can customize your keywords for the lens and lots of other stuff in your `se
 | provisionlens.ignoreFiles | array | [.gitignore, .ignore] | - | A list of the ignore files you use (in your workspace or by default) |
 | provisionlens.showLensAboveClasses | boolean | true | true<br/>false | Show a lens above each class |
 | provisionlens.showLensAboveFunctions | boolean | true | true<br/>false | Show a lens above each function |
+| provisionlens.include | array | [] | - | A list of files/folders which need to be included instead of listening to the ingore files |
 
 #### Keywords
 
