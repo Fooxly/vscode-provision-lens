@@ -79,7 +79,6 @@ export default class Annotations extends TodoBase {
    */
   public checkIgnoreUpdate(doc : TextDocument) : boolean {
     for(let i of this.settings.get('ignoreFiles', [])) {
-      console.log(i)
       if(doc.fileName.endsWith(i)) return true
     }
     return false
