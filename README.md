@@ -115,7 +115,7 @@ All lens groups need to be defined using the `provisionlens.groups` property.
 }]
 ```
 
-## Preview
+## 🖥️ Preview
 
 ![Preview](https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/sample.png)
 
