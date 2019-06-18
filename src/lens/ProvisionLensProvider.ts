@@ -1,4 +1,4 @@
-import { workspace, CodeLensProvider, Range, Command, CodeLens, TextDocument, CancellationToken, window, OverviewRulerLane, Position } from 'vscode'
+import { workspace, CodeLensProvider, Range, CodeLens, TextDocument } from 'vscode'
 import Annotations from '../common/annotations/Annotations'
 import ProvisionBase from '../common/ProvisionBase'
 import DocumentReader from '../common/DocumentReader'
@@ -52,9 +52,17 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
     for(let g of this.settings.get('groups', [])) {
       let c = 0
       // check how many times the keyword is found
+      let items = []
       for(let k of g.keywords) {
         let f = (await this.annotations.getAsync(k, (!range ? null : r)))
         if(!f) return []
+        for(let t of f) {
+          items.push({
+            label: t.index + '',
+            detail: t.text.trim(),
+            description: k.toUpperCase()
+          })
+        }
         c += f.length
       }
       // create the actual string for the group
@@ -64,8 +72,7 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
         lenses.push(new CodeLens(r, {
           command: "provisionlens.list",
           arguments: [{
-            keywords: g.keywords,
-            range: range
+            items
           }],
           title: s
         }))

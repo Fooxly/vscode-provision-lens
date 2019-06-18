@@ -1,4 +1,4 @@
-import { workspace, window } from 'vscode'
+import { workspace } from 'vscode'
 import Translations from './Translations'
 
 export default abstract class ProvisionBase {

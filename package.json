@@ -70,17 +70,20 @@
 				}
 			]
 		},
-		"keybindings": [{
-      "command": "provisionlens.lastNote",
-      "key": "ctrl+L",
-      "mac": "cmd+L",
-      "when": "editorTextFocus"
- 	 	},{
-      "command": "provisionlens.nextNote",
-      "key": "ctrl+N",
-      "mac": "cmd+N",
-      "when": "editorTextFocus"
- 	 	}],
+		"keybindings": [
+			{
+				"command": "provisionlens.lastNote",
+				"key": "ctrl+L",
+				"mac": "cmd+L",
+				"when": "editorTextFocus"
+			},
+			{
+				"command": "provisionlens.nextNote",
+				"key": "ctrl+N",
+				"mac": "cmd+N",
+				"when": "editorTextFocus"
+			}
+		],
 		"configuration": {
 			"type": "object",
 			"title": "Provision lens",
@@ -111,7 +114,10 @@
 						"type": "string",
 						"description": "The file name where the excluded files are listed in"
 					},
-					"default": [".gitignore", ".ignore"]
+					"default": [
+						".gitignore",
+						".ignore"
+					]
 				},
 				"provisionlens.showLensAboveClasses": {
 					"type": "boolean",

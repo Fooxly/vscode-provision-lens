@@ -1,4 +1,5 @@
 import { workspace, window, Range, TextDocument } from 'vscode'
+import * as _ from 'lodash'
 import ProvisionBase from '../ProvisionBase'
 import Annotation from './Annotation'
 import { dirname } from 'path'
@@ -11,20 +12,6 @@ export default class Annotations extends ProvisionBase {
     super()
     this._ann = {}
     this.updateIgnore()
-  }
-
-  public update() {
-    // content changed for the file
-    let activeEditor = window.activeTextEditor
-    if (!activeEditor) {
-      return []
-    }
-    this._ann = {}
-    let s = this.settings.get('keywords', {})
-    // get all the notes from the current file
-    Object.keys(s).forEach(k => {
-      this._ann[k.toUpperCase()] = this.find(k)
-    })
   }
 
   public configChanged() {
@@ -69,6 +56,27 @@ export default class Annotations extends ProvisionBase {
     })
     return closest
   }
+
+  /**
+   * Get an array of all the notes in the current document
+   */
+  public async getAllItemsInFile() {
+		let an = this.getKeywords()
+		let r = []
+		an = _.uniqBy(an, (e) => {return e})
+		// get all the values by the given types
+		for(let a of an) {
+			let files = (await this.getAsync(a))
+			for(let t of files) {
+				r.push({
+          label: t.index + '',
+          detail: t.text.trim(),
+          description: a.toUpperCase()
+				})
+			}
+		}
+		return r
+	}
 
   /**
    * Get an array of all the keywords in this extension
@@ -163,11 +171,6 @@ export default class Annotations extends ProvisionBase {
     return new Promise((resolve, reject) => {
       if(this.isExcluded()) return reject(null)
       let k = key.toUpperCase()
-      // if there is no text specified, search the whole file
-      if(!range) {
-        if(!this._ann[k]) this._ann[k] = this.find(k)
-        return resolve(this._ann[k])
-      }
       // find keys inside the given text
       return resolve(this.find(k, range))
     })
@@ -205,6 +208,7 @@ export default class Annotations extends ProvisionBase {
         range: r
       })
     }
+    if(!range) this._ann[key.toUpperCase()] = t
     return t
   }
 }

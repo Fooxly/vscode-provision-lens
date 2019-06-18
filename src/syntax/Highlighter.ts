@@ -1,4 +1,4 @@
-import { window, OverviewRulerLane, workspace, Range, Position } from 'vscode'
+import { window, OverviewRulerLane, Range, Position } from 'vscode'
 import Annotations from '../common/annotations/Annotations'
 import ProvisionBase from '../common/ProvisionBase'
 
@@ -14,7 +14,6 @@ export default class Highlighter extends ProvisionBase {
   }
 
   public setupColors() {
-    // TODO: if there are old highlights we need to remove them for the user so they don't have to restart
     if(!this.settings.get('useHighlighting', true)) return
     
     this.colors = {}
@@ -44,9 +43,7 @@ export default class Highlighter extends ProvisionBase {
           })
         })
         window.activeTextEditor.setDecorations(this.colors[k].decoration, r)
-      }).catch(() => {
-
-      })
+      }).catch(() => { })
     })
 
   }

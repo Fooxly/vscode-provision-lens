@@ -1,4 +1,4 @@
-import { commands, window, Selection, Range, Position, workspace, QuickPickItem, Command, Disposable } from 'vscode'
+import { commands, window, Selection, Range, Position, QuickPickItem, Disposable } from 'vscode'
 import * as _ from 'lodash'
 import ProvisionBase from './ProvisionBase'
 import Annotations from './annotations/Annotations'
@@ -10,36 +10,23 @@ export default class Commands extends ProvisionBase {
     super()
     this.annotations = annotations
 	}
-	
+
 	/**
 	 * Create and get all the commands for this extension
 	 */
   public get() : Array<Disposable> {
     // list all the notes from the current file in a dropdown
-    let list = commands.registerCommand('provisionlens.list', (args) => {
+    let list = commands.registerCommand('provisionlens.list', async (args) => {
 			// get all the items
 			let arr : Array<QuickPickItem> = []
-			let an
 			if(args != undefined) {
-				an = args.keywords
+				arr = args.items
 			} else {
-				// get all keywords
-				an = this.annotations.getKeywords()
+				// get all items from the current document
+				arr = await this.annotations.getAllItemsInFile()
 			}
 			// filter out possible duplicates
-			an = _.uniqBy(an, (e) => {return e})
-			// get all the values by the given types
-			an.forEach(a => {
-				this.annotations.get(a, (!args ? null : args.range)).then((files) => {
-					files.forEach(t => {
-						arr.push({
-							label: t.index + '',
-							description: t.text.trim()
-						})
-					})
-				})
-			})
-			let o = this.settings.get('dropdownOrdering', 'category')
+			let o = this.settings.get('dropdownOrdering', 'line_numbers_asc')
 			switch(o) {
 				case 'line_numbers_asc': {
 					arr = _.orderBy(arr, [(r) => {return Number(r.label)}], ['asc'])

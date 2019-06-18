@@ -1,4 +1,4 @@
-import {languages, window, QuickPickItem, Selection, workspace, Uri, FileSystemError, Range, Position} from 'vscode'
+import {languages, window, workspace} from 'vscode'
 import ProvisionLensProvider from './lens/provisionlensProvider'
 import Annotations from './common/annotations/Annotations'
 import Highlighter from './syntax/Highlighter'
