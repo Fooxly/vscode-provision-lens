@@ -184,9 +184,9 @@ export default class Annotations extends TodoBase {
     let cs = (!kw ? true : kw.caseSensitive)
     // if case sensetive
     if(cs) {    
-      regex = new RegExp(`\\b(${key})\\b`, 'gm')
+      regex = new RegExp(`\\b(${key})`, 'gm')
     } else {
-      regex = new RegExp(`\\b(${key})\\b`, 'igm')
+      regex = new RegExp(`\\b(${key})`, 'igm')
     }
     while(match = regex.exec(text)) {
       let pos = activeEditor.document.positionAt(match.index)
