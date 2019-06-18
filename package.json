@@ -46,7 +46,7 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "provisionlens.list",
+				"command": "provisionlens.listall",
 				"title": "Provision Lens: List"
 			},
 			{
@@ -88,6 +88,17 @@
 			"type": "object",
 			"title": "Provision lens",
 			"properties": {
+				"provisionlens.fileOverview": {
+					"type": "string",
+					"enum": [
+						"both",
+						"statusbar",
+						"top",
+						"off"
+					],
+					"default": "statusbar",
+					"description": "Where the file overview notes need to be shown"
+				},
 				"provisionlens.translations": {
 					"type": "object",
 					"title": "Translations",
