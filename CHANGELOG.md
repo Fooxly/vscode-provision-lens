@@ -9,7 +9,7 @@
 - Rename project to Provision Lens
 - Information message if there are no notes found past the current cursor position [#6](https://gitlab.com/fooxly/vscode-todo-lens/issues/6)
 - Translation keys for all the texts
-- Exlude all the files and folders that are in a `.gitignore` or `.ignore` file [#3](https://gitlab.com/fooxly/vscode-todo-lens/issues/3)
+- Exclude all the files and folders that are in a `.gitignore` or `.ignore` file [#3](https://gitlab.com/fooxly/vscode-todo-lens/issues/3)
 - Notes per function and class [#7](https://gitlab.com/fooxly/vscode-todo-lens/issues/7)
 - Option to disable the lens above functions [#10](https://gitlab.com/fooxly/vscode-todo-lens/issues/10)
 - Option to disable the lens above classes [#11](https://gitlab.com/fooxly/vscode-todo-lens/issues/11)
@@ -21,8 +21,8 @@
 
 ## [1.2.7] - 2019-06-14
 ### Added
-- possibility to move to the next note in the file
-- possibility to move to the previous note in the file
+- Possibility to move to the next note in a file
+- Possibility to move to the previous note in a file
 
 ### Changed
 - Making modules use the same base class for settings and updating
@@ -31,9 +31,9 @@
 
 ## [1.2.6] - 2019-06-14
 ### Changed
-- Updated the README for a more in depth overview of the extension
+- Updated the README for a more in-depth overview of the extension
 - Showing the selection more to the top of the file when it needs to be scrolled instead of the very bottom
-- Made alle the section headers the correct naming (Some where **New** instead of **Added**)
+- Gave all changelog headers the correct titles (Some were **New** instead of **Added**)
 - Fixed a bug where the dropdown showed more values than the lens because of the case sensitive property
 
 ## [1.2.5] - 2019-06-14
@@ -42,13 +42,13 @@
 - Case sensitive groups based on the keywords case sensitive boolean
 
 ### Changed
-- Updated readme properties and previews
+- Updated README properties and previews
 
 ## [1.2.4] - 2019-06-14
 ### Added
 - Different order types in the dropdown
 
-### Changed
+### Fixed
 - Small bug in the README
 
 ## [1.2.3] - 2019-06-13
@@ -64,7 +64,6 @@
 - Added rating, version and installs button to the README
 - Added the syntax highlighting to the README
 
-
 ## [1.2.0] - 2019-06-13
 ### Added
 - Syntax highlighting
@@ -76,11 +75,11 @@
 
 ## [1.0.6] - 2019-06-13
 ### Changed
-- Readme updated to reposity name change
+- README updated to repository name change
 
 ## [1.0.5] - 2019-06-13
 ### Added
-- Get a list of all the TODOs in the file by clicking on the code lens
+- Get a list of all the TODOs in the file by clicking on the lens
 - Added command to view all notes and TODOs in a dropdown
 
 ## [1.0.2] - 2019-06-13
