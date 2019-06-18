@@ -16,6 +16,9 @@ export default class TodoLensProvider extends TodoBase implements CodeLensProvid
     
     let lenses = []
     let cls, fs
+
+    lenses.push(...(await this.createLenses(null)))
+
     if(this.settings.get('showLensAboveClasses', true)) {
       cls = await (this.reader.getClasses(doc))
       if(cls.length == 1) {
