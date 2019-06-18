@@ -1,7 +1,7 @@
-![](https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/icon_banner.png=100x100)
 <p align="center">
-  <br />
-  <a title="Learn more about the Provision Lens" href="https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens"><img src="https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/icon_banner.png" alt="Provision Lens Logo" width="50%" /></a>
+  <a title="Learn more about the Provision Lens" href="https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens">
+    <img src="https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/icon_banner.png" alt="Provision Lens Logo" width="50%" />
+  </a>
 </p><br/>
 
 [![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens)
@@ -18,11 +18,9 @@
 * Localization support
 * `Next Note` and `Previous Note` commands (also available in context menu) based on the current cursor position
 
-<br />
-
-![Example](https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/list_sample.gif)
-
-<br />
+<p align="center">
+  <img src="https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/list_sample.gif" alt="Provision Lens Example" />
+</p>
 
 # 🔍 Provision Lens
 
@@ -42,8 +40,8 @@ A package by [Fooxly](https://www.fooxly.com).
 ### Commands
 
 * `Provision Lens: List` Shows all the notes in the current file
-* `Provision Lens: Previous Note` Move tho the **previous** note based on the cursor position
-* `Provision Lens: Next Note` Move tho the **next** note based on the cursor position
+* `Provision Lens: Previous Note` Move to the **previous** note based on your cursor position
+* `Provision Lens: Next Note` Move to the **next** note based on your cursor position
 
 ### Config
 
