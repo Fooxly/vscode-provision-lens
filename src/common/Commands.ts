@@ -1,4 +1,4 @@
-import { commands, window, Selection, Range, Position, QuickPickItem, Disposable } from 'vscode'
+import { commands, window, Selection, QuickPickItem, TextEditorRevealType } from 'vscode'
 import * as _ from 'lodash'
 import ProvisionBase from './ProvisionBase'
 import Annotations from './annotations/Annotations'
@@ -123,6 +123,6 @@ export default class Commands extends ProvisionBase {
     if(!editor) return
     let range = editor.document.lineAt(line-1).range
     editor.selection =  new Selection(range.start, range.start)
-    editor.revealRange(new Range(range.start, new Position(range.end.line + (editor.visibleRanges[0].end.line - editor.visibleRanges[0].start.line) - 3, range.end.character)))
+    editor.revealRange(range, TextEditorRevealType.InCenter)
   }
 }
