@@ -15,25 +15,23 @@ export default class provisionlensProvider extends ProvisionBase implements Code
     this.settings = workspace.getConfiguration('provisionlens')
     
     let lenses = []
+    let cls, fs
+
+    lenses.push(...(await this.createLenses(null)))
 
     if(this.settings.get('showLensAboveClasses', true)) {
-      let cls = await (this.reader.getClasses(doc))
+      cls = await (this.reader.getClasses(doc))
       if(cls.length == 1) {
         lenses.push(...(await this.createLenses(cls[0].location.range)))
       } else if(cls.length > 1) {
-        lenses.push(...(await this.createLenses(null)))
         for(let c of cls) {
           lenses.push(...(await this.createLenses(c.location.range)))
         }
-      } else {
-        lenses.push(...(await this.createLenses(null)))
       }
-    } else {
-      lenses.push(...(await this.createLenses(null)))
     }
 
     if(this.settings.get('showLensAboveFunctions', true)) {
-      let fs = await (this.reader.getFunctions(doc))
+      fs = await (this.reader.getFunctions(doc))
       for(let f of fs) {
         lenses.push(...(await this.createLenses(f.location.range)))
       }
