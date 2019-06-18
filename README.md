@@ -1,60 +1,73 @@
-![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/icon_banner.png=100x100)
+![](https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/icon_banner.png=100x100)
 <p align="center">
   <br />
-  <a title="Learn more about the TODO Lens" href="https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens"><img src="https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/icon_banner.png" alt="TODO Lens Logo" width="50%" /></a>
+  <a title="Learn more about the Provision Lens" href="https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens"><img src="https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/icon_banner.png" alt="Provision Lens Logo" width="50%" /></a>
 </p><br/>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens) [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens)
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens)
+[![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.todo-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.todo-lens)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-# What's new
+# 🚀 Recently Added
+
 * Lenses for each class and function (can be disabled)
 * Show **highlights** of the keywords specified
 * Show all the keywords of the current files in a dropdown
 * Localization support
 * `Next Note` and `Previous Note` commands (also available in context menu) based on the current cursor position
 
-<br/>
+<br />
 
-![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/list_sample.gif)
+![Example](https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/list_sample.gif)
 
-<br/>
+<br />
 
-# TODO Lens
+# 🔍 Provision Lens
 
-The `TODO Lens` provides a simple way to view all of your `notes` in your workspace. At the top of each file (if they are not ignored by the `.gitignore` or `.ignore` file) there will be a single or multiple lenses with a overview of all the notes found in the current file.
+The `Provision Lens` provides a simple way to view all of your `notes` in your workspace based on keywords. You'll find one or more lenses at the top of each file with a quick overview of all your notes.
 
-Here are some functions the extension provides:
-* Overview of the keywords provided in the settings.json
+A package by [Fooxly](https://www.fooxly.com).
+
+## 📕 Features
+
+* Overview of the keywords provided in your settings.json
 * **Customizable** syntax highlighting for the keywords with colors in the **overview ruler**
 * **Jump** between notes by using the context menu or commands
-* **View** all your notes in a long and complex file in just seconds
+* **View** all of your notes in a long and complex file (unless ignored) in just seconds
 
-## Features
+## 📐 Configuration
 
 ### Commands
-* `TODO Lens: List` Shows all the notes in the current file
-* `TODO Lens: Previous Note` Move tho the **previous** note based on the cursor position
-* `TODO Lens: Next Note` Move tho the **next** note based on the cursor position
+
+* `Provision Lens: List` Shows all the notes in the current file
+* `Provision Lens: Previous Note` Move tho the **previous** note based on the cursor position
+* `Provision Lens: Next Note` Move tho the **next** note based on the cursor position
 
 ### Config
 
-You can customize the keywords and other stuff with the following settings in your `settings.json`.
+You can customize your keywords for the lens and lots of other stuff in your `settings.json` using the following options:
 
 | property | type | default |  options | description |
 |---|---|---|---|---|
-| todolens.dropdownOrdering | enum | line_numbers_asc | line_numbers_asc<br/>  line_numbers_desc<br/>category | The order in which the items need to be shown in the dropdown |
-| todolens.useHighlighting | boolean | true | true<br/>false | If you want to use another syntax highlighter you can disable ours |
-| todolens.hideWhenZero | boolean | true | true<br/>false | Hide the lens if there are no items in the open file |
-| todolens.ignoreFiles | array | [.gitignore, .ignore] | - | A list of the ignore files you use (in your workspace or by default) |
-| todolens.showLensAboveClasses | boolean | true | true<br/>false | Show a lens above each class |
-| todolens.showLensAboveFunctions | boolean | true | true<br/>false | Show a lens above each function |
+| provisionlens.dropdownOrdering | enum | line_numbers_asc | line_numbers_asc<br/>  line_numbers_desc<br/>category | The order in which the items need to be shown in the dropdown |
+| provisionlens.useHighlighting | boolean | true | true<br/>false | If you want to use another syntax highlighter you can disable ours |
+| provisionlens.hideWhenZero | boolean | true | true<br/>false | Hide the lens if there are no items in the open file |
+| provisionlens.ignoreFiles | array | [.gitignore, .ignore] | - | A list of the ignore files you use (in your workspace or by default) |
+| provisionlens.showLensAboveClasses | boolean | true | true<br/>false | Show a lens above each class |
+| provisionlens.showLensAboveFunctions | boolean | true | true<br/>false | Show a lens above each function |
 
-<br/>
+#### Keywords
 
-All the different keywords need to be defined in the `todolens.keywords` property. <br/> For example:
+All keywords need to be defined using the `provisionlens.keywords` property.
+
+**Note**: The keywords are case insensitive.
+
+**Example**:
 
 ```json
-"todolens.keywords": {
+"provisionlens.keywords": {
   "TODO": {
     "color": "#fff",
     "backgroundColor": "#f2b01f",
@@ -82,14 +95,16 @@ All the different keywords need to be defined in the `todolens.keywords` propert
 }
 ```
 
-*`NOTE:`* The keyword property is case insensitive, this is handeld in the code itself.
-<br/><br/>
+#### Groups
 
-All the lens groups need to be specified in the `todolens.groups` property.
-<br/> For example:
+All lens groups need to be defined using the `provisionlens.groups` property.
+
+**Note**: The keywords are case insensitive, just make sure the keyword is defined using the [keywords](#keywords) property.
+
+**Example**:
 
 ```json
-"todolens.groups": [{
+"provisionlens.groups": [{
   "keywords": ["TODO", "FIXME"],
   "text": {
     "one": "📝 {0} TODO",
@@ -102,18 +117,10 @@ All the lens groups need to be specified in the `todolens.groups` property.
 }]
 ```
 
-*`NOTE:`* The keywords property is case insensitive, this is handeld in the code itself.
-You just need to make sure the keyword exists in the keywords property.
+## Preview
 
-<br/>
+![Preview](https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/sample.png)
 
-### Preview
-
-![](https://gitlab.com/fooxly/vscode-todo-lens/raw/master/assets/sample.png)
-
-<br/>
-
----
 ## ❤️ Support our projects
 
 You can support us by donating through BuyMeACoffee [here](https://www.buymeacoffee.com/fooxly).
