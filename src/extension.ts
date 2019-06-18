@@ -1,5 +1,5 @@
 import {languages, window, QuickPickItem, Selection, workspace, Uri, FileSystemError, Range, Position} from 'vscode'
-import provisionlensProvider from './lens/provisionlensProvider'
+import ProvisionLensProvider from './lens/provisionlensProvider'
 import Annotations from './common/annotations/Annotations'
 import Highlighter from './syntax/Highlighter'
 import Commands from './common/Commands'
@@ -17,7 +17,7 @@ function activate(context) {
 	modules.push(annotations)
 	highlight = new Highlighter(annotations)
 	modules.push(highlight)
-	lens = new provisionlensProvider(annotations)
+	lens = new ProvisionLensProvider(annotations)
 	modules.push(lens)
 	commands = new Commands(annotations)
 	modules.push(commands)

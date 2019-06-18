@@ -2,7 +2,7 @@ import { workspace, CodeLensProvider, Range, Command, CodeLens, TextDocument, Ca
 import Annotations from '../common/annotations/Annotations'
 import ProvisionBase from '../common/ProvisionBase'
 import DocumentReader from '../common/DocumentReader'
-export default class provisionlensProvider extends ProvisionBase implements CodeLensProvider {
+export default class ProvisionLensProvider extends ProvisionBase implements CodeLensProvider {
   private annotations : Annotations
   private reader : DocumentReader = new DocumentReader()
 
