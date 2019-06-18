@@ -32,7 +32,7 @@
 		"color": "#272729",
 		"theme": "dark"
 	},
-	"version": "1.2.8",
+	"version": "1.2.9",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
