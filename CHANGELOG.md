@@ -1,9 +1,11 @@
 # Change Log
 
-## [1.2.11] - 2019-06-18
+## [1.3.0] - 2019-06-18
 ### Added
 - **Include** option which override ignore files [#13](https://gitlab.com/fooxly/vscode-provision-lens/issues/13)
+- Keyboard shortcuts for moving to the next and last note [#5](https://gitlab.com/fooxly/vscode-provision-lens/issues/5)
 
+## [1.2.11] - 2019-06-18
 ### Changed
 - All the ignored files and directories will only be in memory and not in the settings [#19](https://gitlab.com/fooxly/vscode-provision-lens/issues/19)
 

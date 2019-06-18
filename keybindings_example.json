@@ -1,8 +1,0 @@
-"contributes": {
-  "keybindings": [{
-      "command": "extension.sayHello",
-      "key": "ctrl+f1",
-      "mac": "cmd+f1",
-      "when": "editorTextFocus"
-  }]
-}

@@ -70,6 +70,17 @@
 				}
 			]
 		},
+		"keybindings": [{
+      "command": "provisionlens.lastNote",
+      "key": "ctrl+L",
+      "mac": "cmd+L",
+      "when": "editorTextFocus"
+ 	 	},{
+      "command": "provisionlens.nextNote",
+      "key": "ctrl+N",
+      "mac": "cmd+N",
+      "when": "editorTextFocus"
+ 	 	}],
 		"configuration": {
 			"type": "object",
 			"title": "Provision lens",
