@@ -1,15 +1,17 @@
 # Change Log
 
-## [1.3.0] - 2019-06-18
+## [1.3.0] - 2019-06-19
 ### Added
 - **Include** option which override ignore files [#13](https://gitlab.com/fooxly/vscode-provision-lens/issues/13)
 - Keyboard shortcuts for moving to the next and last note [#5](https://gitlab.com/fooxly/vscode-provision-lens/issues/5)
 - Statusbar overview [#21](https://gitlab.com/fooxly/vscode-provision-lens/issues/21)
 - Option to change the overview type for files, options are: top, statusbar, both, off
 - Added tooltip options for the statusbar (options are group bases) [#23](https://gitlab.com/fooxly/vscode-provision-lens/issues/23)
+- Minified the final code for a smaller extension size [#24](https://gitlab.com/fooxly/vscode-provision-lens/issues/24)
 
 ### Changed
 - The move to line will now always try to center the note on screen instead of at the top [#22](https://gitlab.com/fooxly/vscode-provision-lens/issues/22)
+- Redone all the descriptions and titles for the settings [#25](https://gitlab.com/fooxly/vscode-provision-lens/issues/25)
 
 
 ## [1.2.11] - 2019-06-18
