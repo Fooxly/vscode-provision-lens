@@ -198,11 +198,20 @@ export default class Annotations extends ProvisionBase {
     let match, regex
     let kw = this.settings.get('keywords', {})[key.toUpperCase()]
     let cs = (!kw ? true : kw.caseSensitive)
+    
     // if case sensetive
-    if(cs) {    
-      regex = new RegExp(`\\b(${key})`, 'gm')
+    if(cs) {
+      if(kw.useColons) {
+        regex = new RegExp(`\\b(${key}:)`, 'gm')
+      } else {
+        regex = new RegExp(`\\b(${key})`, 'gm')
+      }
     } else {
-      regex = new RegExp(`\\b(${key})`, 'igm')
+      if(kw.useColons) {
+        regex = new RegExp(`\\b(${key}:)`, 'igm')
+      } else {
+        regex = new RegExp(`\\b(${key})`, 'igm')
+      }
     }
     while(match = regex.exec(text)) {
       let pos = activeEditor.document.positionAt(match.index)

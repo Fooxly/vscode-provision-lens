@@ -29,6 +29,13 @@ export default class Statusbarprovider extends ProvisionBase {
     this.items[key].text = text
   }
 
+  public remove(group) {
+    let key = group.keywords.join('').toUpperCase()
+    if(!this.items[key]) return
+    this.items[key].dispose()
+    delete this.items[key]
+  }
+
   public deactivate() {
     Object.keys(this.items).forEach(e => {
       this.items[e].dispose()

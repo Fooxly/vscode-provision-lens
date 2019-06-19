@@ -8,17 +8,15 @@ import GroupItems from '../common/groups/GroupItems'
 
 export default class ProvisionLensProvider extends ProvisionBase implements CodeLensProvider {
   private reader : DocumentReader = new DocumentReader()
-
+  private lines = []
+  private lensAt0 = false
   async provideCodeLenses(doc : TextDocument) : Promise<CodeLens[]> {
     this.settings = workspace.getConfiguration('provisionlens')
     
     let lenses = []
     let cls, fs
-
-    for(let g of this.settings.get('groups', [])) {
-      let l = await this.CreateLens(g, null, true)
-      if(!!l) lenses.push(l)
-    }
+    this.lines = []
+    this.lensAt0 = false
 
     if(this.settings.get('showLensAboveClasses', true)) {
       cls = await (this.reader.getClasses(doc))
@@ -47,6 +45,11 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
 
       }
     }
+
+    for(let g of this.settings.get('groups', [])) {
+      let l = await this.CreateLens(g, null, true)
+      if(!!l) lenses.push(l)
+    }
     
     return lenses
   }
@@ -54,11 +57,17 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
   // TODO: comment code
   private async CreateLens(group, range, isRoot = false) {
     let lens
-    let r = (!range ? new Range(0,0,0,0) : range)
-    let c = 0
     let key = group.keywords.join('').toUpperCase()
-    let items = []
+    let r = (!range ? new Range(0,0,0,0) : range)
+    for(let l of this.lines) {
+      if(!isRoot && key == l.key && l.line == r.start.line) {
+        return null
+      }
 
+      if(!isRoot && l.line == 0) this.lensAt0 = true
+    }
+    let c = 0
+    let items = []
     for(let k of group.keywords) {
       let f = (await Annotations.getInstance().getAsync(k, (!range ? null : r)))
       if(!f) return []
@@ -74,12 +83,10 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
 
     let s = Annotations.getInstance().createGroupString(group.text,c)
     if(s != null) {
-      if(isRoot) {
-       
+      if(isRoot) { 
         GroupItems.groups[key] = {
           items
         }
-        
         Commands.getInstance().register('provisionlens.list.' + key, () => {
           Commands.getInstance().list(key)
         })
@@ -88,6 +95,7 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
         switch(vtype) {
           case 'both': {
             await Statusbarprovider.getInstance().change(group, s)
+            if(this.lensAt0) break
             lens = new CodeLens(r, {
               command: 'provisionlens.list.' + key,
               title: s,
@@ -95,7 +103,13 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
             })
             break
           }
-          case 'top': {
+          case 'top': {           
+            if(this.lensAt0) {
+              await Statusbarprovider.getInstance().change(group, s)
+              break
+            } else {
+              Statusbarprovider.getInstance().remove(group)
+            }
             lens = new CodeLens(r, {
               command: 'provisionlens.list.' + key,
               title: s
@@ -109,6 +123,10 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
         }
 
       } else {
+        this.lines.push({
+          line: r.start.line,
+          key: key
+        })
         // add the lens for this group
         lens = new CodeLens(r, {
           command: 'provisionlens.list',
