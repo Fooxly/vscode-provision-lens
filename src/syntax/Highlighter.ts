@@ -38,7 +38,7 @@ export default class Highlighter extends ProvisionBase {
           let ra = e.range
           if(kw[k].useColons) {
             ra = new Range(e.range.start, new Position(e.range.end.line, e.range.end.character + 1))
-            if(!window.activeTextEditor.document.getText(ra).trim().endsWith(':')) ra = e.range
+            if(!window.activeTextEditor.document.getText(ra).trim().endsWith(':')) return
           }
           r.push({
             range: ra
