@@ -124,6 +124,7 @@ All lens groups need to be defined using the `provisionlens.groups` property.
 
 ## ❤️ Support our projects
 
-You can support us by donating through BuyMeACoffee [here](https://www.buymeacoffee.com/fooxly).
+You can support us by donating through [BuyMeACoffee](https://www.buymeacoffee.com/fooxly) or [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE).
 
-![BuyMeACoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)
+[![BuyMeACoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/fooxly)&nbsp;&nbsp;&nbsp;
+[![PayPal](https://i.imgur.com/T3AmGss.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE)
