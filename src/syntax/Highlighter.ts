@@ -35,8 +35,13 @@ export default class Highlighter extends ProvisionBase {
       let r = []
       Annotations.getInstance().get(k).then((files) => {
         files.forEach(e => {
+          let ra = e.range
+          if(kw[k].useColons) {
+            ra = new Range(e.range.start, new Position(e.range.end.line, e.range.end.character + 1))
+            if(!window.activeTextEditor.document.getText(ra).trim().endsWith(':')) ra = e.range
+          }
           r.push({
-            range: (kw[k].colorSpaceAfter ? new Range(e.range.start, new Position(e.range.end.line, e.range.end.character + 1)) : e.range)
+            range: ra
           })
         })
         window.activeTextEditor.setDecorations(this.colors[k].decoration, r)

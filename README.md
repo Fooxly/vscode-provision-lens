@@ -76,7 +76,7 @@ All keywords need to be defined using the `provisionlens.keywords` property.
     "backgroundColor": "#f2b01f",
     "overviewRulerColor": "rgba(242, 176, 31, 0.8)",
     "isWholeLine": false,
-    "colorSpaceAfter": false,
+    "useColons": true,
     "caseSensitive": true
   },
   "FIXME": {
@@ -84,7 +84,7 @@ All keywords need to be defined using the `provisionlens.keywords` property.
     "backgroundColor": "#d85f88",
     "overviewRulerColor": "rgba(216, 95, 136, 0.8)",
     "isWholeLine": false,
-    "colorSpaceAfter": false,
+    "useColons": true,
     "caseSensitive": true
   },
   "NOTE": {
@@ -92,7 +92,7 @@ All keywords need to be defined using the `provisionlens.keywords` property.
     "backgroundColor": "#434343",
     "overviewRulerColor": "rgba(67, 67, 67, 0.8)",
     "isWholeLine": false,
-    "colorSpaceAfter": false,
+    "useColons": true,
     "caseSensitive": true
   }
 }

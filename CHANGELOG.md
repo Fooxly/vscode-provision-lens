@@ -8,11 +8,14 @@
 - Option to change the overview type for files, options are: top, statusbar, both, off
 - Added tooltip options for the statusbar (options are group bases) [#23](https://gitlab.com/fooxly/vscode-provision-lens/issues/23)
 - Minified the final code for a smaller extension size [#24](https://gitlab.com/fooxly/vscode-provision-lens/issues/24)
+- `useColons` option to color the colon directly after the note [#29](https://gitlab.com/fooxly/vscode-provision-lens/issues/29)
 
 ### Changed
 - The move to line will now always try to center the note on screen instead of at the top [#22](https://gitlab.com/fooxly/vscode-provision-lens/issues/22)
 - Redone all the descriptions and titles for the settings [#25](https://gitlab.com/fooxly/vscode-provision-lens/issues/25)
 
+### Removed
+- the `colorSpaceAfter` option for keywords has been replaced with the `useColons` option
 
 ## [1.2.11] - 2019-06-18
 ### Changed
