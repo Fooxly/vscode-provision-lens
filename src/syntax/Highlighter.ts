@@ -1,15 +1,12 @@
 import { window, OverviewRulerLane, Range, Position } from 'vscode'
-import Annotations from '../common/annotations/Annotations'
 import ProvisionBase from '../common/ProvisionBase'
+import Annotations from '../common/annotations/Annotations'
 
 export default class Highlighter extends ProvisionBase {
   private colors : Object
-  private annotations : Annotations
 
-  constructor(annotations : Annotations) {
+  constructor() {
     super()
-    this.annotations = annotations
-    this.colors = {}
     this.setupColors()
   }
 
@@ -36,7 +33,7 @@ export default class Highlighter extends ProvisionBase {
     let kw = this.settings.get('keywords', {})
     Object.keys(kw).forEach(k => {
       let r = []
-      this.annotations.get(k).then((files) => {
+      Annotations.getInstance().get(k).then((files) => {
         files.forEach(e => {
           r.push({
             range: (kw[k].colorSpaceAfter ? new Range(e.range.start, new Position(e.range.end.line, e.range.end.character + 1)) : e.range)

@@ -8,6 +8,7 @@ export default abstract class ProvisionBase {
     this.configChanged()
   }
   public update(){}
+  public deactivate(){}
   public configChanged(){
     this.settings = workspace.getConfiguration('provisionlens')
     this.language = this.settings.get('translations', Translations.DEFAULT_TRANSLATIONS)

@@ -4,26 +4,32 @@ import Annotations from './common/annotations/Annotations'
 import Highlighter from './syntax/Highlighter'
 import Commands from './common/Commands'
 import ProvisionBase from './common/ProvisionBase'
+import StatusbarProvider from './statusbar/StatusbarProvider'
 
 const modules : ProvisionBase[] = []
 
-var lens, highlight, commands, annotations, activeEditor
+var lens, highlight, statusbar, commands, annotations, activeEditor
+var initialized = false
 
 function activate(context) {
 	const disposables = []
 	activeEditor = window.activeTextEditor
-
+	
+	commands = new Commands(context)
+	modules.push(commands)
+	
 	annotations = new Annotations()
 	modules.push(annotations)
-	highlight = new Highlighter(annotations)
+
+	highlight = new Highlighter()
 	modules.push(highlight)
-	lens = new ProvisionLensProvider(annotations)
+	lens = new ProvisionLensProvider()
 	modules.push(lens)
-	commands = new Commands(annotations)
-	modules.push(commands)
+	statusbar = new StatusbarProvider()
+	modules.push(statusbar)
 
 	// list command
-	disposables.push(...commands.get())
+	commands.defaults()
 
 	// add the lens to the disposables
 	disposables.push(
@@ -36,8 +42,8 @@ function activate(context) {
 	)
 
 	setupEvents(context)
+	initialized = true
 	exludedFilesUpdate()
-
 	context.subscriptions.push(...disposables)
 }
 
@@ -73,6 +79,7 @@ function setupEvents(context) {
  * Update all the modules
  */
 function update() {
+	if(!initialized) return
 	modules.forEach(m => {
 		m.update()
 	})
@@ -93,7 +100,11 @@ function configChanged() {
 	this.update()
 }
 
-function deactivate() {}
+function deactivate() {
+	modules.forEach(m => {
+		m.deactivate()
+	})
+}
 
 exports.activate = activate
 module.exports = {

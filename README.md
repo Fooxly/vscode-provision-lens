@@ -105,6 +105,7 @@ All lens groups need to be defined using the `provisionlens.groups` property.
 ```json
 "provisionlens.groups": [{
   "keywords": ["TODO", "FIXME"],
+  "tooltip": "These are all the 'TODO' and 'FIXME' notes in this file",
   "text": {
     "one": "📝 {0} TODO",
     "multiple": "📝 {0} TODOs"
@@ -112,6 +113,7 @@ All lens groups need to be defined using the `provisionlens.groups` property.
 },
 {
   "keywords": ["NOTE"],
+  "tooltip": "These are all the notes in this file",
   "text": "📝 {0} Notes"
 }]
 ```

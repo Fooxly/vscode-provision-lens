@@ -5,6 +5,9 @@ import Annotation from './Annotation'
 import { dirname } from 'path'
 
 export default class Annotations extends ProvisionBase {
+
+  private static instance : Annotations
+  
   private _ann = {}
   private ignored = []
 
@@ -12,6 +15,13 @@ export default class Annotations extends ProvisionBase {
     super()
     this._ann = {}
     this.updateIgnore()
+  }
+
+  public static getInstance() {
+    if (!this.instance) {
+      this.instance = new Annotations()
+    }
+    return this.instance
   }
 
   public configChanged() {
@@ -210,5 +220,26 @@ export default class Annotations extends ProvisionBase {
     }
     if(!range) this._ann[key.toUpperCase()] = t
     return t
+  }
+
+
+  /**
+   * Create the actual string for the lens
+   * @param t: a object or string with the text
+   * @param c: the amount of notes
+   */
+  public createGroupString(t, c) : string {
+    let rt
+    if(typeof t == 'object') {
+      rt = t.multiple
+      if(c == 1) {
+        rt = t.one
+      }
+    } else {
+      rt = t
+    }
+    if(this.settings.get('hideWhenZero', true) && !c) return null
+    if(rt == null) return rt
+    return rt.replace('{0}', c)
   }
 }

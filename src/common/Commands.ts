@@ -1,30 +1,85 @@
-import { commands, window, Selection, Range, Position, QuickPickItem, Disposable } from 'vscode'
+import { commands, window, Selection, QuickPickItem, TextEditorRevealType } from 'vscode'
 import * as _ from 'lodash'
 import ProvisionBase from './ProvisionBase'
 import Annotations from './annotations/Annotations'
+import GroupItems from './groups/GroupItems'
 
 export default class Commands extends ProvisionBase {
-  private annotations : Annotations
+  private static instance : Commands
+  private context
 
-  constructor(annotations : Annotations) {
+  private commands : string[] = []
+
+  constructor(context) {
     super()
-    this.annotations = annotations
-	}
+    this.context = context
+    Commands.instance = this
+  }
+  
+  public static getInstance() {
+    return this.instance
+  }
+
+  public register(uri, func) {
+    if(this.commands.includes(uri)) return
+    this.context.subscriptions.push(commands.registerCommand(uri, func))
+    this.commands.push(uri)
+  }
+
+  public list(key) {
+    if(!GroupItems.groups[key]) return
+    let arr : QuickPickItem[] = GroupItems.groups[key].items
+    // filter out possible duplicates
+    let o = this.settings.get('dropdownOrdering', 'line_numbers_asc')
+    switch(o) {
+      case 'line_numbers_asc': {
+        arr = _.orderBy(arr, [(r) => {return Number(r.label)}], ['asc'])
+        break
+      }
+      case 'line_numbers_desc': {
+        arr = _.orderBy(arr, [(r) => {return Number(r.label)}], ['desc'])
+        break
+      }
+    }
+    // show the quick picker
+    window.showQuickPick(arr, {canPickMany: false})
+    .then((v) => {
+      if(!v) return
+      this.moveToLine(Number(v.label))
+    })
+  }
 
 	/**
 	 * Create and get all the commands for this extension
 	 */
-  public get() : Array<Disposable> {
-    // list all the notes from the current file in a dropdown
-    let list = commands.registerCommand('provisionlens.list', async (args) => {
+  public defaults() {
+    this.register('provisionlens.listall', async () => {
+      let arr : Array<QuickPickItem> = await Annotations.getInstance().getAllItemsInFile()
+
+			let o = this.settings.get('dropdownOrdering', 'line_numbers_asc')
+			switch(o) {
+				case 'line_numbers_asc': {
+					arr = _.orderBy(arr, [(r) => {return Number(r.label)}], ['asc'])
+					break
+				}
+				case 'line_numbers_desc': {
+					arr = _.orderBy(arr, [(r) => {return Number(r.label)}], ['desc'])
+					break
+				}
+			}
+			// show the quick picker
+			window.showQuickPick(arr, {canPickMany: false})
+			.then((v) => {
+        if(!v) return
+        this.moveToLine(Number(v.label))
+      })
+    })
+
+    this.register('provisionlens.list', async (args) => {
 			// get all the items
 			let arr : Array<QuickPickItem> = []
-			if(args != undefined) {
-				arr = args.items
-			} else {
-				// get all items from the current document
-				arr = await this.annotations.getAllItemsInFile()
-			}
+      if(!args) return
+      arr = args.items
 			// filter out possible duplicates
 			let o = this.settings.get('dropdownOrdering', 'line_numbers_asc')
 			switch(o) {
@@ -44,21 +99,19 @@ export default class Commands extends ProvisionBase {
         this.moveToLine(Number(v.label))
       })
     })
-    
-    let last = commands.registerCommand('provisionlens.lastNote', () => {
-      let l = this.annotations.getPreviousNoteLocation()
+
+    this.register('provisionlens.lastNote', () => {
+      let l = Annotations.getInstance().getPreviousNoteLocation()
       // return a info message if there are no notes found above the cursors position
       if(!l) return window.showInformationMessage(this.language.noNoteFound)
       this.moveToLine(l)
     })
-
-    let next = commands.registerCommand('provisionlens.nextNote', () => {
-      let l = this.annotations.getNextNoteLocation()
+    this.register('provisionlens.nextNote', () => {
+      let l = Annotations.getInstance().getNextNoteLocation()
       // return a info message if there are no notes found below the cursors position
       if(!l) return window.showInformationMessage(this.language.noNoteFound)
       this.moveToLine(l)
     })
-    return [list, last, next]
   }
 
 	/**
@@ -70,6 +123,6 @@ export default class Commands extends ProvisionBase {
     if(!editor) return
     let range = editor.document.lineAt(line-1).range
     editor.selection =  new Selection(range.start, range.start)
-    editor.revealRange(new Range(range.start, new Position(range.end.line + (editor.visibleRanges[0].end.line - editor.visibleRanges[0].start.line) - 3, range.end.character)))
+    editor.revealRange(range, TextEditorRevealType.InCenter)
   }
 }
