@@ -18,6 +18,8 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
     this.lines = []
     this.lensAt0 = false
 
+    if(this.settings.get('fileOverview', 'both') == 'off') return []
+    
     if(this.settings.get('showLensAboveClasses', true)) {
       cls = await (this.reader.getClasses(doc))
       if(cls.length == 1) {
