@@ -32,7 +32,7 @@
 		"color": "#272729",
 		"theme": "dark"
 	},
-	"version": "1.2.11",
+	"version": "1.3.0",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
@@ -253,7 +253,7 @@
 	},
 	"scripts": {
 		"postinstall": "node ./node_modules/vscode/bin/install",
-		"compile": "tsc -p ./ && yarn uglify",
+		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"uglify": "grunt",
 		"test": "node ./node_modules/vscode/bin/test"
