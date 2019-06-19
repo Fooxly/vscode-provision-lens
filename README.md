@@ -124,8 +124,15 @@ All lens groups need to be defined using the `provisionlens.groups` property.
 
 #### Translations
 
-**Note**: This part of the documentation is incomplete
-<!-- TODO add documentation -->
+All the translations can be changed using the `provisionlens.translations` property.
+
+**Example**:
+
+```json
+"provisionlens.translations": {
+  "noNoteFound": "No notes found past the current point"
+}
+```
 
 ## 🖥️ Preview
 
