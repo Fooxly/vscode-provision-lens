@@ -19,7 +19,7 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
     this.lensAt0 = false
 
     if(this.settings.get('fileOverview', 'both') == 'off') return []
-    
+
     if(this.settings.get('showLensAboveClasses', true)) {
       cls = await (this.reader.getClasses(doc))
       if(cls.length == 1) {
@@ -95,6 +95,19 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
 
         let vtype = this.settings.get('fileOverview', 'both')
         switch(vtype) {
+          case 'auto': {
+            if(this.lensAt0) {
+              await Statusbarprovider.getInstance().change(group, s)
+            } else {
+              Statusbarprovider.getInstance().remove(group)
+              lens = new CodeLens(r, {
+                command: 'provisionlens.list.' + key,
+                title: s,
+                tooltip: group.tooltip
+              })
+            }
+            break
+          }
           case 'both': {
             await Statusbarprovider.getInstance().change(group, s)
             if(this.lensAt0) break
@@ -105,13 +118,24 @@ export default class ProvisionLensProvider extends ProvisionBase implements Code
             })
             break
           }
+          case 'always-both': {
+            await Statusbarprovider.getInstance().change(group, s)
+            lens = new CodeLens(r, {
+              command: 'provisionlens.list.' + key,
+              title: s,
+              tooltip: group.tooltip
+            })
+            break
+          }
           case 'top': {           
-            if(this.lensAt0) {
-              await Statusbarprovider.getInstance().change(group, s)
-              break
-            } else {
-              Statusbarprovider.getInstance().remove(group)
-            }
+            if(this.lensAt0) break
+            lens = new CodeLens(r, {
+              command: 'provisionlens.list.' + key,
+              title: s
+            })
+            break
+          }
+          case 'always-top': {
             lens = new CodeLens(r, {
               command: 'provisionlens.list.' + key,
               title: s

@@ -91,12 +91,15 @@
 				"provisionlens.fileOverview": {
 					"type": "string",
 					"enum": [
+						"auto",
 						"both",
+						"always-both",
 						"statusbar",
 						"top",
+						"always-top",
 						"off"
 					],
-					"default": "top",
+					"default": "auto",
 					"description": "Location in editor to show a quick overview of all notes"
 				},
 				"provisionlens.dropdownOrdering": {
