@@ -47,15 +47,19 @@ A package by [Fooxly](https://www.fooxly.com).
 
 You can customize your keywords for the lens and lots of other stuff in your `settings.json` using the following options:
 
-| property | type | default |  options | description |
-|---|---|---|---|---|
-| provisionlens.dropdownOrdering | enum | line_numbers_asc | line_numbers_asc<br/>  line_numbers_desc<br/>category | The order in which the items need to be shown in the dropdown |
-| provisionlens.useHighlighting | boolean | true | true<br/>false | If you want to use another syntax highlighter you can disable ours |
-| provisionlens.hideWhenZero | boolean | true | true<br/>false | Hide the lens if there are no items in the open file |
-| provisionlens.ignoreFiles | array | [.gitignore, .ignore] | - | A list of the ignore files you use (in your workspace or by default) |
-| provisionlens.showLensAboveClasses | boolean | true | true<br/>false | Show a lens above each class |
-| provisionlens.showLensAboveFunctions | boolean | true | true<br/>false | Show a lens above each function |
-| provisionlens.include | array | [] | - | A list of files/folders which need to be included instead of listening to the ingore files |
+| property                             | type    | default               | options                                      | description |
+| ---                                  | ---     | ---                   | ---                                          | ----        |
+| provisionlens.keywords               | array   | *check below*         | *check below*                                | Array of keywords to use (case insensitive) |
+| provisionlens.groups                 | array   | *check below*         | *check below*                                | Array of group names with designated keywords (case insensitive) |
+| provisionlens.translations           | object  | *check below*         | *check below*                                | Object with translations |
+| provisionlens.fileOverview           | enum    | line_numbers_asc      | statusbar, top, both, off                    | Location in editor to show a quick overview of all notes |
+| provisionlens.dropdownOrdering       | enum    | line_numbers_asc      | line_numbers_asc, line_numbers_des, category | The order in which items need to be shown in the dropdown |
+| provisionlens.useHighlighting        | boolean | true                  | true, false                                  | Enable/disable syntax highlighting |
+| provisionlens.hideWhenZero           | boolean | true                  | true, false                                  | Hide the lens when there are no notes |
+| provisionlens.ignoreFiles            | array   | [.gitignore, .ignore] | -                                            | Array of ignore files for the lens to blacklist (relative to project root) |
+| provisionlens.include                | array   | []                    | -                                            | Array of files/folders for the lens to whitelist (relative to project root, overrides blacklist) |
+| provisionlens.showLensAboveClasses   | boolean | true                  | true, false                                  | Show a seperate lens above each class |
+| provisionlens.showLensAboveFunctions | boolean | true                  | true, false                                  | Show a seperate lens above each function |
 
 #### Keywords
 
@@ -117,6 +121,11 @@ All lens groups need to be defined using the `provisionlens.groups` property.
   "text": "📝 {0} Notes"
 }]
 ```
+
+#### Translations
+
+**Note**: This part of the documentation is incomplete
+<!-- TODO add documentation -->
 
 ## 🖥️ Preview
 

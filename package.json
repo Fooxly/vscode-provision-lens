@@ -97,48 +97,7 @@
 						"off"
 					],
 					"default": "statusbar",
-					"description": "Where the file overview notes need to be shown"
-				},
-				"provisionlens.translations": {
-					"type": "object",
-					"title": "Translations",
-					"description": "List of translation keys for every language",
-					"properties": {
-						"noNoteFound": {
-							"type": "string",
-							"description": "The text that will be shown when there are no more notes found past the current cursor point"
-						}
-					}
-				},
-				"provisionlens.include": {
-					"type": "array",
-					"description": "A list of files and folders which should not be excluded but are inside a ignore file",
-					"items": {
-						"type": "string",
-						"description": "The path or filename "
-					}
-				},
-				"provisionlens.ignoreFiles": {
-					"type": "array",
-					"description": "List of different ignore files you have in your workspaces to exclude files/folders",
-					"items": {
-						"type": "string",
-						"description": "The file name where the excluded files are listed in"
-					},
-					"default": [
-						".gitignore",
-						".ignore"
-					]
-				},
-				"provisionlens.showLensAboveClasses": {
-					"type": "boolean",
-					"default": true,
-					"description": "Show a seperate lens above each class with the scope set to that class and its children"
-				},
-				"provisionlens.showLensAboveFunctions": {
-					"type": "boolean",
-					"default": true,
-					"description": "Show a seperate lens above each function with the scope set to that function and its children"
+					"description": "Location in editor to show a quick overview of all notes"
 				},
 				"provisionlens.dropdownOrdering": {
 					"type": "string",
@@ -148,21 +107,51 @@
 						"category"
 					],
 					"default": "line_numbers_asc",
-					"description": "The way the dropdown needs to be organized"
+					"description": "The order in which items need to be shown in the dropdown"
 				},
 				"provisionlens.useHighlighting": {
 					"type": "boolean",
 					"default": true,
-					"description": "If you want to use our syntax highlighting"
+					"description": "Enable/disable syntax highlighting"
 				},
 				"provisionlens.hideWhenZero": {
 					"type": "boolean",
 					"default": true,
-					"description": "If there are 0 results in a single group the lens won't be visible"
+					"description": "Hide the lens when there are no notes"
+				},
+				"provisionlens.ignoreFiles": {
+					"type": "array",
+					"description": "Array of ignore files for the lens to blacklist (relative to project root)",
+					"items": {
+						"type": "string",
+						"description": "Name of the file which includes a list of files to ignore"
+					},
+					"default": [
+						".gitignore",
+						".ignore"
+					]
+				},
+				"provisionlens.include": {
+					"type": "array",
+					"description": "Array of files/folders for the lens to whitelist (relative to project root, overrides blacklist)",
+					"items": {
+						"type": "string",
+						"description": "The path or filename "
+					}
+				},
+				"provisionlens.showLensAboveClasses": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show a seperate lens above each class"
+				},
+				"provisionlens.showLensAboveFunctions": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show a seperate lens above each function"
 				},
 				"provisionlens.keywords": {
 					"type": "object",
-					"description": "All the keywords that need to be tracked",
+					"description": "Array of keywords to use (case insensitive)",
 					"default": {
 						"TODO": {
 							"color": "#fff",
@@ -192,7 +181,7 @@
 				},
 				"provisionlens.groups": {
 					"type": "array",
-					"description": "The different groups for the keywords",
+					"description": "Array of group names with designated keywords (case insensitive)",
 					"items": {
 						"type": "object",
 						"title": "A keyword group object",
@@ -244,6 +233,17 @@
 							"text": "📝 {0} Notes"
 						}
 					]
+				},
+				"provisionlens.translations": {
+					"type": "object",
+					"title": "Translations",
+					"description": "Object with translations",
+					"properties": {
+						"noNoteFound": {
+							"type": "string",
+							"description": "The text that will be shown when there are no more notes found past the current cursor point"
+						}
+					}
 				}
 			}
 		}
