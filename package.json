@@ -257,6 +257,10 @@
 						"dropdownText": {
 							"type": "string",
 							"description": "Dropdown information text"
+						},
+						"key_not_found": {
+							"type": "string",
+							"description": "No key found text"
 						}
 					}
 				}

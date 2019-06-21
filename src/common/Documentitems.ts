@@ -19,7 +19,7 @@ export interface DocumentItemGroupObject {
 
 export interface DocumentItemGroup {
   keyword: string,
-  keyword_settings: any,
+  keyword_settings: any | undefined,
   text: string
   range: Range
 }

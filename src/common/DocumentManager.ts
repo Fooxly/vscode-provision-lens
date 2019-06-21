@@ -1,6 +1,8 @@
 import { window, ExtensionContext, TextEditor, workspace, Range, TextDocument, commands, SymbolKind, DocumentSymbol, WorkspaceConfiguration, Position, Selection, TextEditorRevealType } from 'vscode'
 import DocumentItems, { DocumentItemGroupObject, DocumentItem } from './Documentitems'
 import { dirname } from 'path'
+import ErrorHandler from './ErrorHandler'
+import Translations from '../translations/Translations'
 
 export default class DocumentManager {
   private settings: WorkspaceConfiguration
@@ -81,6 +83,8 @@ export default class DocumentManager {
           }
         } else {
           regex = new RegExp(`\\b(${k})`, 'gm')
+          // message that the key is not found
+          ErrorHandler.getInstance().error('no_key_found_' + k, Translations.getTranslation('key_not_found') + k)
         }
         while(match = regex.exec(text)) {
           item.size++

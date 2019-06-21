@@ -84,12 +84,14 @@ export default class Commands extends ProvisionBase {
           }
           case 'smart': {
             let fs = i.text
-            if(i.keyword_settings.caseSensitive) {
-              fs = fs.replace(new RegExp(i.keyword, 'g'), '')
-            } else {
-              fs = fs.replace(new RegExp(i.keyword, 'ig'), '')
+            if(i.keyword_settings) {
+              if(i.keyword_settings.caseSensitive) {
+                fs = fs.replace(new RegExp(i.keyword, 'g'), '')
+              } else {
+                fs = fs.replace(new RegExp(i.keyword, 'ig'), '')
+              }
+              if(i.keyword_settings.useColons) fs = fs.replace(':', '')
             }
-            if(i.keyword_settings.useColons) fs = fs.replace(':', '')
 
             let s = fs.split('//')
             s.shift()
@@ -103,12 +105,14 @@ export default class Commands extends ProvisionBase {
           }
           case 'smart_compact': {
             let fs = i.text
-            if(i.keyword_settings.caseSensitive) {
-              fs = fs.replace(new RegExp(i.keyword, 'g'), '')
-            } else {
-              fs = fs.replace(new RegExp(i.keyword, 'ig'), '')
+            if(i.keyword_settings) {
+              if(i.keyword_settings.caseSensitive) {
+                fs = fs.replace(new RegExp(i.keyword, 'g'), '')
+              } else {
+                fs = fs.replace(new RegExp(i.keyword, 'ig'), '')
+              }
+              if(i.keyword_settings.useColons) fs = fs.replace(':', '')
             }
-            if(i.keyword_settings.useColons) fs = fs.replace(':', '')
             let s = fs.split('//')
             s.shift()
             if(s[0].trim().length === 0) s[0] = i.text.split('//')[1]

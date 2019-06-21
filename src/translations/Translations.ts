@@ -4,7 +4,8 @@ import { GroupTextObject } from '../common/options/GroupItem'
 export default class Translations {
   public static DEFAULT_TRANSLATIONS = {
     noNoteFound: "No notes found past the current point",
-    dropdownText: "The following notes are found"
+    dropdownText: "The following notes are found",
+    key_not_found: "The following keyword is not defined: "
   }
 
   public static getTranslation(key: string): string {

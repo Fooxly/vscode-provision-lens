@@ -4,6 +4,7 @@
 ### Added
 - Dropdown placeholder text + language key
 - Dropdown appearance options: smart and smart_compact
+- Error message when the keyword from a group does not exist in the `keywords` property [#33](https://gitlab.com/fooxly/vscode-provision-lens/issues/33)
 
 ### Changed
 - Rebuild the whole project from scratch for better performance
