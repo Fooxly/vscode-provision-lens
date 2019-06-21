@@ -52,7 +52,7 @@ You can customize your keywords for the lens and lots of other stuff in your `se
 | property                             | type      | default               | options                                                  | description |
 | ---                                  | ---       | ---                   | ---                                                      | ----        |
 | provisionlens.keywords               | object    | *check below*         | [keywords](#Keywords)                                    | Object with keywords to use |
-| provisionlens.groups                 | \[object] | *check below*         | [groups](#Groups)                                        | Array of group names with designated keywords (case sensitive) |
+| provisionlens.groups                 | [object]  | *check below*         | [groups](#Groups)                                        | Array of group names with designated keywords (case sensitive) |
 | provisionlens.translations           | object    | *check below*         | [translations](#Translations)                            | Object with translations |
 | provisionlens.overview               | enum      | auto                  | auto, both, always-both, statusbar, top, always-top, off | Location in editor to show a quick overview of all notes |
 | provisionlens.position               | enum      | both                  | above_functions, above_classes, both, off                | Show a seperate lens above functions and/or classes |
@@ -83,8 +83,8 @@ All keywords need to be defined using the `provisionlens.keywords` property. You
   "TODO": {
     "color": "#fff",
     "backgroundColor": "#f2b01f",
-    "overviewRulerColor": "rgba(242, 176, 31, 0.8)",
-    "isWholeLine": false,
+    "rulerColor": "rgba(242, 176, 31, 0.8)",
+    "highlight": "keyword",
     "useColons": true,
     "caseSensitive": true
   },
@@ -92,15 +92,15 @@ All keywords need to be defined using the `provisionlens.keywords` property. You
     "color": "#fff",
     "backgroundColor": "#d85f88",
     "overviewRulerColor": "rgba(216, 95, 136, 0.8)",
-    "isWholeLine": false,
+    "highlight": "keyword",
     "useColons": true,
-    "caseSensitive": true
+    "caseSensitive": false
   },
   "NOTE": {
     "color": "#aaa",
     "backgroundColor": "#434343",
     "overviewRulerColor": "rgba(67, 67, 67, 0.8)",
-    "isWholeLine": false,
+    "highlight": "keyword",
     "useColons": true,
     "caseSensitive": true
   }

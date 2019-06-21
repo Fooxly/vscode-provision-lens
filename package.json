@@ -32,7 +32,7 @@
 		"color": "#272729",
 		"theme": "dark"
 	},
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
@@ -96,10 +96,26 @@
 					"default": "auto",
 					"description": "Location in editor to show a quick overview of all notes"
 				},
+				"provisionlens.position": {
+					"type": "string",
+					"enum": [
+						"above_functions",
+						"above_classes",
+						"both",
+						"off"
+					],
+					"default": "both",
+					"description": "Show a seperate lens above functions and/or classes"
+				},
 				"provisionlens.highlighting": {
 					"type": "boolean",
 					"default": true,
 					"description": "Enable/disable syntax highlighting"
+				},
+				"provisionlens.alwaysShow": {
+					"type": "boolean",
+					"default": false,
+					"description": "Show the lens when there are no notes"
 				},
 				"provisionlens.dropdownType": {
 					"type": "string",
@@ -109,7 +125,7 @@
 						"smart",
 						"smart_compact"
 					],
-					"default": "smart",
+					"default": "normal",
 					"description": "The appereance of the dropdown items"
 				},
 				"provisionlens.dropdownOrder": {
@@ -122,21 +138,13 @@
 					"default": "line_numbers_asc",
 					"description": "The order in which items need to be shown in the dropdown"
 				},
-				"provisionlens.alwaysShow": {
-					"type": "boolean",
-					"default": false,
-					"description": "Show the lens when there are no notes"
-				},
-				"provisionlens.position": {
-					"type": "string",
-					"enum": [
-						"above_functions",
-						"above_classes",
-						"both",
-						"off"
-					],
-					"default": "both",
-					"description": "Show a seperate lens above functions and/or classes"
+				"provisionlens.whitelist": {
+					"type": "array",
+					"description": "Array of files/folders for the lens to whitelist (relative to project root)",
+					"items": {
+						"type": "string",
+						"description": "The path or filename"
+					}
 				},
 				"provisionlens.ignoreFiles": {
 					"type": "array",
@@ -150,17 +158,9 @@
 						".ignore"
 					]
 				},
-				"provisionlens.whitelist": {
-					"type": "array",
-					"description": "Array of files/folders for the lens to whitelist (relative to project root)",
-					"items": {
-						"type": "string",
-						"description": "The path or filename"
-					}
-				},
 				"provisionlens.keywords": {
 					"type": "object",
-					"description": "Array of keywords to use",
+					"description": "Object with keywords to use",
 					"default": {
 						"TODO": {
 							"color": "#fff",
