@@ -47,25 +47,34 @@ A package by [Fooxly](https://www.fooxly.com).
 
 You can customize your keywords for the lens and lots of other stuff in your `settings.json` using the following options:
 
-| property                             | type    | default               | options                                                  | description |
-| ---                                  | ---     | ---                   | ---                                                      | ----        |
-| provisionlens.keywords               | array   | *check below*         | *check below*                                            | Array of keywords to use |
-| provisionlens.groups                 | array   | *check below*         | *check below*                                            | Array of group names with designated keywords (case sensitive) |
-| provisionlens.translations           | object  | *check below*         | *check below*                                            | Object with translations |
-| provisionlens.overview               | enum    | auto                  | auto, both, always-both, statusbar, top, always-top, off | Location in editor to show a quick overview of all notes |
-| provisionlens.position               | enum    | both                  | above_functions, above_classes, both, off                | Show a seperate lens above functions and/or classes |
-| provisionlens.highlighting           | boolean | true                  | true, false                                              | Enable/disable syntax highlighting |
-| provisionlens.alwaysShow             | boolean | false                 | true, false                                              | Show the lens when there are no notes |
-| provisionlens.dropdownType           | enum    | normal                | compact, normal, smart, smart_compact                    | The appereance of the dropdown items |
-| provisionlens.dropdownOrder          | enum    | line_numbers_asc      | line_numbers_asc, line_numbers_des, category             | The order in which items need to be shown in the dropdown |
-| provisionlens.whitelist              | array   | []                    | -                                                        | Array of files/folders for the lens to whitelist (relative to project root) |
-| provisionlens.ignoreFiles            | array   | [.gitignore, .ignore] | -                                                        | Array of ignore files for the lens to use as blacklist (relative to project root) |
+> **Note**: The [keywords](#keywords) and [groups](#groups) properties are required.
+
+| property                             | type      | default               | options                                                  | description |
+| ---                                  | ---       | ---                   | ---                                                      | ----        |
+| provisionlens.keywords               | object    | *check below*         | [keywords](#Keywords)                                    | Object with keywords to use |
+| provisionlens.groups                 | \[object] | *check below*         | [groups](#Groups)                                        | Array of group names with designated keywords (case sensitive) |
+| provisionlens.translations           | object    | *check below*         | [translations](#Translations)                            | Object with translations |
+| provisionlens.overview               | enum      | auto                  | auto, both, always-both, statusbar, top, always-top, off | Location in editor to show a quick overview of all notes |
+| provisionlens.position               | enum      | both                  | above_functions, above_classes, both, off                | Show a seperate lens above functions and/or classes |
+| provisionlens.highlighting           | boolean   | true                  | true, false                                              | Enable/disable syntax highlighting |
+| provisionlens.alwaysShow             | boolean   | false                 | true, false                                              | Show the lens when there are no notes |
+| provisionlens.dropdownType           | enum      | normal                | compact, normal, smart, smart_compact                    | The appereance of the dropdown items |
+| provisionlens.dropdownOrder          | enum      | line_numbers_asc      | line_numbers_asc, line_numbers_des, category             | The order in which items need to be shown in the dropdown |
+| provisionlens.whitelist              | [string]  | []                    | -                                                        | Array of files/folders for the lens to whitelist (relative to project root) |
+| provisionlens.ignoreFiles            | [string]  | [.gitignore, .ignore] | -                                                        | Array of ignore files for the lens to use as blacklist (relative to project root) |
 
 #### Keywords
 
-All keywords need to be defined using the `provisionlens.keywords` property.
+All keywords need to be defined using the `provisionlens.keywords` property. You can customize keywords using the following options:
 
-**Note**: The keywords are case insensitive.
+| property        | type    | default       | options                                                                     | description |
+| ---             | ---     | ---           | ---                                                                         | ---         |
+| color           | string  | *check below* | [color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) | Text color when highlighted |
+| rulerColor      | string  | *check below* | [color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) | Color in overview ruler |
+| backgroundColor | string  | *check below* | [color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) | Background color when highlighted |
+| highlight       | enum    | keyword       | keyword, line, off                                                          | Type of highlighting |
+| useColons       | boolean | true          | true, false                                                                 | Use a `:` to define |
+| caseSensitive   | boolean | true          | true, false                                                                 | Use case sensitive detection |
 
 **Default**:
 
@@ -100,9 +109,15 @@ All keywords need to be defined using the `provisionlens.keywords` property.
 
 #### Groups
 
-All lens groups need to be defined using the `provisionlens.groups` property.
+All lens groups need to be defined using the `provisionlens.groups` property. You can customize groups using the following options:
 
-**Note**: The keywords are case insensitive, just make sure the keyword is defined using the [keywords](#keywords) property.
+> **Note**: The keywords are case sensitive, also make sure all keywords are defined using the [keywords](#keywords) property.
+
+| property        | type           | default       | options                                         | description |
+| ---             | ---            | ---           | ---                                             | ---         |
+| keywords        | [string]       | *check below* | -                                               | Array of keywords to assign (case sensitive) |
+| tooltip         | string         | *check below* | -                                               | Description used by tooltips |
+| text            | object, string | *check below* | `string` or `{ one: string, multiple: string }` | Text for one or multiple results |
 
 **Default**:
 
@@ -127,7 +142,7 @@ All lens groups need to be defined using the `provisionlens.groups` property.
 
 #### Translations
 
-All the translations can be changed using the `provisionlens.translations` property.
+Every line of text provided by this extension can be altered using the `provisionlens.translations` property.
 
 **Default**:
 
