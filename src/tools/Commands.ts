@@ -61,6 +61,13 @@ export default class Commands extends ProvisionBase {
       let arr: QuickPickItem[] = []
       let keywords: string[] = Object.keys(this.settings.get('keywords', {}))
       if(!args.items) return
+      let d = DocumentManager.getInstance()
+
+      if(args.items.length === 1) {
+        d.moveToLine(args.items[0].range.start.line)
+        return
+      }
+
       let dropdownType = this.settings.get('dropdownType', 'normal')
       for(let i of args.items) {
         switch(dropdownType) {
@@ -140,8 +147,6 @@ export default class Commands extends ProvisionBase {
       window.showQuickPick(arr, {canPickMany: false, placeHolder: Translations.getTranslation('dropdownText')})
       .then((v) => {
         if(!v) return
-        let d = DocumentManager.getInstance()
-        if(!d) return
         d.moveToLine(Number(v.label) - 1)
       })
     })

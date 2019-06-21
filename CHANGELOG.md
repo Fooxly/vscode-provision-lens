@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.0.4] - 2019-06-21
+### Added
+- When there is only 1 item for the group it will instantly go to the line
+
 ## [2.0.1] - 2019-06-21
 ### Added
 - Dropdown placeholder text + language key
