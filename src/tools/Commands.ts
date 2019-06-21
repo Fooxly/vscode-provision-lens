@@ -63,7 +63,7 @@ export default class Commands extends ProvisionBase {
       if(!args.items) return
       let d = DocumentManager.getInstance()
 
-      if(args.items.length === 1) {
+      if(args.items.length === 1 && this.settings.get('instant', true)) {
         d.moveToLine(args.items[0].range.start.line)
         return
       }

@@ -58,6 +58,7 @@ You can customize your keywords for the lens and lots of other stuff in your `se
 | provisionlens.position               | enum      | both                  | above_functions, above_classes, both, off                | Show a seperate lens above functions and/or classes |
 | provisionlens.highlighting           | boolean   | true                  | true, false                                              | Enable/disable syntax highlighting |
 | provisionlens.alwaysShow             | boolean   | false                 | true, false                                              | Show the lens when there are no notes |
+| provisionlens.instant                | boolean   | true                  | true, false                                              | Jump to a note instead of showing the dropdown when there is only one
 | provisionlens.dropdownType           | enum      | normal                | compact, normal, smart, smart_compact                    | The appereance of the dropdown items |
 | provisionlens.dropdownOrder          | enum      | line_numbers_asc      | line_numbers_asc, line_numbers_des, category             | The order in which items need to be shown in the dropdown |
 | provisionlens.whitelist              | [string]  | []                    | -                                                        | Array of files/folders for the lens to whitelist (relative to project root) |

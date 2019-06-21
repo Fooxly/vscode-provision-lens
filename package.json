@@ -117,6 +117,11 @@
 					"default": false,
 					"description": "Show the lens when there are no notes"
 				},
+				"provisionlens.instant": {
+					"type": "boolean",
+					"default": true,
+					"description": "Jump to a note instead of showing the dropdown when there is only one"
+				},
 				"provisionlens.dropdownType": {
 					"type": "string",
 					"enum": [
