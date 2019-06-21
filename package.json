@@ -165,8 +165,8 @@
 						"TODO": {
 							"color": "#fff",
 							"backgroundColor": "#f2b01f",
-							"overviewRulerColor": "rgba(242, 176, 31, 0.8)",
-							"isWholeLine": false,
+							"rulerColor": "rgba(242, 176, 31, 0.8)",
+							"highlight": "keyword",
 							"useColons": true,
 							"caseSensitive": true
 						},
@@ -174,7 +174,7 @@
 							"color": "#fff",
 							"backgroundColor": "#d85f88",
 							"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
-							"isWholeLine": false,
+							"highlight": "keyword",
 							"useColons": true,
 							"caseSensitive": false
 						},
@@ -182,7 +182,7 @@
 							"color": "#aaa",
 							"backgroundColor": "#434343",
 							"overviewRulerColor": "rgba(67, 67, 67, 0.8)",
-							"isWholeLine": false,
+							"highlight": "keyword",
 							"useColons": true,
 							"caseSensitive": true
 						}
