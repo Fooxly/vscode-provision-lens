@@ -1,19 +1,28 @@
-import { workspace } from 'vscode'
-import Translations from './Translations'
+import { WorkspaceConfiguration, workspace, Disposable } from 'vscode'
+import DocumentItems from './Documentitems'
 
 export default abstract class ProvisionBase {
-  protected settings
-  protected language
+  protected settings: WorkspaceConfiguration
+  protected disposables: Disposable[] | null = null
+  
   constructor() {
-    this.configChanged()
-  }
-  public update(){}
-  public deactivate(){}
-  public configChanged(){
+    // load the settings
     this.settings = workspace.getConfiguration('provisionlens')
-    this.language = this.settings.get('translations', Translations.DEFAULT_TRANSLATIONS)
-    Object.keys(Translations.DEFAULT_TRANSLATIONS).forEach(k => {
-      if(!this.language[k]) this.language[k] = Translations.DEFAULT_TRANSLATIONS[k]
-    })
+  }
+
+  public initialize(): Disposable[] | null { return null }
+  public deactivate() {
+    if(!!this.disposables) {
+      this.disposables.forEach(d => {
+        d.dispose()
+      })
+    }
+  }
+  protected configChanged() {}
+  public update(data: DocumentItems | undefined) { }
+  public onConfigChanged() {
+    // change config local
+    this.settings = workspace.getConfiguration('provisionlens')
+    this.configChanged()
   }
 }

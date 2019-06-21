@@ -1,113 +1,53 @@
-import {languages, window, workspace} from 'vscode'
-import ProvisionLensProvider from './lens/provisionlensProvider'
-import Annotations from './common/annotations/Annotations'
-import Highlighter from './syntax/Highlighter'
-import Commands from './common/Commands'
+import * as vscode from 'vscode'
+import LensManager from './tools/LensManager'
 import ProvisionBase from './common/ProvisionBase'
-import StatusbarProvider from './statusbar/StatusbarProvider'
+import DocumentManager from './common/DocumentManager'
+import DocumentItems from './common/Documentitems'
+import Commands from './tools/Commands'
+import HighlightManager from './tools/HighlightManager'
 
-const modules : ProvisionBase[] = []
+const modules: ProvisionBase[] = []
+export function activate(context: vscode.ExtensionContext) {
+	let docManager = new DocumentManager(context)
+	docManager.onUpdate(data => {
+		update(data)
+	})
 
-var lens, highlight, statusbar, commands, annotations, activeEditor
-var initialized = false
+	docManager.onConfigChanged(() => {
+		modules.forEach(m => {
+			m.onConfigChanged()
+		})
+	})
 
-function activate(context) {
-	const disposables = []
-	activeEditor = window.activeTextEditor
-	
-	commands = new Commands(context)
+	// register all the modules here
+	let commands = new Commands(context)
 	modules.push(commands)
-	
-	annotations = new Annotations()
-	modules.push(annotations)
-
-	highlight = new Highlighter()
-	modules.push(highlight)
-	lens = new ProvisionLensProvider()
+	let lens = new LensManager()
 	modules.push(lens)
-	statusbar = new StatusbarProvider()
-	modules.push(statusbar)
+	let highlighter = new HighlightManager()
+	modules.push(highlighter)
 
-	// list command
-	commands.defaults()
-
-	// add the lens to the disposables
-	disposables.push(
-		languages.registerCodeLensProvider({
-				language: "*",
-				scheme: "file"
-			},
-			lens
-		)
-	)
-
-	setupEvents(context)
-	initialized = true
-	exludedFilesUpdate()
-	context.subscriptions.push(...disposables)
-}
-
-/*
- * Setup all the window / workspace events here
- */
-function setupEvents(context) {
-	window.onDidChangeActiveTextEditor((e) => {
-		activeEditor = e
-		if(e) {
-			update()
-		}
-	}, null, context.subscriptions)
-	
-	workspace.onDidChangeTextDocument((e) => {
-		if(activeEditor && e.document == activeEditor.document) {
-			update()
-		}
-	}, null, context.subscriptions)
-
-	workspace.onDidSaveTextDocument(async (doc) => {
-		if(annotations.checkIgnoreUpdate(doc)) {
-			exludedFilesUpdate()
-		}
-	})
-
-	workspace.onDidChangeConfiguration(() => {
-		configChanged()
-	}, null, context.subscriptions)
-}
-
-/*
- * Update all the modules
- */
-function update() {
-	if(!initialized) return
 	modules.forEach(m => {
-		m.update()
+		let dis = m.initialize()
+		if(!!dis) context.subscriptions.push(...dis)		
 	})
+
+	setTimeout(() => {
+		docManager.start(data => {
+			update(data)
+		})
+	}, 100)
 }
 
-async function exludedFilesUpdate() {
-	await annotations.updateIgnore()
-	update()
-}
-
-/*
- * Apply the config changes to the modules
- */
-function configChanged() {
+function update(data: DocumentItems | undefined) {
 	modules.forEach(m => {
-		m.configChanged()
+		m.update(data)
 	})
-	this.update()
 }
 
-function deactivate() {
+// this method is called when your extension is deactivated
+export function deactivate() {
 	modules.forEach(m => {
 		m.deactivate()
 	})
-}
-
-exports.activate = activate
-module.exports = {
-	activate,
-	deactivate
 }

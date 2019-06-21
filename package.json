@@ -32,9 +32,9 @@
 		"color": "#272729",
 		"theme": "dark"
 	},
-	"version": "1.3.0",
+	"version": "2.0.0",
 	"engines": {
-		"vscode": "^1.33.0"
+		"vscode": "^1.35.0"
 	},
 	"categories": [
 		"Other"
@@ -72,15 +72,9 @@
 		},
 		"keybindings": [
 			{
-				"command": "provisionlens.lastNote",
-				"key": "ctrl+L",
-				"mac": "cmd+L",
-				"when": "editorTextFocus"
-			},
-			{
-				"command": "provisionlens.nextNote",
-				"key": "ctrl+N",
-				"mac": "cmd+N",
+				"command": "provisionlens.listall",
+				"key": "ctrl+shift+L",
+				"mac": "cmd+shift+L",
 				"when": "editorTextFocus"
 			}
 		],
@@ -102,6 +96,20 @@
 					"default": "auto",
 					"description": "Location in editor to show a quick overview of all notes"
 				},
+				"provisionlens.useHighlighting": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/disable syntax highlighting"
+				},
+				"provisionlens.dropdownType": {
+					"type": "string",
+					"enum": [
+						"compact",
+						"normal"
+					],
+					"default": "normal",
+					"description": "Dropdown display type"
+				},
 				"provisionlens.dropdownOrdering": {
 					"type": "string",
 					"enum": [
@@ -112,15 +120,20 @@
 					"default": "line_numbers_asc",
 					"description": "The order in which items need to be shown in the dropdown"
 				},
-				"provisionlens.useHighlighting": {
-					"type": "boolean",
-					"default": true,
-					"description": "Enable/disable syntax highlighting"
-				},
 				"provisionlens.hideWhenZero": {
 					"type": "boolean",
 					"default": true,
 					"description": "Hide the lens when there are no notes"
+				},
+				"provisionlens.showLensAboveFunctions": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show a seperate lens above each function"
+				},
+				"provisionlens.showLensAboveClasses": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show a seperate lens above each class"
 				},
 				"provisionlens.ignoreFiles": {
 					"type": "array",
@@ -139,18 +152,8 @@
 					"description": "Array of files/folders for the lens to whitelist (relative to project root, overrides blacklist)",
 					"items": {
 						"type": "string",
-						"description": "The path or filename "
+						"description": "The path or filename"
 					}
-				},
-				"provisionlens.showLensAboveClasses": {
-					"type": "boolean",
-					"default": true,
-					"description": "Show a seperate lens above each class"
-				},
-				"provisionlens.showLensAboveFunctions": {
-					"type": "boolean",
-					"default": true,
-					"description": "Show a seperate lens above each function"
 				},
 				"provisionlens.keywords": {
 					"type": "object",
@@ -244,7 +247,11 @@
 					"properties": {
 						"noNoteFound": {
 							"type": "string",
-							"description": "The text that will be shown when there are no more notes found past the current cursor point"
+							"description": "No note found message text"
+						},
+						"dropdownText": {
+							"type": "string",
+							"description": "Dropdown information text"
 						}
 					}
 				}
@@ -252,26 +259,21 @@
 		}
 	},
 	"scripts": {
-		"postinstall": "node ./node_modules/vscode/bin/install",
+		"vscode:prepublish": "yarn run compile",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
-		"uglify": "grunt",
-		"test": "node ./node_modules/vscode/bin/test"
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
 		"@types/mocha": "^2.2.42",
-		"@types/node": "^10.14.9",
-		"babel-cli": "^6.26.0",
-		"babel-preset-es2015": "^6.24.1",
-		"eslint": "^5.13.0",
-		"grunt": "^1.0.4",
-		"grunt-cli": "^1.3.2",
-		"grunt-contrib-uglify": "^4.0.1",
+		"@types/node": "^10.12.21",
+		"tslint": "^5.12.1",
 		"typescript": "^3.3.1",
-		"uglify-js": "^3.6.0",
 		"vscode": "^1.1.28"
 	},
 	"dependencies": {
-		"lodash": "^4.17.11"
+		"@types/underscore": "^1.9.0",
+		"underscore": "^1.9.1"
 	}
 }
