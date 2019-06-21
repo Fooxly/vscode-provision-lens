@@ -64,8 +64,8 @@ export default class Commands extends ProvisionBase {
       for(let i of args.items) {
         switch(dropdownType) {
           case 'normal': {
-            let s = i.text.split('//')
-            s.shift()
+            let s = i.text.slice(i.range.start.character, i.text.length)
+            s = s.split('//')
             arr.push({
               label: (i.range.start.line + 1).toString(),
               detail: s.join('//').trim(),
@@ -74,8 +74,8 @@ export default class Commands extends ProvisionBase {
             break
           }
           case 'compact': {
-            let s = i.text.split('//')
-            s.shift()
+            let s = i.text.slice(i.range.start.character, i.text.length)
+            s = s.split('//')
             arr.push({
               label: (i.range.start.line + 1).toString(),
               description: s.join('//').trim()
@@ -83,18 +83,16 @@ export default class Commands extends ProvisionBase {
             break
           }
           case 'smart': {
-            let fs = i.text
+            let fs = i.text.slice(i.range.start.character, i.text.length)
             if(i.keyword_settings) {
               if(i.keyword_settings.caseSensitive) {
-                fs = fs.replace(new RegExp(i.keyword, 'g'), '')
+                fs = fs.replace(new RegExp(i.keyword, ''), '')
               } else {
-                fs = fs.replace(new RegExp(i.keyword, 'ig'), '')
+                fs = fs.replace(new RegExp(i.keyword, 'i'), '')
               }
               if(i.keyword_settings.useColons) fs = fs.replace(':', '')
             }
-
             let s = fs.split('//')
-            s.shift()
             if(s[0].trim().length === 0) s[0] = i.text.split('//')[1]
             arr.push({
               label: (i.range.start.line + 1).toString(),
@@ -104,17 +102,16 @@ export default class Commands extends ProvisionBase {
             break
           }
           case 'smart_compact': {
-            let fs = i.text
+            let fs = i.text.slice(i.range.start.character, i.text.length)
             if(i.keyword_settings) {
               if(i.keyword_settings.caseSensitive) {
-                fs = fs.replace(new RegExp(i.keyword, 'g'), '')
+                fs = fs.replace(new RegExp(i.keyword, ''), '')
               } else {
-                fs = fs.replace(new RegExp(i.keyword, 'ig'), '')
+                fs = fs.replace(new RegExp(i.keyword, 'i'), '')
               }
               if(i.keyword_settings.useColons) fs = fs.replace(':', '')
             }
             let s = fs.split('//')
-            s.shift()
             if(s[0].trim().length === 0) s[0] = i.text.split('//')[1]
             arr.push({
               label: (i.range.start.line + 1).toString(),

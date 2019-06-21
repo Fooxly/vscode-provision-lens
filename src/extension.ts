@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 import LensManager from './tools/LensManager'
 import ProvisionBase from './common/ProvisionBase'
 import DocumentManager from './common/DocumentManager'
-import DocumentItems from './common/Documentitems'
+import DocumentItems, { DocumentItem } from './common/Documentitems'
 import Commands from './tools/Commands'
 import HighlightManager from './tools/HighlightManager'
 
@@ -12,7 +12,9 @@ export function activate(context: vscode.ExtensionContext) {
 	docManager.onUpdate(data => {
 		update(data)
 	})
-
+	docManager.onLateUpdate(data => {
+		lateUpdate(data)
+	})
 	docManager.onConfigChanged(() => {
 		modules.forEach(m => {
 			m.onConfigChanged()
@@ -35,13 +37,21 @@ export function activate(context: vscode.ExtensionContext) {
 	setTimeout(() => {
 		docManager.start(data => {
 			update(data)
+		}, (data) => {
+			lateUpdate(data)
 		})
 	}, 100)
 }
 
-function update(data: DocumentItems | undefined) {
+function update(data: DocumentItem | undefined) {
 	modules.forEach(m => {
 		m.update(data)
+	})
+}
+
+function lateUpdate(data: DocumentItems | undefined) {
+	modules.forEach(m => {
+		m.lateUpdate(data)
 	})
 }
 
