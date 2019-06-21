@@ -52,15 +52,15 @@ You can customize your keywords for the lens and lots of other stuff in your `se
 | provisionlens.keywords               | array   | *check below*         | *check below*                                            | Array of keywords to use (case insensitive) |
 | provisionlens.groups                 | array   | *check below*         | *check below*                                            | Array of group names with designated keywords (case insensitive) |
 | provisionlens.translations           | object  | *check below*         | *check below*                                            | Object with translations |
-| provisionlens.fileOverview           | enum    | auto                  | auto, both, always-both, statusbar, top, always-top, off | Location in editor to show a quick overview of all notes |
+| provisionlens.overview               | enum    | auto                  | auto, both, always-both, statusbar, top, always-top, off | Location in editor to show a quick overview of all notes |
+| provisionlens.position               | enum    | both                  | above_functions, above_classes, both, off                | Show a seperate lens above functions and/or classes |
+| provisionlens.highlighting           | boolean | true                  | true, false                                              | Enable/disable syntax highlighting |
+| provisionlens.alwaysShow             | boolean | false                 | true, false                                              | Show the lens when there are no notes |
 | provisionlens.dropdownType           | enum    | normal                | compact, normal, smart, smart_compact                    | The appereance of the dropdown items |
-| provisionlens.dropdownOrdering       | enum    | line_numbers_asc      | line_numbers_asc, line_numbers_des, category             | The order in which items need to be shown in the dropdown |
-| provisionlens.useHighlighting        | boolean | true                  | true, false                                              | Enable/disable syntax highlighting |
-| provisionlens.hideWhenZero           | boolean | true                  | true, false                                              | Hide the lens when there are no notes |
-| provisionlens.ignoreFiles            | array   | [.gitignore, .ignore] | -                                                        | Array of ignore files for the lens to blacklist (relative to project root) |
-| provisionlens.include                | array   | []                    | -                                                        | Array of files/folders for the lens to whitelist (relative to project root, overrides blacklist) |
-| provisionlens.showLensAboveClasses   | boolean | true                  | true, false                                              | Show a seperate lens above each class |
-| provisionlens.showLensAboveFunctions | boolean | true                  | true, false                                              | Show a seperate lens above each function |
+| provisionlens.dropdownOrder          | enum    | line_numbers_asc      | line_numbers_asc, line_numbers_des, category             | The order in which items need to be shown in the dropdown |
+| provisionlens.blacklist              | array   | []                    | -                                                        | Array of files/folders for the lens to blacklist (relative to project root) |
+| provisionlens.whitelist              | array   | []                    | -                                                        | Array of files/folders for the lens to whitelist (relative to project root, overrides blacklist) |
+| provisionlens.ignoreFiles            | array   | [.gitignore, .ignore] | -                                                        | Array of ignore files for the lens to use as blacklist (relative to project root) |
 
 #### Keywords
 
@@ -68,7 +68,7 @@ All keywords need to be defined using the `provisionlens.keywords` property.
 
 **Note**: The keywords are case insensitive.
 
-**Example**:
+**Default**:
 
 ```json
 "provisionlens.keywords": {
@@ -105,7 +105,7 @@ All lens groups need to be defined using the `provisionlens.groups` property.
 
 **Note**: The keywords are case insensitive, just make sure the keyword is defined using the [keywords](#keywords) property.
 
-**Example**:
+**Default**:
 
 ```json
 "provisionlens.groups": [{
@@ -127,12 +127,12 @@ All lens groups need to be defined using the `provisionlens.groups` property.
 
 All the translations can be changed using the `provisionlens.translations` property.
 
-**Example**:
+**Default**:
 
 ```json
 "provisionlens.translations": {
-  "noNoteFound": "No notes found past the current point",
-  "dropdownText": "The following notes are found",
+  "noNoteFound": "There are no notes past the current point",
+  "dropdownText": "Notes found:",
   "key_not_found": "The following keyword is not defined: "
 }
 ```
