@@ -59,6 +59,7 @@ export default class Commands extends ProvisionBase {
 
     this.register('provisionlens.listsection', (args: any) => {
       let arr: QuickPickItem[] = []
+      let keywords: string[] = Object.keys(this.settings.get('keywords', {}))
       if(!args.items) return
       let dropdownType = this.settings.get('dropdownType', 'normal')
       for(let i of args.items) {
@@ -84,6 +85,8 @@ export default class Commands extends ProvisionBase {
           }
           case 'smart': {
             let fs = i.text.slice(i.range.start.character, i.text.length)
+            let se = fs.split(new RegExp(`\\b(${keywords.join('|')})`, 'i'))
+            fs = se[1] + se[2]
             if(i.keyword_settings) {
               if(i.keyword_settings.caseSensitive) {
                 fs = fs.replace(new RegExp(i.keyword, ''), '')
@@ -103,6 +106,8 @@ export default class Commands extends ProvisionBase {
           }
           case 'smart_compact': {
             let fs = i.text.slice(i.range.start.character, i.text.length)
+            let se = fs.split(new RegExp(`\\b(${keywords.join('|')})`, 'i'))
+            fs = se[1] + se[2]
             if(i.keyword_settings) {
               if(i.keyword_settings.caseSensitive) {
                 fs = fs.replace(new RegExp(i.keyword, ''), '')

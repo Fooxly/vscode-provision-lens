@@ -14,11 +14,15 @@ export default class HighlightManager extends ProvisionBase {
     if(!this.settings.get('highlighting', true)) return
     if(!window.activeTextEditor) return
     if(!data) return
+    let keywords: any = this.settings.get('keywords', {})
     
     let items: any = {}
     if(data) {
       for(let n in data.items) {
         for(let i of data.items[n].items) {
+          if(keywords[i.keyword]) {
+            if(keywords[i.keyword].highlight === 'off') continue
+          }
           if(!this.colors[i.keyword]) continue
           if(!items[i.keyword]) items[i.keyword] = []
           items[i.keyword].push(i.range)
@@ -36,10 +40,10 @@ export default class HighlightManager extends ProvisionBase {
     for(let k in keywords) {
       this.colors[k] = window.createTextEditorDecorationType({
         backgroundColor: keywords[k].backgroundColor,
-        isWholeLine: keywords[k].isWholeLine,
+        isWholeLine: keywords[k].highlight === 'line',
         color: keywords[k].color,
         overviewRulerLane: OverviewRulerLane.Right,
-        overviewRulerColor: keywords[k].overviewRulerColor
+        overviewRulerColor: keywords[k].rulerColor
       })
     }
   }
