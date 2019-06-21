@@ -105,7 +105,9 @@
 					"type": "string",
 					"enum": [
 						"compact",
-						"normal"
+						"normal",
+						"smart",
+						"smart_compact"
 					],
 					"default": "normal",
 					"description": "Dropdown display type"
@@ -173,7 +175,7 @@
 							"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
 							"isWholeLine": false,
 							"useColons": true,
-							"caseSensitive": true
+							"caseSensitive": false
 						},
 						"NOTE": {
 							"color": "#aaa",

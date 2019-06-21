@@ -3,6 +3,7 @@
 ## [2.0.0] - 2019-06-21
 ### Added
 - Dropdown placeholder text + language key
+- Dropdown appearance options: smart and smart_compact
 
 ### Changed
 - Rebuild the whole project from scratch for better performance

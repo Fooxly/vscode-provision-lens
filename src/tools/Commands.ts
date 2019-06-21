@@ -64,17 +64,57 @@ export default class Commands extends ProvisionBase {
       for(let i of args.items) {
         switch(dropdownType) {
           case 'normal': {
+            let s = i.text.split('//')
+            s.shift()
             arr.push({
               label: (i.range.start.line + 1).toString(),
-              detail: i.text.trim(),
+              detail: s.join('//').trim(),
               description: i.keyword
             })
             break
           }
           case 'compact': {
+            let s = i.text.split('//')
+            s.shift()
             arr.push({
               label: (i.range.start.line + 1).toString(),
-              description: i.text.trim()
+              description: s.join('//').trim()
+            })
+            break
+          }
+          case 'smart': {
+            let fs = i.text
+            if(i.keyword_settings.caseSensitive) {
+              fs = fs.replace(new RegExp(i.keyword, 'g'), '')
+            } else {
+              fs = fs.replace(new RegExp(i.keyword, 'ig'), '')
+            }
+            if(i.keyword_settings.useColons) fs = fs.replace(':', '')
+
+            let s = fs.split('//')
+            s.shift()
+            if(s[0].trim().length === 0) s[0] = i.text.split('//')[1]
+            arr.push({
+              label: (i.range.start.line + 1).toString(),
+              detail: s.join('//').trim(),
+              description: i.keyword
+            })
+            break
+          }
+          case 'smart_compact': {
+            let fs = i.text
+            if(i.keyword_settings.caseSensitive) {
+              fs = fs.replace(new RegExp(i.keyword, 'g'), '')
+            } else {
+              fs = fs.replace(new RegExp(i.keyword, 'ig'), '')
+            }
+            if(i.keyword_settings.useColons) fs = fs.replace(':', '')
+            let s = fs.split('//')
+            s.shift()
+            if(s[0].trim().length === 0) s[0] = i.text.split('//')[1]
+            arr.push({
+              label: (i.range.start.line + 1).toString(),
+              description: s.join('//').trim()
             })
             break
           }

@@ -88,6 +88,7 @@ export default class DocumentManager {
           let r: Range = new Range(pos, this.activeEditor.document.positionAt(match.index + this.activeEditor.document.offsetAt(range.start) + match[0].length))
           item.items.push({
             keyword: k,
+            keyword_settings: keywords[k],
             text: this.activeEditor.document.lineAt(pos).text,
             range: r
           })

@@ -18,7 +18,8 @@ export interface DocumentItemGroupObject {
 }
 
 export interface DocumentItemGroup {
-  keyword: string
+  keyword: string,
+  keyword_settings: any,
   text: string
   range: Range
 }
