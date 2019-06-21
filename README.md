@@ -132,7 +132,8 @@ All the translations can be changed using the `provisionlens.translations` prope
 ```json
 "provisionlens.translations": {
   "noNoteFound": "No notes found past the current point",
-  "dropdownText": "The following notes are found"
+  "dropdownText": "The following notes are found",
+  "key_not_found": "The following keyword is not defined: "
 }
 ```
 
