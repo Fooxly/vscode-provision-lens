@@ -53,6 +53,7 @@ You can customize your keywords for the lens and lots of other stuff in your `se
 | provisionlens.groups                 | array   | *check below*         | *check below*                                            | Array of group names with designated keywords (case insensitive) |
 | provisionlens.translations           | object  | *check below*         | *check below*                                            | Object with translations |
 | provisionlens.fileOverview           | enum    | auto                  | auto, both, always-both, statusbar, top, always-top, off | Location in editor to show a quick overview of all notes |
+| provisionlens.dropdownType           | enum    | normal                | compact, normal                                          | The appereance of the dropdown items |
 | provisionlens.dropdownOrdering       | enum    | line_numbers_asc      | line_numbers_asc, line_numbers_des, category             | The order in which items need to be shown in the dropdown |
 | provisionlens.useHighlighting        | boolean | true                  | true, false                                              | Enable/disable syntax highlighting |
 | provisionlens.hideWhenZero           | boolean | true                  | true, false                                              | Hide the lens when there are no notes |
@@ -130,7 +131,8 @@ All the translations can be changed using the `provisionlens.translations` prope
 
 ```json
 "provisionlens.translations": {
-  "noNoteFound": "No notes found past the current point"
+  "noNoteFound": "No notes found past the current point",
+  "dropdownText": "The following notes are found"
 }
 ```
 

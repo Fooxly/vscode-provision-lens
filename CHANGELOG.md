@@ -1,5 +1,13 @@
 # Change Log
 
+## [2.0.0] - 2019-06-21
+### Added
+- Dropdown placeholder text + language key
+
+### Changed
+- Rebuild the whole project from scratch for better performance
+- Updated the README
+
 ## [1.3.0] - 2019-06-19
 ### Added
 - **Include** option which override ignore files [#13](https://gitlab.com/fooxly/vscode-provision-lens/issues/13)

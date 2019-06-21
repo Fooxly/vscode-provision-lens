@@ -236,7 +236,10 @@
 								"NOTE"
 							],
 							"tooltip": "These are all the notes in this file",
-							"text": "📝 {0} Notes"
+							"text": {
+								"one": "📝 {0} Note",
+								"multiple": "📝 {0} Notes"
+							}
 						}
 					]
 				},
