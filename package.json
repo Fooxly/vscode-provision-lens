@@ -32,7 +32,7 @@
 		"color": "#272729",
 		"theme": "dark"
 	},
-	"version": "2.0.2",
+	"version": "2.0.3",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
@@ -176,7 +176,7 @@
 							"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
 							"highlight": "keyword",
 							"useColons": true,
-							"caseSensitive": false
+							"caseSensitive": true
 						},
 						"NOTE": {
 							"color": "#aaa",
