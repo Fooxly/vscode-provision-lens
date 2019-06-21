@@ -121,7 +121,7 @@ export default class Commands extends ProvisionBase {
           }
         }
       }
-      let o = this.settings.get('dropdownOrdering', 'line_numbers_asc')
+      let o = this.settings.get('dropdownOrder', 'line_numbers_asc')
 			switch(o) {
 				case 'line_numbers_asc': {
           arr = _.sortBy(arr, (r: any) => { return Number(r.label)}, ['asc'])

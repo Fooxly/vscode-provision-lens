@@ -34,7 +34,7 @@ export default class LensManager extends ProvisionBase implements CodeLensProvid
 
   public lateUpdate(data: DocumentItems | undefined) {
     this.instances = []
-    let overviewType = this.settings.get('fileOverview', 'auto').toString()
+    let overviewType = this.settings.get('overview', 'auto').toString()
     this.lensAtZero = false
     if(!data || overviewType === 'off') {
       this.instances = []
@@ -47,7 +47,7 @@ export default class LensManager extends ProvisionBase implements CodeLensProvid
 
     if(data.root) {
       let details = this.GetLensDetails(data.root, true)
-      let overviewType = this.settings.get('fileOverview', 'auto').toString()
+      let overviewType = this.settings.get('overview', 'auto').toString()
       switch(overviewType) {
         case 'auto': {
           if(!this.lensAtZero) {

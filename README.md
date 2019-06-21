@@ -49,8 +49,8 @@ You can customize your keywords for the lens and lots of other stuff in your `se
 
 | property                             | type    | default               | options                                                  | description |
 | ---                                  | ---     | ---                   | ---                                                      | ----        |
-| provisionlens.keywords               | array   | *check below*         | *check below*                                            | Array of keywords to use (case insensitive) |
-| provisionlens.groups                 | array   | *check below*         | *check below*                                            | Array of group names with designated keywords (case insensitive) |
+| provisionlens.keywords               | array   | *check below*         | *check below*                                            | Array of keywords to use |
+| provisionlens.groups                 | array   | *check below*         | *check below*                                            | Array of group names with designated keywords (case sensitive) |
 | provisionlens.translations           | object  | *check below*         | *check below*                                            | Object with translations |
 | provisionlens.overview               | enum    | auto                  | auto, both, always-both, statusbar, top, always-top, off | Location in editor to show a quick overview of all notes |
 | provisionlens.position               | enum    | both                  | above_functions, above_classes, both, off                | Show a seperate lens above functions and/or classes |
@@ -58,8 +58,7 @@ You can customize your keywords for the lens and lots of other stuff in your `se
 | provisionlens.alwaysShow             | boolean | false                 | true, false                                              | Show the lens when there are no notes |
 | provisionlens.dropdownType           | enum    | normal                | compact, normal, smart, smart_compact                    | The appereance of the dropdown items |
 | provisionlens.dropdownOrder          | enum    | line_numbers_asc      | line_numbers_asc, line_numbers_des, category             | The order in which items need to be shown in the dropdown |
-| provisionlens.blacklist              | array   | []                    | -                                                        | Array of files/folders for the lens to blacklist (relative to project root) |
-| provisionlens.whitelist              | array   | []                    | -                                                        | Array of files/folders for the lens to whitelist (relative to project root, overrides blacklist) |
+| provisionlens.whitelist              | array   | []                    | -                                                        | Array of files/folders for the lens to whitelist (relative to project root) |
 | provisionlens.ignoreFiles            | array   | [.gitignore, .ignore] | -                                                        | Array of ignore files for the lens to use as blacklist (relative to project root) |
 
 #### Keywords
@@ -119,7 +118,10 @@ All lens groups need to be defined using the `provisionlens.groups` property.
 {
   "keywords": ["NOTE"],
   "tooltip": "These are all the notes in this file",
-  "text": "📝 {0} Notes"
+  "text": {
+    "one": "📝 {0} Note",
+    "multiple": "📝 {0} Notes"
+  }
 }]
 ```
 

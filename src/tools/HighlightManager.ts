@@ -11,7 +11,7 @@ export default class HighlightManager extends ProvisionBase {
   }
 
   public update(data: DocumentItem) {
-    if(!this.settings.get('useHighlighting', true)) return
+    if(!this.settings.get('highlighting', true)) return
     if(!window.activeTextEditor) return
     if(!data) return
     

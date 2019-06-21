@@ -101,7 +101,7 @@ export default class DocumentManager {
           })
         }
       }
-      if(item.size > 0 || !this.settings.get('hideWhenZero', true)) {
+      if(item.size > 0 || this.settings.get('alwaysShow', false)) {
         items[g.keywords.join('').toUpperCase()] = item
       }
     }
@@ -129,12 +129,12 @@ export default class DocumentManager {
     await this.getMembers().then(members => {
       if(!members) return
       if(!this.activeEditor) return
-
+      let position = this.settings.get('position', 'both')
       for(let m of members) {
         let canAdd = false
-        if(this.IsClass(m) && this.settings.get('showLensAboveClasses', true)) {
+        if(this.IsClass(m) && (position === 'above_classes' ||position === 'both')) {
           canAdd = true
-        } else if((this.IsFunction(m) || this.IsVariable(m)) && this.settings.get('showLensAboveFunctions', true)) {
+        } else if((this.IsFunction(m) || this.IsVariable(m)) && (position === 'above_functions' ||position === 'both')) {
           canAdd = true
         }
         
@@ -167,7 +167,7 @@ export default class DocumentManager {
       return workspace.openTextDocument(f.path)
     })
 
-    const includes: string[] = this.settings.get('include', [])
+    const includes: string[] = this.settings.get('whitelist', [])
     const docs = await Promise.all(ip)
     docs.forEach((doc) => {
       const relativePath = workspace.asRelativePath(doc.fileName)
