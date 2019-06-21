@@ -1,5 +1,5 @@
 import { WorkspaceConfiguration, workspace, Disposable } from 'vscode'
-import DocumentItems from './Documentitems'
+import DocumentItems, { DocumentItem } from './Documentitems'
 
 export default abstract class ProvisionBase {
   protected settings: WorkspaceConfiguration
@@ -19,7 +19,8 @@ export default abstract class ProvisionBase {
     }
   }
   protected configChanged() {}
-  public update(data: DocumentItems | undefined) { }
+  public update(item: DocumentItem | undefined) { }
+  public lateUpdate(items: DocumentItems | undefined) { }
   public onConfigChanged() {
     // change config local
     this.settings = workspace.getConfiguration('provisionlens')

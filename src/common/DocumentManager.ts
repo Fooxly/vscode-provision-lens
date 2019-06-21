@@ -11,7 +11,10 @@ export default class DocumentManager {
   private ignoredPaths: string[] = []
   public static instance: DocumentManager
 
-  public currentItems: DocumentItems | undefined
+  public currentItems: DocumentItems = {
+    root: null,
+    items: []
+  }
 
   constructor(context: ExtensionContext) {
     this.context = context
@@ -102,20 +105,21 @@ export default class DocumentManager {
         items[g.keywords.join('').toUpperCase()] = item
       }
     }
-
-    return {
+    let r: DocumentItem = {
       container_start: range,
       items,
       isRoot
     }
+    if(isRoot && this.currentItems) this.currentItems.root = r
+    return r
   }
 
   private async getData(): Promise<DocumentItems | undefined> {
     if(!this.activeEditor) return
     if(this.isExcluded()) return
     let result: DocumentItems = {
-      items: [],
-      root: null
+      root: this.currentItems.root,
+      items: []
     }
 
     let usedLines: number[] = []
@@ -144,9 +148,6 @@ export default class DocumentManager {
           }
         }
       }
-
-      let r = this.getDataInRange(this.activeEditor.document.validateRange(new Range(0,0,this.activeEditor.document.lineCount, 0)), true)
-      if(!!r) result.root = r
     })
 
     // submit all the data to the other modules
@@ -228,26 +229,43 @@ export default class DocumentManager {
     return closest
   }
 
-  public async start(event: (data: DocumentItems | undefined) => void) {
-    if(!event) return
-    event((await this.getData()))
+  public async start(start: (data: DocumentItem | undefined) => void, lateStart: (data: DocumentItems | undefined) => void) {
+    if(start && this.activeEditor) {
+      start(this.getDataInRange(this.activeEditor.document.validateRange(new Range(0,0,this.activeEditor.document.lineCount, 0)), true))
+    }
+    
+    if(!lateStart) return
+    lateStart((await this.getData()))
   }
 
-  public onUpdate(event: (data: DocumentItems| undefined) => void) {
+  public onLateUpdate(event: (data: DocumentItems | undefined) => void) {
     window.onDidChangeActiveTextEditor(async e => {
       this.activeEditor = e
       if(e && event) {
-        this.getData().then((data: DocumentItems | undefined) => {
-          event(data)
-        })
+        event((await this.getData()))
+      }
+    }, null, this.context.subscriptions)
+
+    workspace.onDidChangeTextDocument(async e => {
+      if(this.activeEditor && e.document === this.activeEditor.document && event) {
+        event((await this.getData()))
+      }
+    }, null, this.context.subscriptions)
+  }
+
+  public onUpdate(event: (data: DocumentItem | undefined) => void) {
+    window.onDidChangeActiveTextEditor(async e => {
+      this.activeEditor = e
+      if(this.activeEditor && event) {
+        event(this.getDataInRange(this.activeEditor.document.validateRange(new Range(0,0,this.activeEditor.document.lineCount, 0)), true))
       }
     }, null, this.context.subscriptions)
 
     workspace.onDidChangeTextDocument(e => {
       if(this.activeEditor && e.document === this.activeEditor.document && event) {
-        this.getData().then((data: DocumentItems | undefined) => {
-          event(data)
-        })
+        if(this.activeEditor && event) {
+          event(this.getDataInRange(this.activeEditor.document.validateRange(new Range(0,0,this.activeEditor.document.lineCount, 0)), true))
+        }
       }
     }, null, this.context.subscriptions)
 
