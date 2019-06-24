@@ -276,6 +276,15 @@ export default class DocumentManager {
     })
   }
 
+  public onChangedDocument(event: () => void) {
+    window.onDidChangeActiveTextEditor(async e => {
+      this.activeEditor = e
+      if(this.activeEditor && event) {
+        event()
+      }
+    }, null, this.context.subscriptions)
+  } 
+
   public onConfigChanged(event: () => void) {
     workspace.onDidChangeConfiguration(() => {
       this.settings = workspace.getConfiguration('provisionlens')

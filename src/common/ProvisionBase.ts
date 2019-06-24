@@ -19,6 +19,10 @@ export default abstract class ProvisionBase {
     }
   }
   protected configChanged() {}
+  protected changedDocument() { }
+  public onChangedDocument() { 
+    this.changedDocument()
+  }
   public update(item: DocumentItem | undefined) { }
   public lateUpdate(items: DocumentItems | undefined) { }
   public onConfigChanged() {

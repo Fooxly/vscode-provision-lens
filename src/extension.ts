@@ -9,6 +9,9 @@ import HighlightManager from './tools/HighlightManager'
 const modules: ProvisionBase[] = []
 export function activate(context: vscode.ExtensionContext) {
 	let docManager = new DocumentManager(context)
+	docManager.onChangedDocument(() => {
+		changedDocument()
+	})
 	docManager.onUpdate(data => {
 		update(data)
 	})
@@ -41,6 +44,12 @@ export function activate(context: vscode.ExtensionContext) {
 			lateUpdate(data)
 		})
 	}, 100)
+}
+
+function changedDocument() {
+	modules.forEach(m => {
+		m.onChangedDocument()
+	})
 }
 
 function update(data: DocumentItem | undefined) {

@@ -28,6 +28,10 @@ export default class LensManager extends ProvisionBase implements CodeLensProvid
     return this.disposables
   }
 
+  protected changedDocument() {
+    this.instances = []
+  }
+
   public update(item: DocumentItem | undefined) {
     
   }
