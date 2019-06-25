@@ -32,7 +32,7 @@
 		"color": "#272729",
 		"theme": "dark"
 	},
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
@@ -170,6 +170,7 @@
 						"TODO": {
 							"color": "#fff",
 							"backgroundColor": "#f2b01f",
+							"rulerPlacement": "right",
 							"rulerColor": "rgba(242, 176, 31, 0.8)",
 							"highlight": "keyword",
 							"useColons": true,
@@ -178,7 +179,8 @@
 						"FIXME": {
 							"color": "#fff",
 							"backgroundColor": "#d85f88",
-							"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
+							"rulerPlacement": "right",
+							"rulerColor": "rgba(216, 95, 136, 0.8)",
 							"highlight": "keyword",
 							"useColons": true,
 							"caseSensitive": true
@@ -186,7 +188,8 @@
 						"NOTE": {
 							"color": "#aaa",
 							"backgroundColor": "#434343",
-							"overviewRulerColor": "rgba(67, 67, 67, 0.8)",
+							"rulerPlacement": "right",
+							"rulerColor": "rgba(67, 67, 67, 0.8)",
 							"highlight": "keyword",
 							"useColons": true,
 							"caseSensitive": true

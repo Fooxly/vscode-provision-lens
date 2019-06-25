@@ -38,14 +38,34 @@ export default class HighlightManager extends ProvisionBase {
     let keywords: any = this.settings.get('keywords', {})
     this.colors = {}
     for(let k in keywords) {
+      let pl: number | undefined = this.getRulerPlacement(keywords[k].rulerPlacement)
+      if(!pl) continue
       this.colors[k] = window.createTextEditorDecorationType({
         backgroundColor: keywords[k].backgroundColor,
         isWholeLine: keywords[k].highlight === 'line',
         color: keywords[k].color,
-        overviewRulerLane: OverviewRulerLane.Right,
+        overviewRulerLane: pl,
         overviewRulerColor: keywords[k].rulerColor
       })
     }
+  }
+
+  private getRulerPlacement(rulerPlacement: string): number | undefined {
+    switch(rulerPlacement) {
+      case 'left': {
+        return OverviewRulerLane.Left
+      }
+      case 'right': {
+        return OverviewRulerLane.Right
+      }
+      case 'center': {
+        return OverviewRulerLane.Center
+      }
+      case 'full': {
+        return OverviewRulerLane.Full
+      }
+    }
+    return
   }
 
   protected configChanged() {

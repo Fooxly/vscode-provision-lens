@@ -1,9 +1,10 @@
 # Change Log
 
-## [2.0.4] - 2019-06-24
+## [2.0.4] - 2019-06-25
 ### Added
 - When there is only 1 item for the group it will instantly go to the line
 - Added a changed document event for the modules. (This fixes bug [#34](https://gitlab.com/fooxly/vscode-provision-lens/issues/34))
+- Added the ruler placement option for each keyword [#35](https://gitlab.com/fooxly/vscode-provision-lens/issues/35)
 
 ## [2.0.1] - 2019-06-21
 ### Added
