@@ -1,6 +1,6 @@
 import { Disposable, window, OverviewRulerLane } from 'vscode'
 import ProvisionBase from '../common/ProvisionBase'
-import DocumentItems, { DocumentItem } from '../common/Documentitems'
+import { DocumentItem } from '../common/Documentitems'
 
 export default class HighlightManager extends ProvisionBase {
   private colors: any = {}

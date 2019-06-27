@@ -1,4 +1,4 @@
-import { Disposable, ExtensionContext, commands, window, QuickPickItem } from 'vscode'
+import { Disposable, ExtensionContext, commands, window, QuickPickItem, workspace, TextDocument } from 'vscode'
 import * as _ from 'underscore'
 import ProvisionBase from '../common/ProvisionBase'
 import DocumentManager from '../common/DocumentManager'
@@ -54,6 +54,15 @@ export default class Commands extends ProvisionBase {
       } 
       commands.executeCommand('provisionlens.listsection', {
         items: arr
+      })
+    })
+
+    this.register('provisionlens.moveToNote', (args: any) => {
+      workspace.openTextDocument(args.uri).then((doc: TextDocument) => {
+        let d = DocumentManager.getInstance()
+        window.showTextDocument(doc).then(() => {
+          d.moveToLine(args.line)
+        })
       })
     })
 

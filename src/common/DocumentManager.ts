@@ -54,10 +54,33 @@ export default class DocumentManager {
     return r
   }
 
-  private getDataInRange(range: Range, isRoot: boolean = false): DocumentItem | undefined {
-    if(!this.activeEditor) return
+  public async getNotesFromFile(uri: string) : Promise<[string, number][]> {
+    let doc = await workspace.openTextDocument(uri).then((doc: TextDocument) => {
+      return doc
+    })
+    let data: DocumentItem | undefined = this.getDataInRange(doc.validateRange(new Range(0,0,doc.lineCount, 0)), false, doc) 
+    // console.log(text)
+    if(!data) return []
+    const result: [string, number][] = []
+    let keywords: any = this.settings.get('keywords', {})
+    for(let n in data.items) {
+      for(let i of data.items[n].items) {
+        if(keywords[i.keyword]) {
+          // TODO: show text based on the text preference (change dropdown appearance to text appearance)
+          result.push([i.text.trim(), i.range.start.line])
+        }
+      }
+    }
+    return result
+  }
+
+  private getDataInRange(range: Range, isRoot: boolean = false, document: TextDocument | undefined = undefined): DocumentItem | undefined {
+    if(!document && !this.activeEditor) return
+    let doc: TextDocument | undefined = (document ? document : this.activeEditor ? this.activeEditor.document : undefined)
+    if(!doc) return
     let items: any = { }
-    let text: string = this.activeEditor.document.getText(range)
+    let text: string = doc.getText(range)
+    if(text.length === 0) return
     let keywords: any = this.settings.get('keywords', {})
     for(let group of this.settings.get('groups', [])) {
       let g: any = group
@@ -91,12 +114,12 @@ export default class DocumentManager {
         }
         while(match = regex.exec(text)) {
           item.size++
-          let pos: Position = this.activeEditor.document.positionAt(match.index + this.activeEditor.document.offsetAt(range.start))
-          let r: Range = new Range(pos, this.activeEditor.document.positionAt(match.index + this.activeEditor.document.offsetAt(range.start) + match[0].length))
+          let pos: Position = doc.positionAt(match.index + doc.offsetAt(range.start))
+          let r: Range = new Range(pos, doc.positionAt(match.index + doc.offsetAt(range.start) + match[0].length))
           item.items.push({
             keyword: k,
             keyword_settings: keywords[k],
-            text: this.activeEditor.document.lineAt(pos).text,
+            text: doc.lineAt(pos).text,
             range: r
           })
         }
