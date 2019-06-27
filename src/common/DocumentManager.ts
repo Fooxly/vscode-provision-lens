@@ -305,7 +305,7 @@ export default class DocumentManager {
   }
 
   private IsFunction(i: DocumentSymbol) {
-    return i.kind === SymbolKind.Function || i.kind === SymbolKind.Method
+    return i.kind === SymbolKind.Function || i.kind === SymbolKind.Method || i.kind === SymbolKind.Constructor || (i.name === 'constructor')
   }
   
   private IsClass(i: DocumentSymbol) {
