@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.0.6] - 2019-06-27
+### Fix
+- Support for constructors as functions [#36](https://gitlab.com/fooxly/vscode-provision-lens/issues/36)
+
 ## [2.0.4] - 2019-06-25
 ### Added
 - When there is only 1 item for the group it will instantly go to the line
