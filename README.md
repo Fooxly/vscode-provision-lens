@@ -1,6 +1,6 @@
 <p align="center">
   <a title="Learn more about the Provision Lens" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">
-    <img src="https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/icon_banner.png" alt="Provision Lens Logo" width="50%" />
+    <img src="https://github.com/fooxly/vscode-provision-lens/raw/master/assets/icon_banner.png" alt="Provision Lens Logo" width="50%" />
   </a>
 </p><br/>
 
@@ -19,7 +19,7 @@
 * `Next Note` and `Previous Note` commands (also available in context menu) based on the current cursor position
 
 <p align="center">
-  <img src="https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/list_sample.gif" alt="Provision Lens Example" />
+  <img src="https://github.com/fooxly/vscode-provision-lens/raw/master/assets/list_sample.gif" alt="Provision Lens Example" />
 </p>
 
 # 🔍 Provision Lens
@@ -161,7 +161,7 @@ Every line of text provided by this extension can be altered using the `provisio
 
 ## 🖥️ Preview
 
-![Preview](https://gitlab.com/fooxly/vscode-provision-lens/raw/master/assets/sample.png)
+![Preview](https://github.com/fooxly/vscode-provision-lens/raw/master/assets/sample.png)
 
 ## ❤️ Support our projects
 

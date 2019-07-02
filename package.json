@@ -19,20 +19,20 @@
 		"syntax",
 		"annotation"
 	],
-	"homepage": "https://gitlab.com/fooxly/vscode-provision-lens",
+	"homepage": "https://github.com/fooxly/vscode-provision-lens",
 	"repository": {
 		"type": "git",
-		"url": "https://gitlab.com/fooxly/vscode-provision-lens.git"
+		"url": "https://github.com/fooxly/vscode-provision-lens.git"
 	},
 	"bugs": {
-		"url": "https://gitlab.com/fooxly/vscode-provision-lens/issues",
+		"url": "https://github.com/fooxly/vscode-provision-lens/issues",
 		"email": "bugs@fooxly.com"
 	},
 	"galleryBanner": {
 		"color": "#272729",
 		"theme": "dark"
 	},
-	"version": "2.0.5",
+	"version": "2.0.6",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
