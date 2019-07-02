@@ -32,7 +32,7 @@
 		"color": "#272729",
 		"theme": "dark"
 	},
-	"version": "2.0.6",
+	"version": "2.1.0",
 	"engines": {
 		"vscode": "^1.35.0"
 	},
@@ -56,14 +56,6 @@
 			{
 				"command": "provisionlens.nextNote",
 				"title": "Provision Lens: Next Note"
-			},
-			{
-				"command": "provisionlens.refreshList",
-				"title": "Refresh",
-				"icon": {
-					"light": "assets/light/refresh.svg",
-					"dark": "assets/dark/refresh.svg"
-				}
 			}
 		],
 		"menus": {
@@ -75,28 +67,6 @@
 				{
 					"command": "provisionlens.nextNote",
 					"group": "provisionlens@2"
-				}
-			],
-			"view/title": [
-				{
-					"command": "provisionlens.refreshList",
-					"when": "view == provision-notes",
-					"group": "navigation@1"
-				}
-			]
-		},
-		"viewsContainers": {
-			"activitybar": [{
-				"id": "provision",
-				"title": "Provision Lens",
-				"icon": "assets/list.svg"
-			}]
-		},
-		"views": {
-			"provision": [
-				{
-					"id": "provision-notes",
-					"name": "Notes"
 				}
 			]
 		},

@@ -5,7 +5,6 @@ import DocumentManager from './common/DocumentManager'
 import DocumentItems, { DocumentItem } from './common/Documentitems'
 import Commands from './tools/Commands'
 import HighlightManager from './tools/HighlightManager'
-import ActivityBarManager from './tools/ActivityBarManager';
 
 const modules: ProvisionBase[] = []
 export function activate(context: vscode.ExtensionContext) {
@@ -24,8 +23,6 @@ export function activate(context: vscode.ExtensionContext) {
 			m.onConfigChanged()
 		})
 	})
-	
-	new ActivityBarManager(context, docManager)
 
 	// register all the modules here
 	let commands = new Commands(context)
