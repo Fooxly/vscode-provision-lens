@@ -13,8 +13,6 @@ export default class Hub extends Main implements DocumentListener {
     this.document.addListener(this)
     this.lens = new Lens(this)
 
-    let m: string[] = this.config.get<string[]>('modules', [])
-
     this.registerCommand('provision.popup', args => BaseCommands.Popup(this, args), true)
     
     // Provision wide commands
