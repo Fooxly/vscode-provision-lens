@@ -1,20 +1,17 @@
-
 <h1 align="center">
   <p align="center">
     <a title="Provision" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">
-      <!-- <img src="./assets/readme/provision.png" alt="Provision" width="40%" /> -->
+      <img src="./assets/readme/provision.png" alt="Provision" height="150" />
     </a>
   </p>
-  <br>
   <p>Provision: Lens</p>
   <p style="color: #A2A2A2; font-size: 18px;">The best way to keep your notes organized</p>
-  
   <br>
-  <p align="center">
-    <a style="color: #3366BB; font-size: 14px; font-weight: normal;" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision">Provision Bundle</a>&nbsp;&nbsp;&nbsp;
-    <a style="color: #3366BB; font-size: 14px; font-weight: normal;" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">Provision: Lens</a>&nbsp;&nbsp;&nbsp;
-    <a style="color: #3366BB; font-size: 14px; font-weight: normal;" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">Provision: Bar</a>&nbsp;&nbsp;&nbsp;
-    <a style="color: #3366BB; font-size: 14px; font-weight: normal;" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-syntax">Provision: Syntax</a>
+  <p style="color: #3366BB; font-size: 14px; font-weight: normal;">
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision">Provision Bundle</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">Provision: Lens</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">Provision: Bar</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-syntax">Provision: Syntax</a>
   </p>
 
   [![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.provision-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens)
@@ -22,110 +19,77 @@
   [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.provision-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens)
   [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
   ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-
 </h1>
-<br/>
 
-```
+<br />
+
+```sh
 ext install fooxly.provision-lens
 ```
 
-<br/>
+## What's new in Provision: Lens 3
 
-## Whats new in Provision: Lens 3
-* Quicker load and response time 🚀
-* Easier to use settings
+* Even quicker load and response times 🚀
+* Easier configuration
 
+## Support us &nbsp;❤
 
-## Support us
-You can support us by donating through [BuyMeACoffee](https://www.buymeacoffee.com/fooxly) or [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE).
-
-<!-- <p align="center">
-<a title="BuyMeACoffee" href="https://www.buymeacoffee.com/fooxly">
-  <img src="./assets/readme/buymeacoffee.png" alt="BuyMeACoffee" width="25%" style="max-width: 180px" />
-</a>&nbsp;&nbsp;
-<a title="Patreon" href="https://www.patreon.com">
-  <img src="./assets/readme/patreon.png" alt="Patreon" width="25%" style="max-width: 180px"/>
-</a>&nbsp;&nbsp;
-<a title="PayPal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE">
-  <img src="./assets/readme/paypal.png" alt="PayPal" width="25%" style="max-width: 180px" />
-</a>
-</p> -->
+<p>
+  <a title="BuyMeACoffee" href="https://www.buymeacoffee.com/fooxly">
+    <img src="./assets/readme/buymeacoffee.png" alt="BuyMeACoffee" width="25%" style="max-width: 180px" />
+  </a>&nbsp;&nbsp;
+  <a title="Patreon" href="https://www.patreon.com">
+    <img src="./assets/readme/patreon.png" alt="Patreon" width="25%" style="max-width: 180px"/>
+  </a>&nbsp;&nbsp;
+  <a title="PayPal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE">
+    <img src="./assets/readme/paypal.png" alt="PayPal" width="25%" style="max-width: 180px" />
+  </a>
+</p>
 
 <br/>
 
 # Provision: Lens
 
-`Provision: Lens` provides an `easy to use` and `highly customizable` lens above functions and classes or at the top of files to view the
-notes you or your team have left inside the file. This will you `save lots of time searching` for unfolding functions or classes and finding
-if there are any notes left. 
+> A package by [Fooxly](https://www.fooxly.com).
 
-A package by [Fooxly](https://www.fooxly.com).
+**Provision: Lens** provides an **easy to use** and **highly customizable** lens above functions & classes or at the top of file,
+to view the notes you or others in your team have left. This will **save you lots of time** searching and unfolding functions
+and/or classes to determine if there are any notes left.
 
-### Features
-* Create custom keywords with all the settings you want
+## 📐 &nbsp;Features
+
+* Create custom keywords with plenty of customization options
 * Group keywords together
-* Popup with all the notes found inside the file/class/function
+* Show pop-ups with every note inside a file/class/function
 * Jump directly to a note
 * View all of your notes in a long and complex file **instantly**
-* Jump to the next or previous note in the file
+* Jump to the next or previous note in a file
 
-### Commands
+## 📙 &nbsp;How to use
 
-* `Provision: Help` Instructions on how to create a new keyword or group
-* `Provision: List` Shows all the notes in the current file
-* `Provision: Previous Note` Move to the **previous** note based on your cursor position
-* `Provision: Next Note` Move to the **next** note based on your cursor position
+### Setting up Keywords and Groups
 
-<br/><br/>
+You can create a new keyword by following the steps below and configuring them inside your `settings.json`.
 
-// TODO: add examples here
+> **Note**: Other Provision extensions might require other properties inside your keyword or group object. For an up-to-date version of the manual use the `Provision: Help` command or view the manual [here](https://developers.fooxly.com/extensions/provision/manual).
 
-<br/>
+#### Step 1
 
-## Available Settings
-
-* Jump to the note when there is only a single note found within the file/class/function (`true` by default)
-```json
-"provision.moveOnSingle": <true|false>
-```
-
-* The sorting method used for ordering the popup items (`line_numbers_asc` by default)
-```json
-"provision.popup.sorting": <"line_numbers_asc"|"line_numbers_asc"|"category">
-```
-
-* The display method used for the lenses inside the files (`default` by default)
-```json
-"provision.lens.displayMethod": <"default"|"file"|"detailed">
-```
-
-<br/>
-
-## Setting up Keywords and Groups
-You can create a new keyword by following these steps and pasting them inside your `settings.json`.
-
-> **NOTE:** other provision extensions could need other properties inside your keyword or group object.
-> For an up to date version of the manual use the `Provision: Help` command or view the manual [here](https://packages.fooxly.com/provision/manual).
-
-###  Step 1
-Add a new object inside your `provision.keywords` object. The following properties can be set:
+Add a new object to your `provision.keywords` configuration. The following properties can be set:
 
 ```json
+"provision.keywords": [{
   "TODO": {
     "keyword": "TODO",
     "caseSensitive": true,
     "includesColon": true
   }
+}]
 ```
 
-#### What do the properties do
-* `keyword`: The exact keyword which needs to be found inside your files.
-* `caseSensitive`: If the keyword needs to be case sensitive or not.
-* `includesColon`: If the keyword can only be valid with a colon sign afterwards.
+#### Step 2
 
-### Step 2
-> If you are planning to add the keyword to a group you can skip this step.
+##### Single Keyword
 
 Add the `title` property to your newly created keyword.
 
@@ -139,17 +103,11 @@ If you have done this the keyword is correctly added to your setttings.
     "title": {
       "1": "{0} TODO",
       "*": "{0} TODO's"
-    },
-    "tooltip": "All the todo's and fixme's found in this file"
+    }
   }
 ```
 
-#### What do the properties do
-* `title`: An object with the different titles used. `*` is the default text and every other number (the amount of notes found) will be chosen if there is a title.
-* `tooltip`: The text shown when hovering over.
-
-### Step 3
-> If you did step 2, ignore this step
+##### Grouped Keyword
 
 Add your newly created keyword to an existing group (or create a new one).
 This is done by adding the following object to your `provision.groups` setting.
@@ -160,15 +118,73 @@ This is done by adding the following object to your `provision.groups` setting.
     "title": {
       "1": "{0} TODO",
       "*": "{0} TODO's"
-    },
-    "tooltip": "All the todo's and fixme's found in this file"
+    }
   }
 ```
 
-#### What do the properties do
-* `title`: An object with the different titles used. `*` is the default text and every other number (the amount of notes found) will be chosen if there is a title.
-* `tooltip`: The text shown when hovering over.
+## 📕 &nbsp;Commands
 
-# License
+* `Provision: Help` Instructions on how to create a new keyword or group
+* `Provision: List` Show all notes in the current file
+* `Provision: Previous Note` Move to the **previous** note based on your cursor position
+* `Provision: Next Note` Move to the **next** note based on your cursor position
+
+## ⚙️ &nbsp;Available Settings
+
+* `provision.moveOnSingle`: Jump instantly to a note when there are no others inside the file/class/function (`true` by default)
+
+  ```json
+  "provision.moveOnSingle": <true|false>
+  ```
+
+* `provision.popup.sorting`: Sorting method used to order the pop-up items (`"line_numbers_asc"` by default)
+
+  ```json
+  "provision.popup.sorting": <"line_numbers_asc"|"line_numbers_asc"|"category">
+  ```
+
+* `provision.lens.displayMethod` Display method used for the lenses inside your files (`"default"` by default)
+
+  ```json
+  "provision.lens.displayMethod": <"default"|"file"|"detailed">
+  ```
+
+* `provision.keywords`: Keywords to look for with a specific configuration
+
+  ```json
+  "provision.keywords": {
+    "NOTE": {
+      "caseSensitive": true,
+      "includesColon": true,
+      "title": {
+        "1": "{0} Note",
+        "*": "{0} Notes"
+      }
+    }
+  }]
+  ```
+
+  * `caseSensitive` *(optional)*: Whether or not the keyword needs to be case sensitive. (`true` by default)
+  * `includesColon` *(optional)*: Whether or not the keyword is only valid with a colon sign suffix. (`true` by default)
+  * `title` *(optional)*: An object with the titles used for the amount of notes. `*` is used for every other amount.
+
+* `provision.groups`: Keyword groups to use
+
+  ```json
+  "provision.groups": [{
+    "keywords": ["TODO", "FIXME"],
+    "title": {
+      "1": "{0} TODO",
+      "*": "{0} TODO's"
+    }
+  }]
+  ```
+
+  * `keywords`: Array of keywords to group.
+  * `title`: An object with the titles used for the amount of notes. `*` is used for every other amount.
+
+<!-- TODO: add examples -->
+
+## License
 
 [MIT](LICENSE) &copy; Fooxly

@@ -54,18 +54,18 @@
 				"provision.moveOnSingle": {
 					"type": "boolean",
 					"title": "Move On Single",
-					"description": "Jump to the line instead of showing the popup when there is only 1 note",
+					"description": "Jump instantly to a note when there are no others inside the file/class/functions",
 					"default": true
 				},
 				"provision.keywords": {
 					"type": "object",
 					"title": "Keywords",
-					"description": "The keywords searched for inside of your files"
+					"description": "Keywords to look for with a specific configuration"
 				},
 				"provision.groups": {
 					"type": "array",
 					"title": "Keyword groups",
-					"description": "If multiple keywords need to be grouped together add them here",
+					"description": "Keyword groups to use",
 					"items": {
 						"type": "object",
 						"title": "Keyword group"
@@ -79,7 +79,7 @@
 						"detailed"
 					],
 					"title": "Display method used for the lenses",
-					"description": "The display method used for the lenses inside the files",
+					"description": "Display method used for the lenses inside your files",
 					"default": "default"
 				},
 				"provision.popup.sorting": {
@@ -89,8 +89,8 @@
 						"line_numbers_desc",
 						"category"
 					],
-					"title": "Popup sorting method",
-					"description": "The sorting method used for ordering the popup items",
+					"title": "Pop-up sorting method",
+					"description": "Sorting method used to order the pop-up items",
 					"default": "line_numbers_asc"
 				}
 			}
