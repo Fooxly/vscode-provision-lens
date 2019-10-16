@@ -45,7 +45,7 @@
 	"contributes": {
 		"commands": [{
 			"command": "provision.help",
-			"title": "Provision: Help"
+			"title": "Help: Provision"
 		}],
 		"configuration": {
 			"type": "object",
