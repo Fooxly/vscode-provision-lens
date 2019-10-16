@@ -32,8 +32,10 @@ export default class Document {
     }, null, this.main.context.subscriptions)
 
     this.editor = window.activeTextEditor
-    this.update()
-    this.detailedUpdate()
+    setTimeout(() => {
+      this.update()
+      this.detailedUpdate()
+    }, 100)
   }
 
   public addListener(listener: DocumentListener) {
