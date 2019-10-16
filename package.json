@@ -1,0 +1,117 @@
+{
+	"name": "vscode-provision-lens",
+	"displayName": "Provision Lens",
+	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
+	"author": "Fooxly",
+	"publisher": "Fooxly",
+	"license": "MIT",
+	"icon": "assets/icon.png",
+	"keywords": [
+		"fooxly",
+		"vscode",
+		"code",
+		"todo",
+		"fixme",
+		"note",
+		"notes",
+		"keyword",
+		"lens",
+		"codelens"
+	],
+	"homepage": "https://github.com/Fooxly/vscode-provision-lens",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Fooxly/vscode-provision-lens.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Fooxly/vscode-provision-lens/issues",
+		"email": "bugs@fooxly.com"
+	},
+	"galleryBanner": {
+		"color": "#272729",
+		"theme": "dark"
+	},
+	"version": "3.0.0.0",
+	"engines": {
+		"vscode": "^1.39.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [{
+			"command": "provision.help",
+			"title": "Provision: Help"
+		}],
+		"configuration": {
+			"type": "object",
+			"title": "Provision",
+			"properties": {
+				"provision.moveOnSingle": {
+					"type": "boolean",
+					"title": "Move On Single",
+					"description": "Jump to the line instead of showing the popup when there is only 1 note",
+					"default": true
+				},
+				"provision.keywords": {
+					"type": "object",
+					"title": "Keywords",
+					"description": "The keywords searched for inside of your files"
+				},
+				"provision.groups": {
+					"type": "array",
+					"title": "Keyword groups",
+					"description": "If multiple keywords need to be grouped together add them here",
+					"items": {
+						"type": "object",
+						"title": "Keyword group"
+					}
+				},
+				"provision.lens.displayMethod": {
+					"type": "string",
+					"enum": [
+						"default",
+						"file",
+						"detailed"
+					],
+					"title": "Display method used for the lenses",
+					"description": "The display method used for the lenses inside the files",
+					"default": "default"
+				},
+				"provision.popup.sorting": {
+					"type": "string",
+					"enum": [
+						"line_numbers_asc",
+						"line_numbers_desc",
+						"category"
+					],
+					"title": "Popup sorting method",
+					"description": "The sorting method used for ordering the popup items",
+					"default": "line_numbers_asc"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/underscore": "^1.9.3",
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^10.12.21",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28"
+	},
+	"dependencies": {
+		"underscore": "^1.9.1"
+	}
+}
