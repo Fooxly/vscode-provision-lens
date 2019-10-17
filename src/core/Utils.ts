@@ -20,6 +20,14 @@ export default class Utils {
     return result
   }
 
+  public static getGroupKeywords(group: string): string[] {
+    if(group.startsWith('groups.')) {
+      let g = group.replace('groups.', '')
+      return g.split('_')
+    }
+    return [group]
+  }
+
   public static getGroupProps(main: Main, group: string) {
     let groups: Groups[] = main.config.get<Groups[]>('groups', [])
     let keywords: any = main.config.get('keywords', {})
@@ -39,6 +47,7 @@ export default class Utils {
     }
     return result
   }
+
   public static getTitle(group: string, object: any, amount: number): string {
     let title = ''
     if(object[amount]) title = object[amount]
