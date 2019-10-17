@@ -33,8 +33,10 @@ export default class Document {
     }, null, this.main.context.subscriptions)
 
     this.editor = window.activeTextEditor
-    this.update()
-    this.detailedUpdate()
+    process.nextTick(() => {
+      this.update()
+      this.detailedUpdate()
+    })
   }
 
   public addListener (listener: DocumentListener) {
@@ -114,11 +116,14 @@ export default class Document {
       if (!result[groupId]) result[groupId] = {
         amount: 0,
         items: [],
+        keywords: []
       }
 
       while (match = regex.exec(text)) {
         const pos: Position = doc.positionAt(match.index + doc.offsetAt(range.start))
-        const r: Range = new Range(pos, doc.positionAt(match.index + doc.offsetAt(range.start) + match[0].length))
+        const r: Range = new Range(pos, doc.positionAt(match.index + doc.offsetAt(range.start) + match[0].length - (keywords[keyword].includesColon ? 1 : 0)))
+
+        if (result[groupId].keywords.indexOf(keyword) === -1) result[groupId].keywords.push(keyword)
 
         result[groupId].amount++
         result[groupId].items.push({
