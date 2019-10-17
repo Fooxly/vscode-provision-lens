@@ -37,12 +37,13 @@ export const Popup = (main: Main, args: any) => {
       DocumentUtils.moveToLine(Number(v.label) - 1)
     })
   }
+  return true
 }
 
-export const List = (main: Main, data?: any) => { 
+export const List = (main: Main, data?: any) => {
   const items = []
-  for (const d of data) {
-    items.push(...d.items)
+  for(const k in data) {
+    items.push(...data[k].items)
   }
   Popup(main, { items })
 }
