@@ -1,14 +1,17 @@
-import { languages, ConfigurationTarget, commands } from 'vscode'
-import Main from '../core/Main'
+import { languages, commands } from 'vscode'
+
 import Lens from './Lens'
-import BaseCommands from '../core/BaseCommands'
+import Main from '../core/Main'
 import Document from '../core/document'
+import BaseCommands from '../core/BaseCommands'
 import { DocumentListener } from '../core/document/DocumentListener'
 
 export default class Hub extends Main implements DocumentListener {
   public document?: Document
   private lens?: Lens
-  protected initialize() {
+  private data?: any
+
+  protected initialize () {
     this.document = new Document(this)
     this.document.addListener(this)
     this.lens = new Lens(this)
@@ -17,8 +20,9 @@ export default class Hub extends Main implements DocumentListener {
     
     // Provision wide commands
     commands.getCommands().then(e => {
-      if(e.indexOf('provision.help') === -1) {
-        this.registerCommand('provision.help', args => BaseCommands.Help(this, args), false)
+      if (e.indexOf('provision.help') === -1) {
+        this.registerCommand('provision.help', () => BaseCommands.Help(), false)
+        this.registerCommand('provision.list', () => BaseCommands.List(this, this.data), false)
       }
     })
     
@@ -28,24 +32,20 @@ export default class Hub extends Main implements DocumentListener {
     }, this.lens))
   }
 
-  protected configChanged() {
-    let m: string[] = this.config.get<string[]>('modules', [])
-    if(!m.length || m.indexOf(this.UUID)  === -1) {
-      m.push(this.UUID)
-    }
-    this.config.update('modules', m, ConfigurationTarget.Global)
-    if(this.lens) this.lens.configChanged()
+  protected configChanged () {
+    if (this.lens) this.lens.configChanged()
   }
 
-  protected dispose() {
-    if(this.lens) this.lens.dispose()
+  protected dispose () {
+    if (this.lens) this.lens.dispose()
    }
 
-  public update(data?: any) {
-    if(this.lens) this.lens.update(data)
+  public update (data?: any) {
+    this.data = data
+    if (this.lens) this.lens.update(data)
   }
 
-  public detailedUpdate(data?: any)  {
-    if(this.lens) this.lens.detailedUpdate(data)
+  public detailedUpdate (data?: any)  {
+    if (this.lens) this.lens.detailedUpdate(data)
   }
 }

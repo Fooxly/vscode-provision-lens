@@ -4,27 +4,26 @@ import { sortBy } from 'underscore'
 import Main from './Main'
 
 export const Popup = (main: Main, args: any) => {
-  if(args.items) {
-    if(args.items.length === 1 && main.config.get('moveOnSingle', true)) {
-      // jump to item
+  if (args.items) {
+    if (args.items.length === 1 && main.config.get('moveOnSingle', true)) {
       return DocumentUtils.moveToLine(args.items[0].range.start.line)
     }
     let quickpick: QuickPickItem[] = []
-    for(let item of args.items) {
-      let s = item.text.slice(item.range.start.character, item.text.length)
+    for (let item of args.items) {
+      const s = item.text.slice(item.range.start.character, item.text.length)
       quickpick.push({
         label: (item.range.start.line + 1).toString(),
         detail: s.trim(),
         description: item.keyword
       })
     }
-    switch(main.config.get<string>('popup.sorting', 'line_numbers_asc')) {
+    switch (main.config.get<string>('popup.sorting', 'line_numbers_asc')) {
       case 'line_numbers_asc': {
-        quickpick = sortBy(quickpick, (r: any) => { return Number(r.label)}, ['asc'])
+        quickpick = sortBy(quickpick, (r: any) => Number(r.label), ['asc'])
         break
       }
       case 'line_numbers_desc': {
-        quickpick = sortBy(quickpick, (r: any) => { return Number(r.label)}, ['asc'])
+        quickpick = sortBy(quickpick, (r: any) => Number(r.label), ['asc'])
         break
       }
     }
@@ -33,13 +32,22 @@ export const Popup = (main: Main, args: any) => {
       canPickMany: false,
       placeHolder: 'Select a note'
     }).then(v => {
-      if(!v) return
+      if (!v) return
       DocumentUtils.moveToLine(Number(v.label) - 1)
     })
   }
 }
 
-export const Help = (main: Main, args: any) => {
+export const List = (main: Main, data?: any) => { 
+  const items = []
+  for (const d of data) {
+    items.push(...d.items)
+  }
+  Popup(main, { items })
+}
+
+
+export const Help = () => {
   let col: ViewColumn = ViewColumn.One
   if(window.activeTextEditor && window.activeTextEditor.viewColumn) col = window.activeTextEditor.viewColumn
   let v = window.createWebviewPanel('provision', 'Provivision Manual', {
@@ -74,5 +82,6 @@ export const Help = (main: Main, args: any) => {
 
 export default {
   Popup,
+  List,
   Help
 }

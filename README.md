@@ -1,9 +1,7 @@
 <h1 align="center">
-  <p align="center">
-    <a title="Provision" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">
-      <img src="./assets/readme/provision.png" alt="Provision" height="150" />
-    </a>
-  </p>
+  <a title="Provision" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">
+    <img src="./assets/readme/provision.png" alt="Provision" height="150" />
+  </a>
   <p>Provision: Lens</p>
   <p style="color: #A2A2A2; font-size: 18px;">The best way to keep your notes organized</p>
   <br>
@@ -67,60 +65,7 @@ and/or classes to determine if there are any notes left.
 
 ## 📙 &nbsp;How to use
 
-### Setting up Keywords and Groups
-
-You can create a new keyword by following the steps below and configuring them inside your `settings.json`.
-
-> **Note**: Other Provision extensions might require other properties inside your keyword or group object. For an up-to-date version of the manual use the `Provision: Help` command or view the manual [here](https://developers.fooxly.com/extensions/provision/manual).
-
-#### Step 1
-
-Add a new object to your `provision.keywords` configuration. The following properties can be set:
-
-```json
-"provision.keywords": [{
-  "TODO": {
-    "keyword": "TODO",
-    "caseSensitive": true,
-    "includesColon": true
-  }
-}]
-```
-
-#### Step 2
-
-##### Single Keyword
-
-Add the `title` property to your newly created keyword.
-
-If you have done this the keyword is correctly added to your setttings.
-
-```json
-  "TODO": {
-    "keyword": "TODO",
-    "caseSensitive": true,
-    "includesColon": true,
-    "title": {
-      "1": "{0} TODO",
-      "*": "{0} TODO's"
-    }
-  }
-```
-
-##### Grouped Keyword
-
-Add your newly created keyword to an existing group (or create a new one).
-This is done by adding the following object to your `provision.groups` setting.
-
-```json
-  {
-    "keywords": ["TODO", "FIXME"],
-    "title": {
-      "1": "{0} TODO",
-      "*": "{0} TODO's"
-    }
-  }
-```
+Check out our [Getting Started](HELP.md) guide for more information.
 
 ## 📕 &nbsp;Commands
 

@@ -1,9 +1,9 @@
 dependencies:
-  '@types/underscore': 1.9.3
   underscore: 1.9.1
 devDependencies:
-  '@types/mocha': 2.2.48
+  '@types/mocha': 5.2.7
   '@types/node': 10.14.21
+  '@types/underscore': 1.9.3
   tslint: 5.20.0_typescript@3.6.4
   typescript: 3.6.4
   vscode: 1.1.36
@@ -23,16 +23,16 @@ packages:
     dev: true
     resolution:
       integrity: sha512-7dV4eu9gBxoM0dAnj/BCFDW9LFU0zvTrkq0ugM7pnHEgguOEeOz1so2ZghEdzviYzQEED0r4EAgpsBChKy1TRQ==
-  /@types/mocha/2.2.48:
+  /@types/mocha/5.2.7:
     dev: true
     resolution:
-      integrity: sha512-nlK/iyETgafGli8Zh9zJVCTicvU3iajSkRwOh3Hhiva598CMqNJ4NcVCGMTGKpGpTYj/9R8RLzS9NAykSSCqGw==
+      integrity: sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==
   /@types/node/10.14.21:
     dev: true
     resolution:
       integrity: sha512-nuFlRdBiqbF+PJIEVxm2jLFcQWN7q7iWEJGsBV4n7v1dbI9qXB8im2pMMKMCUZe092sQb5SQft2DHfuQGK5hqQ==
   /@types/underscore/1.9.3:
-    dev: false
+    dev: true
     resolution:
       integrity: sha512-SwbHKB2DPIDlvYqtK5O+0LFtZAyrUSw4c0q+HWwmH1Ve3KMQ0/5PlV3RX97+3dP7yMrnNQ8/bCWWvQpPl03Mug==
   /agent-base/4.3.0:
@@ -157,10 +157,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-VlfT9F3V0v+jr4yxPc5gg9s62/fIVWsd2Bk2iD435um1NlGMYdVCq+MjcXnhYq2icNOizHr1kK+5TI6H0Hy0ag==
-  /commander/2.20.1:
+  /commander/2.20.3:
     dev: true
     resolution:
-      integrity: sha512-cCuLsMhJeWQ/ZpsFTbE765kvVfoeSddc4nU3up4fV+fDBcfUXnbITJ+JzhkdjzOqhURjZgujxaioam4RM9yGUg==
+      integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
   /concat-map/0.0.1:
     dev: true
     resolution:
@@ -656,7 +656,7 @@ packages:
       '@babel/code-frame': 7.5.5
       builtin-modules: 1.1.1
       chalk: 2.4.2
-      commander: 2.20.1
+      commander: 2.20.3
       diff: 4.0.1
       glob: 7.1.4
       js-yaml: 3.13.1
@@ -762,10 +762,10 @@ packages:
     resolution:
       integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 specifiers:
-  '@types/mocha': ^2.2.42
+  '@types/mocha': ^5.2.7
   '@types/node': ^10.12.21
   '@types/underscore': ^1.9.3
-  tslint: ^5.12.1
-  typescript: ^3.3.1
+  tslint: ^5.20.0
+  typescript: ^3.6.4
   underscore: ^1.9.1
-  vscode: ^1.1.28
+  vscode: ^1.1.36

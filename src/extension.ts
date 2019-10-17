@@ -1,8 +1,7 @@
-
-import { ExtensionContext, extensions } from 'vscode'
+import { ExtensionContext } from 'vscode'
 import Hub from './main/Hub'
 
-var hub: Hub
+let hub: Hub
 
 export function activate(context: ExtensionContext) {
 	hub = new Hub(context, 'provision.lens')

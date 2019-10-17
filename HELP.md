@@ -1,44 +1,53 @@
-
 <h1 align="center">
-  <p align="center">
-    <img src="./assets/readme/provision.png" alt="Provision" width="40%" />
-  </p>
-  <br>
-  <p>Provision: Lens - Manual</p>
+  <a title="Provision" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">
+    <img src="./assets/readme/provision.png" alt="Provision" height="150" />
+  </a>
+  <p>Provision: Lens</p>
   <p style="color: #A2A2A2; font-size: 18px;">The best way to keep your notes organized</p>
+  <br>
+  <p style="color: #3366BB; font-size: 14px; font-weight: normal;">
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision">Provision Bundle</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">Provision: Lens</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">Provision: Bar</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-syntax">Provision: Syntax</a>
+  </p>
+
+  [![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.provision-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens)
+  [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/fooxly.provision-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens)
+  [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.provision-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+  ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 </h1>
-<br/>
 
-<!-- # Table of content
-* [Setting up Keywords and Groups](#setting-up-keywords-and-groups) -->
+## Getting Started Guide
 
-<!-- <br/> -->
+### Setting up Keywords and Groups
 
-## Setting up Keywords and Groups
-You can create a new keyword by following these steps and pasting them inside your `settings.json`.
+You can create a new keyword by following the steps below and configuring them inside your `settings.json`.
 
-###  Step 1
-Add a new object inside your `provision.keywords` object. The following properties can be set:
+> **Note**: Other Provision extensions might require other properties inside your `keywords` or `groups` configuration. For an up-to-date
+> version of the manual use the `Provision: Help` command or view the manual [here](https://developers.fooxly.com/extensions/provision/manual).
+
+#### Step 1
+
+Add a new object to your `provision.keywords` configuration. The following properties can be set:
 
 ```json
+"provision.keywords": {
   "TODO": {
     "keyword": "TODO",
     "caseSensitive": true,
     "includesColon": true
   }
+}
 ```
 
-#### What do the properties do
-* `keyword`: The exact keyword which needs to be found inside your files.
-* `caseSensitive`: If the keyword needs to be case sensitive or not.
-* `includesColon`: If the keyword can only be valid with a colon sign afterwards.
+#### Step 2
 
-### Step 2
-> If you are planning to add the keyword to a group you can skip this step.
+##### Single Keyword
 
 Add the `title` property to your newly created keyword.
-
-If you have done this the keyword is correctly added to your setttings.
+You can configure the titles for the lens for the amount of notes in a file/class/function.
 
 ```json
   "TODO": {
@@ -48,20 +57,14 @@ If you have done this the keyword is correctly added to your setttings.
     "title": {
       "1": "{0} TODO",
       "*": "{0} TODO's"
-    },
-    "tooltip": "All the todo's and fixme's found in this file"
+    }
   }
 ```
 
-#### What do the properties do
-* `title`: An object with the different titles used. `*` is the default text and every other number (the amount of notes found) will be chosen if there is a title.
-* `tooltip`: The text shown when hovering over.
-
-### Step 3
-> If you did step 2, ignore this step
+##### Grouped Keyword
 
 Add your newly created keyword to an existing group (or create a new one).
-This is done by adding the following object to your `provision.groups` setting.
+This is done by adding the following object to your `provision.groups` configuration.
 
 ```json
   {
@@ -69,19 +72,11 @@ This is done by adding the following object to your `provision.groups` setting.
     "title": {
       "1": "{0} TODO",
       "*": "{0} TODO's"
-    },
-    "tooltip": "All the todo's and fixme's found in this file"
+    }
   }
 ```
 
-**Note:** the keyword that you add to the keywords array needs to be the same
-as the `keyword object` *(highlighted green)* inside your `provision.keywords` and NOT the keyword objects keyword property *(highlighted red)*.
+> **Note**: The keyword that you add to the keywords array needs to be the same as the `keyword object key` *(highlighted green)*
+> inside your `provision.keywords` object and **NOT** the `keyword object keyword property` *(highlighted red)*.
 
-<p align="center">
-  <img src="./assets/keyword_info.png" alt="Guide" width="80%" style="max-width: 400px" />
-</p>
-
-
-#### What do the properties do
-* `title`: An object with the different titles used. `*` is the default text and every other number (the amount of notes found) will be chosen if there is a title.
-* `tooltip`: The text shown when hovering over.
+<img src="./assets/keyword_info.png" alt="Guide" width="80%" style="max-width: 400px" />

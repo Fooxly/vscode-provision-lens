@@ -1,8 +1,9 @@
 import { window, TextEditor, workspace, DocumentSymbol, TextDocument, Range, Position } from 'vscode'
+
 import Main from '../Main'
+import Utils from '../Utils'
 import DocumentUtils from './DocumentUtils'
 import { DocumentListener } from './DocumentListener'
-import Utils from '../Utils'
 
 export default class Document {
   private main: Main
@@ -10,22 +11,22 @@ export default class Document {
   
   private listeners: DocumentListener[] = []
 
-  constructor(main: Main) {
+  constructor (main: Main) {
     this.main = main
     this.initialize()
   }
 
-  private initialize() {
-    window.onDidChangeActiveTextEditor(async e => {
+  private initialize () {
+    window.onDidChangeActiveTextEditor(e => {
       this.editor = e
-      if(this.editor) {
+      if (this.editor) {
         this.update()
         this.detailedUpdate()
       }
     }, null, this.main.context.subscriptions)
 
     workspace.onDidChangeTextDocument(e => {
-      if(this.editor && e.document === this.editor.document) {
+      if (this.editor && e.document === this.editor.document) {
         this.update()
         this.detailedUpdate()
       }
@@ -36,81 +37,89 @@ export default class Document {
     this.detailedUpdate()
   }
 
-  public addListener(listener: DocumentListener) {
+  public addListener (listener: DocumentListener) {
     this.listeners.push(listener)
   }
 
-  public update() {
-    if(!this.editor || !this.editor.document) {
-      return this.listeners.forEach(l => { l.update() })
+  public update () {
+    if (!this.editor || !this.editor.document) {
+      for (const l of this.listeners) {
+        l.update()
+      }
+      return
     }
-    let i = this.getDataInRange(this.editor.document.validateRange(new Range(0,0,this.editor.document.lineCount, 0)), this.editor.document)
-    return this.listeners.forEach(l => { l.update(i) })
+
+    const i = this.getDataInRange(this.editor.document.validateRange(new Range(0,0,this.editor.document.lineCount, 0)), this.editor.document)
+    for (const l of this.listeners) {
+      l.update(i)
+    }
   }
 
-  public detailedUpdate() {
-    if(!this.editor || !this.editor.document) {
-      return this.listeners.forEach(l => { l.detailedUpdate() })
+  public detailedUpdate () {
+    if (!this.editor || !this.editor.document) {
+      for (const l of this.listeners) {
+        l.detailedUpdate()
+      }
+      return
     }
 
     DocumentUtils.getSymbols(this.editor.document).then(symbols => {
-      if(!this.editor || !this.editor.document || !symbols) return this.listeners.forEach(l => { l.detailedUpdate() })
-      let r: DocumentSymbol[] = []
-      for(let symbol of symbols) {
+      if (!this.editor || !this.editor.document || !symbols) {
+        for (const l of this.listeners) {
+          l.detailedUpdate()
+        }
+        return
+      }
+
+      const r: DocumentSymbol[] = []
+      for (const symbol of symbols) {
         r.push(...DocumentUtils.getChildMembers(symbol))
       }
-      let result: any = { }
-      for(let symbol of r) {
-        let i = this.getDataInRange(symbol.range, this.editor.document)
-        Object.keys(i).forEach(e => {
-          if(!result[e]) result[e] = i[e]
+
+      const result: any = { }
+      for (const symbol of r) {
+        const i = this.getDataInRange(symbol.range, this.editor.document)
+        for (const e of Object.keys(i)) {
+          if (!result[e]) result[e] = i[e]
           else {
             result[e].amount += i[e].amount
             result[e].items.push(...i[e].items)
           }
-        })
+        }
       }
-      return this.listeners.forEach(l => { l.detailedUpdate(result) })
+    
+      for (const l of this.listeners) {
+        l.detailedUpdate(result)
+      }
     })
   }
 
-  private getDataInRange(range: Range, document?: TextDocument): any {
-    if(!this.editor) return
-    let doc = document || this.editor.document
-    if(!doc) return
+  private getDataInRange (range: Range, document?: TextDocument): any {
+    if (!this.editor) return
+    const doc = document || this.editor.document
+    if (!doc) return
 
-    let text: string = doc.getText(range)
-    if(text.length === 0) return
-    let result: any = { }
+    const text: string = doc.getText(range)
+    if (text.length === 0) return
+    const result: any = { }
 
-    let keywords: any = this.main.config.get('keywords', {})
-    Object.keys(keywords).forEach(keyword => {
-      let groupId: any = Utils.getGroup(this.main, keyword)
-      let match: RegExpExecArray | null, regex: RegExp
+    const keywords: any = this.main.config.get('keywords', {})
+    for (const keyword of Object.keys(keywords)) {
+      const groupId: any = Utils.getGroup(this.main, keyword)
+      let match: RegExpExecArray | null, regex: RegExp = new RegExp(
+        `\\b(${keywords[keyword].keyword}${keywords[keyword].includesColon ? ':' : ''})`,
+        `${keywords[keyword].caseSensitive ? '' : 'i'}gm`
+      )
 
-      if(keywords[keyword].caseSensitive) {
-        if(keywords[keyword].includesColon) {
-          regex = new RegExp(`\\b(${keywords[keyword].keyword}:)`, 'gm')
-        } else {
-          regex = new RegExp(`\\b(${keywords[keyword].keyword})`, 'gm')
-        }
-      } else {
-        if(keywords[keyword].includesColon) {
-          regex = new RegExp(`\\b(${keywords[keyword].keyword}:)`, 'igm')
-        } else {
-          regex = new RegExp(`\\b(${keywords[keyword].keyword})`, 'igm')
-        }
+      if (!result[groupId]) result[groupId] = {
+        amount: 0,
+        items: [],
       }
 
-      if(!result[groupId])
-        result[groupId] = {
-          amount: 0,
-          items: [],
-        }
+      while (match = regex.exec(text)) {
+        const pos: Position = doc.positionAt(match.index + doc.offsetAt(range.start))
+        const r: Range = new Range(pos, doc.positionAt(match.index + doc.offsetAt(range.start) + match[0].length))
 
-      while(match = regex.exec(text)) {
-        let pos: Position = doc.positionAt(match.index + doc.offsetAt(range.start))
-        let r: Range = new Range(pos, doc.positionAt(match.index + doc.offsetAt(range.start) + match[0].length))
         result[groupId].amount++
         result[groupId].items.push({
           keyword: keyword,
@@ -119,7 +128,7 @@ export default class Document {
           container: range
         })
       }
-    })
+    }
     return result
   }
 }

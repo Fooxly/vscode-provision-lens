@@ -1,72 +1,74 @@
-import { CodeLensProvider, CodeLens, TextDocument, Range, Position, Command, window } from 'vscode'
+import { CodeLensProvider, CodeLens, Range, Command, window } from 'vscode'
+
 import Hub from './Hub'
 import Utils from '../core/Utils'
 
 export default class Lens implements CodeLensProvider {
   private main: Hub
-  private fileLenses: CodeLens[] = []
   private lenses: CodeLens[] = []
-  private areFileLensesUpdated: boolean = false
+  private fileLenses: CodeLens[] = []
   private displayMethod: string = 'default'
+  private areFileLensesUpdated: boolean = false
 
-  constructor(main: Hub) {
+  constructor (main: Hub) {
     this.main = main
   }
 
-  public update(data?: any) {
+  public update (data?: any) {
     this.fileLenses = []
     this.areFileLensesUpdated = false
-    if(data && this.displayMethod === 'default' || this.displayMethod === 'file') {
-      Object.keys(data).forEach(e => {
-        let props = Utils.getGroupProps(this.main, e)
-        let containers: any = { }
-        for(let i of data[e].items) {
-          if(!containers[i.container.start.line]) {
+
+    if (data && (this.displayMethod === 'default' || this.displayMethod === 'file')) {
+      for (const e of Object.keys(data)) {
+        const containers: any = { }
+        for (const i of data[e].items) {
+          if (!containers[i.container.start.line]) {
             containers[i.container.start.line] = {
               amount: 1,
-              container: i.container,
-              items: [i]
+              items: [i],
+              container: i.container
             }
           } else {
             containers[i.container.start.line].amount++
             containers[i.container.start.line].items.push(i)
           }
         }
-        
-        Object.keys(containers).forEach(c => {
-          let amount = containers[c].amount
-          let title = ''
-          if(props.title[amount]) title = props.title[amount]
-          else title = props.title['*']
-          if(!title || title === '') {
+
+        const props = Utils.getGroupProps(this.main, e)
+        for (const k of Object.keys(containers)) {
+          const c = containers[k]
+          let title = props.title[c.amount] || props.title['*']
+
+          if (!title) {
             window.showErrorMessage('Invalid title property for the "' + e + '" keyword')
             title = '{0}'
           }
-          title = title.replace('{0}', amount)
-          this.fileLenses.push(new CodeLens(containers[c].container, {
-            title: title,
+          title = title.replace(/\{0\}/, c.amount)
+
+          this.fileLenses.push(new CodeLens(c.container, {
+            title,
             command: this.main.getUUID() + 'provision.popup',
             arguments: [{
-              items: containers[c].items
+              items: c.items
             }]
           }))
-        })
-      })
+        }
+      }
     }
   }
 
-  public detailedUpdate(data?: any) {
+  public detailedUpdate (data?: any) {
     this.lenses = []
-    if(data && this.displayMethod === 'default' || this.displayMethod === 'detailed') {
-      Object.keys(data).forEach(e => {
-        let props = Utils.getGroupProps(this.main, e)
-        let containers: any = { }
-        for(let i of data[e].items) {
-          if(!containers[i.container.start.line]) {
+
+    if (data && (this.displayMethod === 'default' || this.displayMethod === 'detailed')) {
+      for (const e of Object.keys(data)) {
+        const containers: any = { }
+        for (const i of data[e].items) {
+          if (!containers[i.container.start.line]) {
             containers[i.container.start.line] = {
               amount: 1,
-              container: i.container,
-              items: [i]
+              items: [i],
+              container: i.container
             }
           } else {
             containers[i.container.start.line].amount++
@@ -74,51 +76,52 @@ export default class Lens implements CodeLensProvider {
           }
         }
         
-        Object.keys(containers).forEach(c => {
-          let amount = containers[c].amount
-          let title = ''
-          if(props.title[amount]) title = props.title[amount]
-          else title = props.title['*']
-          if(!title || title === '') {
+        const props = Utils.getGroupProps(this.main, e)
+        for (const k of Object.keys(containers)) {
+          const c = containers[k]
+          let title = props.title[c.amount] || props.title['*']
+
+          if (!title) {
             window.showErrorMessage('Invalid title property for the "' + e + '" keyword')
             title = '{0}'
           }
-          title = title.replace('{0}', amount)
-          this.register(containers[c].container, {
-            title: title,
+          title = title.replace(/\{0\}/, c.amount)
+
+          this.register(c.container, {
+            title,
             command: this.main.getUUID() + 'provision.popup',
             arguments: [{
-              items: containers[c].items
+              items: c.items
             }]
           })
-        })
-      })
+        }
+      }
     }
   }
 
-  public configChanged() {
+  public configChanged () {
     this.displayMethod = this.main.config.get('lens.displayMethod', 'default')
   }
 
-  public dispose() {
+  public dispose () {
     this.lenses = []
     this.fileLenses = []
   }
 
-  async provideCodeLenses(doc: TextDocument): Promise<CodeLens[] | null> {
-    return [...this.lenses, ...this.fileLenses]
+  async provideCodeLenses (): Promise<CodeLens[] | null> {
+    return this.lenses.concat(this.fileLenses)
   }
 
-  private register(range: Range, command: Command) {
-    if(range.start.line === 0 && this.fileLenses && !this.areFileLensesUpdated) {
+  private register (range: Range, command: Command) {
+    if (range.start.line === 0 && this.fileLenses && !this.areFileLensesUpdated) {
       this.areFileLensesUpdated = true
-      this.fileLenses.forEach(l => {
+      this.fileLenses.forEach((l, i) => {
         let c: Command | undefined = l.command
-        if(c) {
-          l.command = {
-            title: 'Total: ' + c.title,
+        if (c) {
+          this.fileLenses[i].command = {
+            command: c.command,
             arguments: c.arguments,
-            command: c.command
+            title: `Total: ${c.title}`
           }
         }
       })
