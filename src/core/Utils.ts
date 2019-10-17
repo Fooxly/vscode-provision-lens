@@ -1,3 +1,4 @@
+import { window } from 'vscode'
 import Main from './Main'
 import { Groups } from './structs/Settings'
 
@@ -37,5 +38,20 @@ export default class Utils {
       result = keywords[group]
     }
     return result
+  }
+  public static getTitle(group: string, object: any, amount: number): string {
+    let title = ''
+    if(object[amount]) title = object[amount]
+    else title = object['*']
+    if(!title || title === '') {
+      if(group.startsWith('groups.')) {
+        let kw = group.replace('groups.', '')
+        window.showErrorMessage('Invalid title property for the group with the keywords [' + kw.split('_').join(', ') + ']')
+      } else {
+        window.showErrorMessage('Invalid title property for the "' + group + '" keyword')
+      }
+      title = '{0}'
+    }
+    return title.replace('{0}', amount.toString())
   }
 }

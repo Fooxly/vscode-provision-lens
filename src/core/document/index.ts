@@ -106,14 +106,16 @@ export default class Document {
 
       if(!result[groupId])
         result[groupId] = {
+          keywords: [],
           amount: 0,
           items: [],
         }
 
       while(match = regex.exec(text)) {
         let pos: Position = doc.positionAt(match.index + doc.offsetAt(range.start))
-        let r: Range = new Range(pos, doc.positionAt(match.index + doc.offsetAt(range.start) + match[0].length))
+        let r: Range = new Range(pos, doc.positionAt(match.index + doc.offsetAt(range.start) + match[0].length - (keywords[keyword].includesColon ? 1 : 0)))
         result[groupId].amount++
+        if(result[groupId].keywords.indexOf(keyword) === -1) result[groupId].keywords.push(keyword)
         result[groupId].items.push({
           keyword: keyword,
           text: doc.lineAt(pos).text,
