@@ -42,8 +42,10 @@ export const Popup = (main: Main, args: any) => {
 
 export const List = (main: Main, data?: any) => {
   const items = []
-  for(const k in data) {
-    items.push(...data[k].items)
+  for (const k in data) {
+    if (data.hasOwnProperty(k)) {
+      items.push(...data[k].items)
+    }
   }
   Popup(main, { items })
 }

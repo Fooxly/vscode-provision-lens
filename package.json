@@ -43,13 +43,16 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [{
-			"command": "provision.help",
-			"title": "Help: Provision"
-		},{
-			"command": "provision.list",
-			"title": "Provision: List"
-		}],
+		"commands": [
+			{
+				"command": "provision.help",
+				"title": "Help: Provision"
+			},
+			{
+				"command": "provision.list",
+				"title": "Provision: List"
+			}
+		],
 		"configuration": {
 			"type": "object",
 			"title": "Provision",
@@ -107,9 +110,9 @@
 		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"@types/underscore": "^1.9.3",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^10.12.21",
+		"@types/underscore": "^1.9.3",
 		"tslint": "^5.20.0",
 		"typescript": "^3.6.4",
 		"vscode": "^1.1.36"

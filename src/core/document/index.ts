@@ -78,7 +78,7 @@ export default class Document {
         r.push(...DocumentUtils.getChildMembers(symbol))
       }
 
-      const result: any = { }
+      const result: any = {}
       for (const symbol of r) {
         const i = this.getDataInRange(symbol.range, this.editor.document)
         for (const e of Object.keys(i)) {
@@ -103,12 +103,13 @@ export default class Document {
 
     const text: string = doc.getText(range)
     if (text.length === 0) return
-    const result: any = { }
+    const result: any = {}
 
     const keywords: any = this.main.config.get('keywords', {})
     for (const keyword of Object.keys(keywords)) {
       const groupId: any = Utils.getGroup(this.main, keyword)
-      let match: RegExpExecArray | null, regex: RegExp = new RegExp(
+      let match: RegExpExecArray | null
+      const regex: RegExp = new RegExp(
         `\\b(${keywords[keyword].keyword}${keywords[keyword].includesColon ? ':' : ''})`,
         `${keywords[keyword].caseSensitive ? '' : 'i'}gm`
       )

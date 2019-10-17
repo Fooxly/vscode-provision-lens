@@ -20,7 +20,7 @@ export default class Lens implements CodeLensProvider {
 
     if (data && (this.displayMethod === 'default' || this.displayMethod === 'file')) {
       for (const e of Object.keys(data)) {
-        const containers: any = { }
+        const containers: any = {}
         for (const i of data[e].items) {
           if (!containers[i.container.start.line]) {
             containers[i.container.start.line] = {
@@ -56,7 +56,7 @@ export default class Lens implements CodeLensProvider {
 
     if (data && (this.displayMethod === 'default' || this.displayMethod === 'detailed')) {
       for (const e of Object.keys(data)) {
-        const containers: any = { }
+        const containers: any = {}
         for (const i of data[e].items) {
           if (!containers[i.container.start.line]) {
             containers[i.container.start.line] = {
