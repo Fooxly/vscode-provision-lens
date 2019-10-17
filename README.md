@@ -61,7 +61,6 @@ and/or classes to determine if there are any notes left.
 * Show pop-ups with every note inside a file/class/function
 * Jump directly to a note
 * View all of your notes in a long and complex file **instantly**
-* Jump to the next or previous note in a file
 
 ## 📙 &nbsp;How to use
 
@@ -69,10 +68,8 @@ Check out our [Getting Started](HELP.md) guide for more information.
 
 ## 📕 &nbsp;Commands
 
-* `Provision: Help` Instructions on how to create a new keyword or group
+* `Help: Provision` Instructions on how to create a new keyword or group
 * `Provision: List` Show all notes in the current file
-* `Provision: Previous Note` Move to the **previous** note based on your cursor position
-* `Provision: Next Note` Move to the **next** note based on your cursor position
 
 ## ⚙️ &nbsp;Available Settings
 
@@ -127,8 +124,6 @@ Check out our [Getting Started](HELP.md) guide for more information.
 
   * `keywords`: Array of keywords to group.
   * `title`: An object with the titles used for the amount of notes. `*` is used for every other amount.
-
-<!-- TODO: add examples -->
 
 ## License
 
