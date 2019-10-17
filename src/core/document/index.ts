@@ -24,7 +24,7 @@ export default class Document {
         this.detailedUpdate()
       }
     }, null, this.main.context.subscriptions)
-    
+
     workspace.onDidChangeTextDocument(e => {
       if (this.editor && e.document === this.editor.document) {
         this.update()

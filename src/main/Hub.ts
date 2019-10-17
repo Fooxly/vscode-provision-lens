@@ -10,7 +10,6 @@ export default class Hub extends Main implements DocumentListener {
   public document?: Document
   private lens?: Lens
   private data?: any
-  private isEnabled: boolean = true
 
   protected initialize () {
     this.document = new Document(this)
@@ -18,17 +17,6 @@ export default class Hub extends Main implements DocumentListener {
     this.lens = new Lens(this)
 
     this.registerCommand('provision.popup', args => BaseCommands.Popup(this, args), true)
-
-    this.registerCommand('provision.toggle.lens', () => {
-      this.isEnabled = !this.isEnabled
-      if(this.lens) this.lens.setEnabled(this.isEnabled)
-      if(this.isEnabled) {
-        if(this.document) {
-          this.document.update()
-          this.document.detailedUpdate()
-        }
-      }
-    }, false)
     
     // Provision wide commands
     commands.getCommands().then(e => {
