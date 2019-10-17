@@ -37,19 +37,7 @@ export default class Lens implements CodeLensProvider {
         const props = Utils.getGroupProps(this.main, e)
         for (const k of Object.keys(containers)) {
           const c = containers[k]
-          let title = props.title[c.amount] || props.title['*']
-
-          if (!title) {
-            if (e.startsWith('groups.')) {
-              window.showErrorMessage(
-                `Invalid title property for the group with the keywords [${e.replace(/groups./, '').split('_').join(', ')}]`
-              )
-            } else {
-              window.showErrorMessage(`Invalid title property for the "${e}" keyword`)
-            }
-            title = '{0}'
-          }
-          title = title.replace(/\{0\}/, c.amount)
+          const title = Utils.getTitle(e, props.title, c.amount)
 
           this.fileLenses.push(new CodeLens(c.container, {
             title,
@@ -85,19 +73,7 @@ export default class Lens implements CodeLensProvider {
         const props = Utils.getGroupProps(this.main, e)
         for (const k of Object.keys(containers)) {
           const c = containers[k]
-          let title = props.title[c.amount] || props.title['*']
-
-          if (!title) {
-            if (e.startsWith('groups.')) {
-              window.showErrorMessage(
-                `Invalid title property for the group with the keywords [${e.replace(/groups./, '').split('_').join(', ')}]`
-              )
-            } else {
-              window.showErrorMessage(`Invalid title property for the "${e}" keyword`)
-            }
-            title = '{0}'
-          }
-          title = title.replace(/\{0\}/, c.amount)
+          const title = Utils.getTitle(e, props.title, c.amount)
 
           this.register(c.container, {
             title,
