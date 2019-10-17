@@ -40,7 +40,13 @@ export default class Lens implements CodeLensProvider {
           let title = props.title[c.amount] || props.title['*']
 
           if (!title) {
-            window.showErrorMessage('Invalid title property for the "' + e + '" keyword')
+            if (e.startsWith('groups.')) {
+              window.showErrorMessage(
+                `Invalid title property for the group with the keywords [${e.replace(/groups./, '').split('_').join(', ')}]`
+              )
+            } else {
+              window.showErrorMessage(`Invalid title property for the "${e}" keyword`)
+            }
             title = '{0}'
           }
           title = title.replace(/\{0\}/, c.amount)
@@ -82,7 +88,13 @@ export default class Lens implements CodeLensProvider {
           let title = props.title[c.amount] || props.title['*']
 
           if (!title) {
-            window.showErrorMessage('Invalid title property for the "' + e + '" keyword')
+            if (e.startsWith('groups.')) {
+              window.showErrorMessage(
+                `Invalid title property for the group with the keywords [${e.replace(/groups./, '').split('_').join(', ')}]`
+              )
+            } else {
+              window.showErrorMessage(`Invalid title property for the "${e}" keyword`)
+            }
             title = '{0}'
           }
           title = title.replace(/\{0\}/, c.amount)

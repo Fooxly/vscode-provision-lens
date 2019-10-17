@@ -1,6 +1,6 @@
 <h1 align="center">
   <a title="Provision" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">
-    <img src="./assets/readme/provision.png" alt="Provision" height="150" />
+    <img src="https://www.fooxly.com/readme/provision.png" alt="Provision" height="150" />
   </a>
   <p>Provision: Lens</p>
   <p style="color: #A2A2A2; font-size: 18px;">The best way to keep your notes organized</p>
@@ -34,13 +34,13 @@ ext install fooxly.provision-lens
 
 <p>
   <a title="BuyMeACoffee" href="https://www.buymeacoffee.com/fooxly">
-    <img src="./assets/readme/buymeacoffee.png" alt="BuyMeACoffee" width="25%" style="max-width: 180px" />
+    <img src="https://www.fooxly.com/readme/buymeacoffee.png" alt="BuyMeACoffee" width="25%" style="max-width: 180px" />
   </a>&nbsp;&nbsp;
   <a title="Patreon" href="https://www.patreon.com">
-    <img src="./assets/readme/patreon.png" alt="Patreon" width="25%" style="max-width: 180px"/>
+    <img src="https://www.fooxly.com/readme/patreon.png" alt="Patreon" width="25%" style="max-width: 180px"/>
   </a>&nbsp;&nbsp;
   <a title="PayPal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE">
-    <img src="./assets/readme/paypal.png" alt="PayPal" width="25%" style="max-width: 180px" />
+    <img src="https://www.fooxly.com/readme/paypal.png" alt="PayPal" width="25%" style="max-width: 180px" />
   </a>
 </p>
 

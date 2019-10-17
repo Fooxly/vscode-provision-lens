@@ -52,10 +52,11 @@ export default class Utils {
 
     if (!title) {
       if (group.startsWith('groups.')) {
-        const kw = group.replace(/groups./, '')
-        window.showErrorMessage('Invalid title property for the group with the keywords [' + kw.split('_').join(', ') + ']')
+        window.showErrorMessage(
+          `Invalid title property for the group with the keywords [${group.replace(/groups./, '').split('_').join(', ')}]`
+        )
       } else {
-        window.showErrorMessage('Invalid title property for the "' + group + '" keyword')
+        window.showErrorMessage(`Invalid title property for the "${group}" keyword`)
       }
       title = '{0}'
     }

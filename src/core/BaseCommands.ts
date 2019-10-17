@@ -5,6 +5,7 @@ import Main from './Main'
 
 export const Popup = (main: Main, args: any) => {
   if (args.items) {
+    if (args.items.length === 0) return
     if (args.items.length === 1 && main.config.get('moveOnSingle', true)) {
       return DocumentUtils.moveToLine(args.items[0].range.start.line)
     }
@@ -45,7 +46,6 @@ export const List = (main: Main, data?: any) => {
   }
   Popup(main, { items })
 }
-
 
 export const Help = () => {
   let col: ViewColumn = ViewColumn.One
