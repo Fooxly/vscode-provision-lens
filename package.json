@@ -49,6 +49,9 @@
 		},{
 			"command": "provision.list",
 			"title": "Provision: List"
+		},{
+			"command": "provision.toggle.lens",
+			"title": "Provision: Toggle Lens"
 		}],
 		"configuration": {
 			"type": "object",

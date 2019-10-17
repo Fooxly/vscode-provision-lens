@@ -9,6 +9,7 @@ export default class Lens implements CodeLensProvider {
   private fileLenses: CodeLens[] = []
   private displayMethod: string = 'default'
   private areFileLensesUpdated: boolean = false
+  private isEnabled: boolean = true
 
   constructor (main: Hub) {
     this.main = main
@@ -16,6 +17,9 @@ export default class Lens implements CodeLensProvider {
 
   public update (data?: any) {
     this.fileLenses = []
+
+    if(!this.isEnabled) return
+
     this.areFileLensesUpdated = false
 
     if (data && (this.displayMethod === 'default' || this.displayMethod === 'file')) {
@@ -63,7 +67,15 @@ export default class Lens implements CodeLensProvider {
     }
   }
 
-  public detailedUpdate (data?: any) {
+  public setEnabled(val: boolean) {
+    this.isEnabled = val
+    if(!this.isEnabled) {
+      this.lenses = []
+      this.fileLenses = []
+    }
+  }
+
+  public detailedUpdate(data?: any) {
     this.lenses = []
 
     if (data && (this.displayMethod === 'default' || this.displayMethod === 'detailed')) {
