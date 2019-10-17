@@ -29,11 +29,6 @@ export default class Hub extends Main implements DocumentListener {
   }
 
   protected configChanged() {
-    let m: string[] = this.config.get<string[]>('modules', [])
-    if(!m.length || m.indexOf(this.UUID)  === -1) {
-      m.push(this.UUID)
-    }
-    this.config.update('modules', m, ConfigurationTarget.Global)
     if(this.lens) this.lens.configChanged()
   }
 
