@@ -8,6 +8,8 @@ import { DocumentListener } from '../core/document/DocumentListener'
 export default class Hub extends Main implements DocumentListener {
   public document?: Document
   private lens?: Lens
+  private data?: any
+
   protected initialize() {
     this.document = new Document(this)
     this.document.addListener(this)
@@ -19,6 +21,7 @@ export default class Hub extends Main implements DocumentListener {
     commands.getCommands().then(e => {
       if(e.indexOf('provision.help') === -1) {
         this.registerCommand('provision.help', args => BaseCommands.Help(this, args), false)
+        this.registerCommand('provision.list', () => BaseCommands.List(this, this.data), false)
       }
     })
     
@@ -37,6 +40,7 @@ export default class Hub extends Main implements DocumentListener {
    }
 
   public update(data?: any) {
+    this.data = data
     if(this.lens) this.lens.update(data)
   }
 

@@ -40,6 +40,16 @@ export const Popup = (main: Main, args: any) => {
   }
 }
 
+export const List = (main: Main, data?: any) => {
+  let items = []
+  for(let k in data) {
+    items.push(...data[k].items)
+  }
+  Popup(main, {
+    items
+  })
+}
+
 export const Help = (main: Main, args: any) => {
   let col: ViewColumn = ViewColumn.One
   if(window.activeTextEditor && window.activeTextEditor.viewColumn) col = window.activeTextEditor.viewColumn
@@ -75,5 +85,6 @@ export const Help = (main: Main, args: any) => {
 
 export default {
   Popup,
+  List,
   Help
 }
