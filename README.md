@@ -107,6 +107,7 @@ Check out our [Getting Started](HELP.md) guide for more information.
   }]
   ```
 
+  * `keyword`: TODO
   * `caseSensitive` *(optional)*: Whether or not the keyword needs to be case sensitive. (`true` by default)
   * `includesColon` *(optional)*: Whether or not the keyword is only valid with a colon sign suffix. (`true` by default)
   * `title` *(optional)*: An object with the titles used for the amount of notes. `*` is used for every other amount.
