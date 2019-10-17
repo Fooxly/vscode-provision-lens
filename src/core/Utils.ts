@@ -27,23 +27,23 @@ export default class Utils {
   }
 
   public static getGroupProps (main: Main, group: string) {
-    let groups: Groups[] = main.config.get<Groups[]>('groups', [])
-    let keywords: any = main.config.get('keywords', {})
-    let result: any = {}
+    const groups: Groups[] = main.config.get<Groups[]>('groups', [])
+    const keywords: any = main.config.get('keywords', {})
 
-    if(group.startsWith('groups.')) {
-      for(let g of groups) {
-        if('groups.' + g.keywords.join('_') === group) {
+    let result: any
+    if (group.startsWith('groups.')) {
+      for (const g of groups) {
+        if (`groups.${g.keywords.join('_')}` === group) {
           result = g
           // Get props from the first keyword if their info is missing inside the group
-          if(!g.title) result.title = keywords[g.keywords[0]].title
-          if(!g.tooltip) result.tooltip = keywords[g.keywords[0]].tooltip
+          if (!g.title) result.title = keywords[g.keywords[0]].title
+          if (!g.tooltip) result.tooltip = keywords[g.keywords[0]].tooltip
           break
         }
       }
-    } else {
-      result = keywords[group]
     }
+
+    if (!result) return keywords[group]
     return result
   }
 
