@@ -1,11 +1,8 @@
 {
 	"name": "vscode-provision-lens",
 	"displayName": "Provision Lens",
+	"version": "0.1.0",
 	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
-	"author": "Fooxly",
-	"publisher": "Fooxly",
-	"license": "MIT",
-	"icon": "assets/icon.png",
 	"keywords": [
 		"fooxly",
 		"vscode",
@@ -27,13 +24,41 @@
 		"url": "https://github.com/Fooxly/vscode-provision-lens/issues",
 		"email": "bugs@fooxly.com"
 	},
+	"license": "MIT",
+	"author": "Fooxly <info@fooxly.com> (https://developers.fooxly.com/)",
+	"main": "./out/extension.js",
+	"engines": {
+		"pnpm": "^4",
+		"yarn": "^1",
+		"node": "^10",
+		"vscode": "^1.39.0"
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn compile",
+		"compile": "tsc -p ./ && yarn minify",
+		"minify": "uglifyjs-folder -e -x .js -o out out",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "yarn compile && node ./node_modules/vscode/bin/test"
+	},
+	"dependencies": {
+		"underscore": "^1.9.1"
+	},
+	"devDependencies": {
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^10.12.21",
+		"@types/underscore": "^1.9.3",
+		"tslint": "^5.20.0",
+		"typescript": "^3.6.4",
+		"uglify-js": "^3.6.2",
+		"uglifyjs-folder": "^1.5.1",
+		"vscode": "^1.1.36"
+	},
+	"publisher": "Fooxly",
+	"icon": "assets/icon.png",
 	"galleryBanner": {
 		"color": "#272729",
 		"theme": "dark"
-	},
-	"version": "0.1.0",
-	"engines": {
-		"vscode": "^1.39.0"
 	},
 	"categories": [
 		"Other"
@@ -41,7 +66,6 @@
 	"activationEvents": [
 		"*"
 	],
-	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
@@ -101,23 +125,5 @@
 				}
 			}
 		}
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"postinstall": "node ./node_modules/vscode/bin/install",
-		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
-	},
-	"devDependencies": {
-		"@types/mocha": "^5.2.7",
-		"@types/node": "^10.12.21",
-		"@types/underscore": "^1.9.3",
-		"tslint": "^5.20.0",
-		"typescript": "^3.6.4",
-		"vscode": "^1.1.36"
-	},
-	"dependencies": {
-		"underscore": "^1.9.1"
 	}
 }
