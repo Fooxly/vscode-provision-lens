@@ -25,7 +25,7 @@
 		"email": "bugs@fooxly.com"
 	},
 	"license": "MIT",
-	"author": "Fooxly <info@fooxly.com> (https://developers.fooxly.com/)",
+	"author": "Fooxly <hello@fooxly.com> (https://developers.fooxly.com/)",
 	"main": "./out/extension.js",
 	"engines": {
 		"pnpm": "^4",
