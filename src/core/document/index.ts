@@ -109,8 +109,9 @@ export default class Document {
     for (const keyword of Object.keys(keywords)) {
       const groupId: any = Utils.getGroup(this.main, keyword)
       let match: RegExpExecArray | null
+      let kw = keywords[keyword].keyword ? keywords[keyword].keyword : keyword
       const regex: RegExp = new RegExp(
-        `\\b(${keywords[keyword].keyword}${keywords[keyword].includesColon ? ':' : ''})`,
+        `\\b(${kw}${keywords[keyword].includesColon ? ':' : ''})`,
         `${keywords[keyword].caseSensitive ? '' : 'i'}gm`
       )
 
