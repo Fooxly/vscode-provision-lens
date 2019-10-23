@@ -1,8 +1,9 @@
 {
 	"name": "vscode-provision-lens",
 	"displayName": "Provision Lens",
-	"version": "0.1.2",
+	"author": "Fooxly <hello@fooxly.com> (https://developers.fooxly.com/)",
 	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
+	"version": "0.1.2",
 	"keywords": [
 		"fooxly",
 		"vscode",
@@ -25,7 +26,6 @@
 		"email": "bugs@fooxly.com"
 	},
 	"license": "MIT",
-	"author": "Fooxly <hello@fooxly.com> (https://developers.fooxly.com/)",
 	"main": "./out/extension.js",
 	"engines": {
 		"pnpm": "^4",
