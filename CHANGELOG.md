@@ -1,9 +1,9 @@
 # Change Log
 
-All notable changes to the "vscode-provision-lens" extension will be documented in this file.
+## Version 3.0.0
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### Whats new?
 
-## [Unreleased]
-
-- Initial release
+- We have made many changes to the core for a more optimized experience.
+- The keyword and group setup has been deeply rethought for a better user experience and an easier start.
+- Introducing a manual to help users with many problems. (This will keep being updated if there is any confusion)  
