@@ -96,12 +96,12 @@ Check out our [Getting Started]("https://packages.fooxly.com/provision/manual") 
   ```json
   "provision.keywords": {
     "NOTE": {
-      "keyword": "NOTE",
-      "caseSensitive": true,
-      "includesColon": true,
+      "keyword": <"string">,
+      "caseSensitive": <true|false>,
+      "includesColon": <true|false>,
       "title": {
-        "1": "{0} Note",
-        "*": "{0} Notes"
+        "1": <"string">,
+        "*": <"string">
       }
     }
   }]
@@ -110,22 +110,22 @@ Check out our [Getting Started]("https://packages.fooxly.com/provision/manual") 
   * `keyword` *(optional)*: If the keyword needs to be different from the keywords object key, if it is not set the keywords object key will be used.
   * `caseSensitive` *(optional)*: Whether or not the keyword needs to be case sensitive. (`true` by default)
   * `includesColon` *(optional)*: Whether or not the keyword is only valid with a colon sign suffix. (`true` by default)
-  * `title` *(optional)*: An object with the titles used for the amount of notes. `*` is used for every other amount.
+  * `title` *(optional)*: An object with the titles used for the amount of notes. `*` is used for every other amount. To show the amount use `{0}` inside the string.
 
 * `provision.groups`: Keyword groups to use
 
   ```json
   "provision.groups": [{
-    "keywords": ["TODO", "FIXME"],
+    "keywords": [<"keyword">, <"keyword">],
     "title": {
-      "1": "{0} TODO",
-      "*": "{0} TODO's"
+      "1": <"string">,
+      "*": <"string">
     }
   }]
   ```
 
   * `keywords`: Array of keywords to group.
-  * `title`: An object with the titles used for the amount of notes. `*` is used for every other amount.
+  * `title`: An object with the titles used for the amount of notes. `*` is used for every other amount. To show the amount use `{0}` inside the string.
 
 ## License
 
