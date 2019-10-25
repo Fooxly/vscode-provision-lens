@@ -36,7 +36,7 @@ ext install fooxly.provision-lens
   <a title="BuyMeACoffee" href="https://www.buymeacoffee.com/fooxly">
     <img src="https://www.fooxly.com/readme/buymeacoffee.png" alt="BuyMeACoffee" width="25%" style="max-width: 180px" />
   </a>&nbsp;&nbsp;
-  <a title="Patreon" href="https://www.patreon.com">
+  <a title="Patreon" href="https://www.patreon.com/fooxly">
     <img src="https://www.fooxly.com/readme/patreon.png" alt="Patreon" width="25%" style="max-width: 180px"/>
   </a>&nbsp;&nbsp;
   <a title="PayPal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE">
@@ -64,7 +64,7 @@ and/or classes to determine if there are any notes left.
 
 ## 📙 &nbsp;How to use
 
-Check out our [Getting Started](HELP.md) guide for more information.
+Check out our [Getting Started]("https://packages.fooxly.com/provision/manual") guide or use `Help: Provision` for more information.
 
 ## 📕 &nbsp;Commands
 
