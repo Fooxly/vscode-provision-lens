@@ -1,4 +1,4 @@
-import { ExtensionContext, workspace } from 'vscode'
+import { ExtensionContext, workspace, ConfigurationTarget } from 'vscode'
 import Hub from './main/Hub'
 
 let hub: Hub
@@ -27,7 +27,7 @@ function convert() {
 			includesColon: oldKeywords[ok].useColons ? oldKeywords[ok].useColons : true,
 		}
 	}
-	current.update('keywords', keywords)
+	current.update('keywords', keywords, ConfigurationTarget.Global)
 	const groups: any = []
 	const oldGroups: any = old.get('groups', [])
 	for(const og of oldGroups) {
@@ -39,5 +39,5 @@ function convert() {
 			}
 		})
 	}
-	current.update('groups', groups)
+	current.update('groups', groups, ConfigurationTarget.Global)
 }
