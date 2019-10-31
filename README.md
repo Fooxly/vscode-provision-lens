@@ -32,6 +32,8 @@ ext install fooxly.provision-lens
 
 ## Support us &nbsp;❤
 
+> <span style="color:#32CD32">**40%**</span> of the revenue made from the support you give us, will be donated to a [charity](https://teamtrees.org)
+
 <p>
   <a title="BuyMeACoffee" href="https://www.buymeacoffee.com/fooxly">
     <img src="https://www.fooxly.com/readme/buymeacoffee.png" alt="BuyMeACoffee" width="25%" style="max-width: 180px" />
