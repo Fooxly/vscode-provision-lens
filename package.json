@@ -14,7 +14,8 @@
 		"notes",
 		"keyword",
 		"lens",
-		"codelens"
+		"codelens",
+		"provision"
 	],
 	"homepage": "https://github.com/Fooxly/vscode-provision-lens",
 	"repository": {
