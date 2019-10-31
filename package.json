@@ -3,7 +3,7 @@
 	"displayName": "Provision Lens",
 	"author": "Fooxly <hello@fooxly.com> (https://developers.fooxly.com/)",
 	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
-	"version": "0.1.3",
+	"version": "0.1.5",
 	"keywords": [
 		"fooxly",
 		"vscode",
@@ -94,22 +94,11 @@
 				"provision.groups": {
 					"type": "array",
 					"title": "Keyword groups",
-					"description": "Keyword groups to use",
+					"description": "Group certain keywords together with one title and tooltip",
 					"items": {
 						"type": "object",
 						"title": "Keyword group"
 					}
-				},
-				"provision.lens.displayMethod": {
-					"type": "string",
-					"enum": [
-						"default",
-						"file",
-						"detailed"
-					],
-					"title": "Display method used for the lenses",
-					"description": "Display method used for the lenses inside your files",
-					"default": "default"
 				},
 				"provision.popup.sorting": {
 					"type": "string",
@@ -121,6 +110,17 @@
 					"title": "Pop-up sorting method",
 					"description": "Sorting method used to order the pop-up items",
 					"default": "line_numbers_asc"
+				},
+				"provision.lens.displayMethod": {
+					"type": "string",
+					"enum": [
+						"default",
+						"file",
+						"detailed"
+					],
+					"title": "Lens display method",
+					"description": "Display method used for the lenses inside your files",
+					"default": "default"
 				}
 			}
 		}

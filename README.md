@@ -1,6 +1,6 @@
 <h1 align="center">
   <a title="Provision" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">
-    <img src="https://www.fooxly.com/readme/provision.png" alt="Provision" height="150" />
+    <img src="https://developer.fooxly.com/provision/assets/images/icon.png" alt="Provision" height="150" />
   </a>
   <p>Provision: Lens</p>
   <p style="color: #A2A2A2; font-size: 18px;">The best way to keep your notes organized</p>
@@ -16,7 +16,7 @@
 [![Version](https://vsmarketplacebadge.apphb.com/version-short/fooxly.provision-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/fooxly.provision-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens)
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/fooxly.provision-lens.svg)](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens)
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/Fooxly/vscode-provision-lens/blob/master/LICENSE)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 <br />
@@ -36,13 +36,13 @@ ext install fooxly.provision-lens
 
 <p>
   <a title="BuyMeACoffee" href="https://www.buymeacoffee.com/fooxly">
-    <img src="https://www.fooxly.com/readme/buymeacoffee.png" alt="BuyMeACoffee" width="25%" style="max-width: 180px" />
+    <img src="https://developer.fooxly.com/general/assets/images/buymeacoffee.png" alt="BuyMeACoffee" width="25%" style="max-width: 180px" />
   </a>&nbsp;&nbsp;
   <a title="Patreon" href="https://www.patreon.com/fooxly">
-    <img src="https://www.fooxly.com/readme/patreon.png" alt="Patreon" width="25%" style="max-width: 180px"/>
+    <img src="https://developer.fooxly.com/general/assets/images/patreon.png" alt="Patreon" width="25%" style="max-width: 180px"/>
   </a>&nbsp;&nbsp;
   <a title="PayPal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE">
-    <img src="https://www.fooxly.com/readme/paypal.png" alt="PayPal" width="25%" style="max-width: 180px" />
+    <img src="https://developer.fooxly.com/general/assets/images/paypal.png" alt="PayPal" width="25%" style="max-width: 180px" />
   </a>
 </p>
 
@@ -66,7 +66,7 @@ and/or classes to determine if there are any notes left.
 
 ## 📙 &nbsp;How to use
 
-Check out our [Getting Started]("https://packages.fooxly.com/provision/manual") guide or use `Help: Provision` for more information.
+Check out our [Getting Started]("https://developer.fooxly.com/extensions/provision/guide") guide or use `Help: Provision` for more information.
 
 ## 📕 &nbsp;Commands
 
@@ -106,15 +106,15 @@ Check out our [Getting Started]("https://packages.fooxly.com/provision/manual") 
         "*": <"string">
       }
     }
-  }]
+  }
   ```
 
   * `keyword` *(optional)*: If the keyword needs to be different from the keywords object key, if it is not set the keywords object key will be used.
   * `caseSensitive` *(optional)*: Whether or not the keyword needs to be case sensitive. (`true` by default)
   * `includesColon` *(optional)*: Whether or not the keyword is only valid with a colon sign suffix. (`true` by default)
-  * `title` *(optional)*: An object with the titles used for the amount of notes. `*` is used for every other amount. To show the amount use `{0}` inside the string.
+  * `title` *(optional)*: An object with the titles used for the amount of notes. `*` is the fallback text if the specific number is not listed. To show the amount use `{0}` inside the string.
 
-* `provision.groups`: Keyword groups to use
+* `provision.groups`: Group certain keywords together with one title and tooltip
 
   ```json
   "provision.groups": [{
@@ -127,8 +127,8 @@ Check out our [Getting Started]("https://packages.fooxly.com/provision/manual") 
   ```
 
   * `keywords`: Array of keywords to group.
-  * `title`: An object with the titles used for the amount of notes. `*` is used for every other amount. To show the amount use `{0}` inside the string.
+  * `title`: An object with the titles used for the amount of notes. `*` is the fallback text if the specific number is not listed. To show the amount use `{0}` inside the string.
 
 ## License
 
-[MIT](LICENSE) &copy; Fooxly
+[MIT](https://github.com/Fooxly/vscode-provision-lens/blob/master/LICENSE) &copy; Fooxly

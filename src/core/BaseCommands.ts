@@ -78,7 +78,7 @@ export const Help = () => {
       </style>
   </head>
   <body>
-      <iframe src="https://packages.fooxly.com/provision/manual" width="100%" height="100%" />
+      <iframe src="https://developer.fooxly.com/extensions/provision/guide" width="100%" height="100%" />
   </body>
   </html>`
 }
