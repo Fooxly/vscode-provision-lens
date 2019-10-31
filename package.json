@@ -1,7 +1,7 @@
 {
 	"name": "provision-lens",
 	"displayName": "Provision Lens",
-	"author": "Fooxly <hello@fooxly.com> (https://developers.fooxly.com/)",
+	"author": "Fooxly <hello@fooxly.com> (https://developer.fooxly.com/)",
 	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
 	"version": "0.1.5",
 	"keywords": [
