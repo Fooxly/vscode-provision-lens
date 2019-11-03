@@ -66,7 +66,7 @@ and/or classes to determine if there are any notes left.
 
 ## 📙 &nbsp;How to use
 
-Check out our [Getting Started]("https://developer.fooxly.com/extensions/provision/guide") guide or use `Help: Provision` for more information.
+Check out our [Getting Started](https://developer.fooxly.com/extensions/provision/guide) guide or use `Help: Provision` for more information.
 
 ## 📕 &nbsp;Commands
 
