@@ -30,9 +30,9 @@ ext install fooxly.provision-lens
 * Even quicker load and response times 🚀
 * Easier configuration
 
-## Support us &nbsp;❤
+## :heart:&nbsp; Support us
 
-> <span style="color:#32CD32">**40%**</span> of the revenue made from the support you give us, will be donated to a [charity](https://teamtrees.org)
+> About **40%** of your donation goes to one of the charities we support. For further information or questions please visit [our website](https://www.fooxly.com/charity) or contact us via [charity@fooxly.com](mailto:charity@fooxly.com).
 
 <p>
   <a title="BuyMeACoffee" href="https://www.buymeacoffee.com/fooxly">
