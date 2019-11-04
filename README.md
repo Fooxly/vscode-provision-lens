@@ -30,19 +30,19 @@ ext install fooxly.provision-lens
 * Even quicker load and response times 🚀
 * Easier configuration
 
-## :heart:&nbsp; Support us
+## ❤️&nbsp; Support us
 
 > About **40%** of your donation goes to one of the charities we support. For further information or questions please visit [our website](https://www.fooxly.com/charity) or contact us via [charity@fooxly.com](mailto:charity@fooxly.com).
 
 <p>
   <a title="BuyMeACoffee" href="https://www.buymeacoffee.com/fooxly">
-    <img src="https://developer.fooxly.com/general/assets/images/buymeacoffee.png" alt="BuyMeACoffee" width="25%" style="max-width: 180px" />
+    <img src="https://developer.fooxly.com/general/assets/images/buymeacoffee.png" alt="BuyMeACoffee" width="300px" style="max-width: 180px" />
   </a>&nbsp;&nbsp;
   <a title="Patreon" href="https://www.patreon.com/fooxly">
-    <img src="https://developer.fooxly.com/general/assets/images/patreon.png" alt="Patreon" width="25%" style="max-width: 180px"/>
+    <img src="https://developer.fooxly.com/general/assets/images/patreon.png" alt="Patreon" width="300px" style="max-width: 180px"/>
   </a>&nbsp;&nbsp;
   <a title="PayPal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE">
-    <img src="https://developer.fooxly.com/general/assets/images/paypal.png" alt="PayPal" width="25%" style="max-width: 180px" />
+    <img src="https://developer.fooxly.com/general/assets/images/paypal.png" alt="PayPal" width="300px" style="max-width: 180px" />
   </a>
 </p>
 

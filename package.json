@@ -3,7 +3,7 @@
 	"displayName": "Provision Lens",
 	"author": "Fooxly <hello@fooxly.com> (https://developer.fooxly.com/)",
 	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"keywords": [
 		"fooxly",
 		"vscode",
