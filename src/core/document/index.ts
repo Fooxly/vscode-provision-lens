@@ -125,7 +125,7 @@ export default class Document {
 
       while (match = regex.exec(text)) {
         const pos: Position = doc.positionAt(match.index + doc.offsetAt(range.start))
-        const r: Range = new Range(pos, doc.positionAt(match.index + doc.offsetAt(range.start) + match[0].length - (keywords[keyword].includesColon ? 1 : 0)))
+        const r: Range = new Range(pos, doc.positionAt(match.index + doc.offsetAt(range.start) + match[0].length - (ic ? 1 : 0)))
 
         if (result[groupId].keywords.indexOf(keyword) === -1) result[groupId].keywords.push(keyword)
 

@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 3.0.3
+
+### Whats new?
+
+- Core optimizations
+
 ## Version 3.0.2
 
 ### Whats new?
