@@ -1,5 +1,18 @@
 # Change Log
 
+## Version 3.0.2
+
+### Whats new?
+
+- Set the default value for caseSensitive and includesColon to true.
+- We transfered our assets to another domain.
+
+## Version 3.0.1
+
+### Whats new?
+
+- We noticed some small errors inside the readme, these got removed.
+
 ## Version 3.0.0
 
 ### Whats new?

@@ -1,6 +1,6 @@
 <h1 align="center">
   <a title="Provision" href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">
-    <img src="https://developer.fooxly.com/provision/assets/images/icon.png" alt="Provision" height="150" />
+    <img src="https://assets.fooxly.com/extensions/provision/general/icon.png" alt="Provision" height="150" />
   </a>
   <p>Provision: Lens</p>
   <p style="color: #A2A2A2; font-size: 18px;">The best way to keep your notes organized</p>
@@ -25,6 +25,12 @@
 ext install fooxly.provision-lens
 ```
 
+<br />
+<p align="center">
+  <img src="https://assets.fooxly.com/extensions/provision/lens/example.gif" alt="Preview" width="400" />
+</p>
+<br />
+
 ## What's new in Provision: Lens 3
 
 * Even quicker load and response times 🚀
@@ -36,13 +42,13 @@ ext install fooxly.provision-lens
 
 <p>
   <a title="BuyMeACoffee" href="https://www.buymeacoffee.com/fooxly">
-    <img src="https://developer.fooxly.com/general/assets/images/buymeacoffee.png" alt="BuyMeACoffee" width="180" height="43" />
+    <img src="https://assets.fooxly.com/third_party/buymeacoffee.png" alt="BuyMeACoffee" width="180" height="43" />
   </a>&nbsp;&nbsp;
   <a title="Patreon" href="https://www.patreon.com/fooxly">
-    <img src="https://developer.fooxly.com/general/assets/images/patreon.png" alt="Patreon" width="180" height="43" />
+    <img src="https://assets.fooxly.com/third_party/patreon.png" alt="Patreon" width="180" height="43" />
   </a>&nbsp;&nbsp;
   <a title="PayPal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3GEYSYZFXV9GE">
-    <img src="https://developer.fooxly.com/general/assets/images/paypal.png" alt="PayPal" width="180" height="43" />
+    <img src="https://assets.fooxly.com/third_party/paypal.png" alt="PayPal" width="180" height="43" />
   </a>
 </p>
 
