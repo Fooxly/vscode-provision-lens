@@ -42,7 +42,7 @@
 		"test": "yarn compile && node ./node_modules/vscode/bin/test"
 	},
 	"dependencies": {
-		"underscore": "^1.9.1"
+		"underscore": "^1.12.1"
 	},
 	"devDependencies": {
 		"@types/mocha": "^5.2.7",
