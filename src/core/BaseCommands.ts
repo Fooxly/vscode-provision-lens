@@ -1,6 +1,5 @@
 import DocumentUtils from './document/DocumentUtils'
 import { QuickPickItem, window, ViewColumn } from 'vscode'
-import { sortBy } from 'underscore'
 import Main from './Main'
 
 export const Popup = (main: Main, args: any) => {
@@ -20,11 +19,11 @@ export const Popup = (main: Main, args: any) => {
     }
     switch (main.config.get<string>('popup.sorting', 'line_numbers_asc')) {
       case 'line_numbers_asc': {
-        quickpick = sortBy(quickpick, (r: any) => Number(r.label), ['asc'])
+        quickpick = quickpick.sort((a, b) => parseInt(a.label, 10) - parseInt(b.label, 10))
         break
       }
       case 'line_numbers_desc': {
-        quickpick = sortBy(quickpick, (r: any) => Number(r.label), ['asc'])
+        quickpick = quickpick.sort((a, b) => parseInt(b.label, 10) - parseInt(a.label, 10))
         break
       }
     }
