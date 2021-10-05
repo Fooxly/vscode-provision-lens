@@ -1,0 +1,124 @@
+{
+  	"name": "vscode-provision-lens",
+	"displayName": "ProVision: Lens",
+	"author": "Fooxly <hello@fooxly.com> (https://developer.fooxly.com/)",
+	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
+	"version": "3.0.4",
+    "homepage": "https://github.com/Fooxly/vscode-provision-lens",
+	"publisher": "Fooxly",
+	"icon": "assets/icon.png",
+    "galleryBanner": {
+		"color": "#272729",
+		"theme": "dark"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Fooxly/vscode-provision-lens.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Fooxly/vscode-provision-lens/issues",
+		"email": "bugs@fooxly.com"
+	},
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.60.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "ProVision.help",
+				"title": "Help: ProVision"
+			}
+		],
+        "configuration": {
+            "type": "object",
+            "title": "ProVision",
+            "properties": {
+				"ProVision.keywords": {
+                    "type": "object",
+                    "title": "Keywords",
+                    "description": "Keywords to look for with a specific configuration.",
+					"default": {
+						"TODO": {
+							"group": "notes",
+							"color": "#fff",
+							"backgroundColor": "#f2b01f",
+							"overviewRulerColor": "rgba(242, 176, 31, 0.8)",
+							"overviewRulerLane": 4
+						},
+						"FIXME": {
+							"group": "notes",
+							"color": "#fff",
+							"backgroundColor": "#d85f88",
+							"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
+							"overviewRulerLane": 4
+						},
+						"NOTE": {
+							"group": "notes",
+							"color": "#aaa",
+							"backgroundColor": "#434343",
+							"overviewRulerColor": "rgba(67, 67, 67, 0.8)",
+							"overviewRulerLane": 4
+						}
+					}
+                },
+                "ProVision.groups": {
+                    "type": "object",
+                    "title": "Keyword Groups",
+                    "description": "Groups in which the keywords will be divided."
+                },
+                "ProVision.list.moveOnSingleResult": {
+                    "type": "boolean",
+                    "title": "Move On Single Result",
+                    "description": "Jump to the note instantly when there are is only 1 result.",
+                    "default": true
+                },
+				"ProVision.lens.scope": {
+					"type": "string",
+					"enum": [
+						"file",
+						"functions",
+						"both"
+					],
+					"title": "Scope",
+					"description": "Where the lenses should be placed",
+					"default": "both"
+				}
+            }
+        }
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"test-compile": "tsc -p ./",
+		"test-watch": "tsc -watch -p ./",
+		"pretest": "yarn run test-compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.60.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0",
+		"ts-loader": "^8.0.14",
+		"webpack": "^5.19.0",
+		"webpack-cli": "^4.4.0"
+	}
+}

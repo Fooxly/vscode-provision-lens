@@ -1,0 +1,3 @@
+[submodule "src/ProVision"]
+	path = src/ProVision
+	url = git@github.com:Fooxly/ProVision-Core.git
