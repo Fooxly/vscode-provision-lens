@@ -160,7 +160,11 @@ Every keyword which has the **group** property will be searched for and added to
 
 ### ProVision: Lens
 
-[**ProVision: Lens**](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens)
+[**ProVision: Lens**](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens) provides **easy to use** Code Lenses. When opening a file it will search for the provided keywords and show you a simple overview of your notes. When clicking on a group you get an overview of all your notes in the specified group.
+
+#### Groups
+
+Every keyword which has the **group** property will be searched for and added to the statusbar. If you would like to add custom styling for the group you can use the [ProVision.groups](#groups-property) property which is explained above.
 
 ## Useful information
 

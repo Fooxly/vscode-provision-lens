@@ -35,6 +35,14 @@
 			{
 				"command": "ProVision.help",
 				"title": "Help: ProVision"
+			},
+			{
+				"command": "ProVision.listAll",
+				"title": "ProVision: List All"
+			},
+			{
+				"command": "ProVision.listGroup",
+				"title": "ProVision: List Group"
 			}
 		],
         "configuration": {
