@@ -6,10 +6,10 @@
   <p style="color: #A2A2A2; font-size: 18px;">The best way to keep your notes organized</p>
   <br>
   <p style="color: #3366BB; font-size: 14px; font-weight: normal;">
-    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision">Provision Bundle</a>&nbsp;&nbsp;&nbsp;
-    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">Provision: Lens</a>&nbsp;&nbsp;&nbsp;
-    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">Provision: Bar</a>&nbsp;&nbsp;&nbsp;
-    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-syntax">Provision: Syntax</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision">ProVision Bundle</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-lens">ProVision: Lens</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar">ProVision: Bar</a>&nbsp;&nbsp;&nbsp;
+    <a href="https://marketplace.visualstudio.com/items?itemName=fooxly.provision-syntax">ProVision: Syntax</a>
   </p>
 </h1>
 <br/>
@@ -110,7 +110,7 @@ Now let us explain the properties to you. All of the properties are **optional**
 - `title`: This can be a string or object to specify the title which will be shown to you.
 - `tooltip`: Shown when hovering over the statusbar and code lens item.
 
-**Provision: Bar specific properties:**
+**ProVision: Bar specific properties:**
 
 - `foregroundStyle`: Adds a foreground color to the statusbar item.<br/>
 **Note:** Hex codes or [Theme Color](https://code.visualstudio.com/api/references/theme-color) possible.
@@ -127,14 +127,16 @@ Now let us explain the properties to you. All of the properties are **optional**
 
 ## 📕 Commands
 
-- `Help: ProVision` Shows you the manual you are currently reading.
+- `Help: ProVision`: Shows you the manual you are currently reading.
+- `ProVision: List All`: Shows you all the notes in the current file.
+- `ProVision: List Group`: Shows you all the notes in the current file from a specifc group.
 <br/>
 
 ## 📦 Extensions
 
 ### ProVision: Bar
 
-[**ProVision: Bar**](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar)  provides **easy to use** and **highly customizable** buttons to your statusbar. When opening a file it will search for the provided keywords and show you a simple overview of your notes. When clicking on a group you get an overview of all your notes in the specified group.
+[**ProVision: Bar**](https://marketplace.visualstudio.com/items?itemName=fooxly.provision-bar) provides **easy to use** and **highly customizable** buttons to your statusbar. When opening a file it will search for the provided keywords and show you a simple overview of your notes. When clicking on a group you get an overview of all your notes in the specified group.
 
 #### Groups
 

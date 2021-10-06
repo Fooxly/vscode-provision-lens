@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-import { getCountForGroup, getDocumentSymbols, getResultsForGroup } from './ProVision/DocumentHelper';
+import { getCountForGroup, getDocumentSymbols } from './ProVision/DocumentHelper';
 import { Group } from './ProVision/types';
 import { getGroups } from './ProVision/utils';
 
