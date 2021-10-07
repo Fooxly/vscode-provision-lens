@@ -73,6 +73,7 @@ You can start using it right away! But if you want to customize it more, you can
 * `Help: ProVision`: Shows you the manual you are currently reading.
 * `ProVision: List All`: Shows you all the notes in the current file.
 * `ProVision: List Group`: Shows you all the notes in the current file from a specifc group.
+* `ProVision: Toggle Lens`: Toggle the visibility of the Code Lenses.
 
 ## ⚙️ Available Settings
 
@@ -82,6 +83,12 @@ You can start using it right away! But if you want to customize it more, you can
 
     ```json
     "ProVision.list.moveOnSingleResult": <true|false>
+    ```
+
+* `ProVision.lens.scope`: Where the Code Lenses should be rendered.
+
+    ```json
+    "ProVision.lens.scope": <"file"|"functions"|"both">
     ```
 
 ## License

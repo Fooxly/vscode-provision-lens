@@ -43,6 +43,10 @@
 			{
 				"command": "ProVision.listGroup",
 				"title": "ProVision: List Group"
+			},
+			{
+				"command": "ProVision.lens.toggle",
+				"title": "ProVision: Toggle Lens"
 			}
 		],
         "configuration": {
@@ -56,21 +60,21 @@
 					"default": {
 						"TODO": {
 							"group": "notes",
-							"color": "#fff",
-							"backgroundColor": "#f2b01f",
+							"color": "#FFFFFF",
+							"backgroundColor": "#F2B01F",
 							"overviewRulerColor": "rgba(242, 176, 31, 0.8)",
 							"overviewRulerLane": 4
 						},
 						"FIXME": {
 							"group": "notes",
-							"color": "#fff",
-							"backgroundColor": "#d85f88",
+							"color": "#FFFFFF",
+							"backgroundColor": "#D85F88",
 							"overviewRulerColor": "rgba(216, 95, 136, 0.8)",
 							"overviewRulerLane": 4
 						},
 						"NOTE": {
 							"group": "notes",
-							"color": "#aaa",
+							"color": "#AAAAAA",
 							"backgroundColor": "#434343",
 							"overviewRulerColor": "rgba(67, 67, 67, 0.8)",
 							"overviewRulerLane": 4
@@ -96,8 +100,8 @@
 						"both"
 					],
 					"title": "Scope",
-					"description": "Where the lenses should be placed",
-					"default": "both"
+					"description": "Where the Code Lenses should be rendered.",
+					"default": "file"
 				}
             }
         }

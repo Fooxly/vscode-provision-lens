@@ -52,8 +52,8 @@ Here is an example of a keyword:
     "TODO": {
         "group": "notes",
         // Styling only needed for ProVision: Syntax
-        "color": "#fff",
-        "backgroundColor": "#f2b01f",
+        "color": "#FFFFFF",
+        "backgroundColor": "#F2B01F",
         "overviewRulerColor": "rgba(242, 176, 31, 0.8)",
         "overviewRulerLane": 4,
     },
@@ -77,7 +77,7 @@ Here is an example of a group:
 ```json
 "ProVision.groups": {
     ...,
-    "todos": {
+    "notes": {
         "title": "$(info) {0}",
         "tooltip": "All my notes",
         "foregroundStyle": "statusBarItem.warningForeground",
@@ -89,7 +89,7 @@ OR
 
 "ProVision.groups": {
     ...,
-    "todos": {
+    "notes": {
         "title": {
             "1": "1 Note",
             "*": "{0} Notes"
@@ -130,7 +130,9 @@ Now let us explain the properties to you. All of the properties are **optional**
 - `Help: ProVision`: Shows you the manual you are currently reading.
 - `ProVision: List All`: Shows you all the notes in the current file.
 - `ProVision: List Group`: Shows you all the notes in the current file from a specifc group.
-<br/>
+- `ProVision: Toggle Bar`: Toggle the ProVision: Bar on and off.
+- `ProVision: Toggle Syntax`: Toggle the ProVision: Syntax on and off.
+- `ProVision: Toggle Lens`: Toggle the ProVision: Lens on and off.
 
 ## 📦 Extensions
 
@@ -168,6 +170,14 @@ Every keyword which has the **group** property will be searched for and added to
 
 Every keyword which has the **group** property will be searched for and added to the statusbar. If you would like to add custom styling for the group you can use the [ProVision.groups](#groups-property) property which is explained above.
 
+#### Settings
+
+- `ProVision.lens.scope`: Where the Code Lenses should be rendered.
+
+    ```json
+    "ProVision.lens.scope": <"file"|"functions"|"both">
+    ```
+
 ## Useful information
 
 ### Default settings
@@ -178,21 +188,21 @@ We provide some settings by default to get you started right away. If you ever w
 "ProVision.keywords": {
     "TODO": {
         "group": "notes",
-        "color": "#fff",
-        "backgroundColor": "#f2b01f",
+        "color": "#FFFFFF",
+        "backgroundColor": "#F2B01F",
         "overviewRulerColor": "rgba(242, 176, 31, 0.8)",
         "overviewRulerLane": 4
     },
     "FIXME": {
         "group": "notes",
-        "color": "#fff",
-        "backgroundColor": "#d85f88",
+        "color": "#FFFFFF",
+        "backgroundColor": "#D85F88",
         "overviewRulerColor": "rgba(216, 95, 136, 0.8)",
         "overviewRulerLane": 4
     },
     "NOTE": {
         "group": "notes",
-        "color": "#aaa",
+        "color": "#AAAAAA",
         "backgroundColor": "#434343",
         "overviewRulerColor": "rgba(67, 67, 67, 0.8)",
         "overviewRulerLane": 4

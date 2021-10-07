@@ -7,6 +7,7 @@ import { getGroups } from './ProVision/utils';
 export default class ProVisionLensProvider implements vscode.CodeLensProvider {
     private lenses: vscode.CodeLens[] = [];
     private config: vscode.WorkspaceConfiguration | undefined = undefined;
+    private enabled: boolean = true;
 
     constructor () {
         // Setup all the configruation settings
@@ -19,10 +20,9 @@ export default class ProVisionLensProvider implements vscode.CodeLensProvider {
 
     public provideCodeLenses (document: vscode.TextDocument): vscode.ProviderResult<vscode.CodeLens[]> {
         // If there is no active document, the items should be removed
-        if (!document) return;
+        if (!document || !this.enabled) return;
         
         return new Promise((resolve) => {
-            this.lenses = [];
             const scope: Scope = this.config?.get<Scope>('lens.scope') ?? 'file';
             const groups = getGroups();
             
@@ -62,6 +62,7 @@ export default class ProVisionLensProvider implements vscode.CodeLensProvider {
             });
     
             Promise.all([filePromise, functionPromise]).then((lenses) => {
+                this.lenses = [];
                 for (const lensArr of lenses) {
                     this.lenses.push(...lensArr as vscode.CodeLens[]);
                 }
@@ -89,6 +90,15 @@ export default class ProVisionLensProvider implements vscode.CodeLensProvider {
                 }
             )
         );
+    }
+
+    public enable () {
+        this.enabled = true;
+    }
+
+    public disable () {
+        this.lenses = [];
+        this.enabled = false;
     }
 
     public dispose () {
