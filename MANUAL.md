@@ -16,7 +16,7 @@
 
 # The ProVision Manual
 
-Welcome to the ProVision manual, hopefully we can help you find what you need. This manual contains information for all 3 ProVision packages. If you can't find the information you need or feel like something is wrong, please create an issue on one of our Github projects.
+Welcome to the ProVision manual, hopefully we can help you find what you need. This manual contains information for all 3 ProVision packages. If you can't find the information you need or feel like something is wrong, please create an issue on the corresponding Github repository.
 
 ## Table of contents
 
@@ -36,13 +36,15 @@ Welcome to the ProVision manual, hopefully we can help you find what you need. T
 
 ## Introduction
 
-ProVision is a collection of VSCode extesions which provide a better overview for you. All of our extensions will be **highly customizable** and sve you a lot of time searching, unfolding or navigating towards notes.
+ProVision is a collection of VSCode extesions which provide a better overview for you. All of our extensions are **highly customizable** and save you a lot of time searching, unfolding or navigating towards notes.
 
 ## 📙 Setup
 
+When downloading one of the ProVision extesions, you can start right away. But if you would like to change some settings and make it to your own liking, you can try the following steps.
+
 ### Keywords property
 
-Setting up keywords is quite simple, inside your settings you should have/create the `ProVision.keywords` object which will hold all of your keywords.
+Setting up keywords is quite simple, in your settings you should have/create the `ProVision.keywords` object which will hold all of your keywords.
 
 Here is an example of a keyword:
 
@@ -62,9 +64,9 @@ Here is an example of a keyword:
 
 Now let us explain the properties to you. All of the properties are **optional**.
 
-**Note**: Styling is done using [DecorationRenderOptions](https://code.visualstudio.com/api/references/vscode-api#DecorationRenderOptions). Every property from that can be used inside the keyword options.
+**Note**: Styling is done using [DecorationRenderOptions](https://code.visualstudio.com/api/references/vscode-api#DecorationRenderOptions). You are able to use all of the decoration properties to customize your keywords.
 
-- `group`: In which group the keyword should be placed.
+- `group`: Which group the keyword does belong to. _(Keep in mind that the group does not actually have to exist in the ProVision.groups property, as that is primarily for styling)_
 
 ### Groups property
 
@@ -107,8 +109,8 @@ Now let us explain the properties to you. All of the properties are **optional**
 
 **General properties:**
 
-- `title`: This can be a string or object to specify the title which will be shown to you.
-- `tooltip`: Shown when hovering over the statusbar and code lens item.
+- `title`: The text which will show in the statusbar or Code Lenses.
+- `tooltip`: The text which will show when hovering over the statusbar or Code Lenses. _(The tooltip will not be shown when it is not defined)_
 
 **ProVision: Bar specific properties:**
 
@@ -119,7 +121,7 @@ Now let us explain the properties to you. All of the properties are **optional**
 
 ## ⚙️ General settings
 
-- `ProVision.list.moveOnSingleResult`: Jump to the note instantly when there are is only 1 result.
+- `ProVision.list.moveOnSingleResult`: Instantly jump to the note when there are is only 1 result.
 
     ```json
     "ProVision.list.moveOnSingleResult": <true|false>

@@ -89,7 +89,7 @@
                 "ProVision.list.moveOnSingleResult": {
                     "type": "boolean",
                     "title": "Move On Single Result",
-                    "description": "Jump to the note instantly when there are is only 1 result.",
+                    "description": "Instantly jump to the note when there are is only 1 result.",
                     "default": true
                 },
 				"ProVision.lens.scope": {
