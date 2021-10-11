@@ -79,7 +79,7 @@ You can start using it right away! But if you want to customize it more, you can
 
 * `ProVision.keywords`: The keywords will be searched for. _(For setup take a look at our manual)_
 * `ProVision.groups`: Custom group appearance. _(For setup take a look at our manual)_
-* `ProVision.list.moveOnSingleResult`: Jump to the note instantly when there are is only 1 result.
+* `ProVision.list.moveOnSingleResult`: Instantly jump to the note when there are is only 1 result.
 
     ```json
     "ProVision.list.moveOnSingleResult": <true|false>
