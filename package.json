@@ -1,5 +1,5 @@
 {
-  	"name": "vscode-provision-lens",
+  	"name": "provision-lens",
 	"displayName": "ProVision: Lens",
 	"author": "Fooxly <hello@fooxly.com> (https://developer.fooxly.com/)",
 	"description": "Providing a simple way to view all notes in your workspace based on keywords.",
