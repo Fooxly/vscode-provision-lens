@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
       - uses: actions/setup-node@v1
         with:
           node-version: 12
@@ -18,6 +20,4 @@ jobs:
       - uses: HaaLeo/publish-vscode-extension@v0
         with:
           pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
-          packagePath: ''
-          extensionFile: extension.vsix
           registryUrl: https://marketplace.visualstudio.com
