@@ -53,6 +53,8 @@ Here is an example of a keyword:
     ...,
     "TODO": {
         "group": "notes",
+        "mustIncludeColon": true,
+        "caseSensitive": true,
         // Styling only needed for ProVision: Syntax
         "color": "#FFFFFF",
         "backgroundColor": "#F2B01F",
@@ -67,6 +69,8 @@ Now let us explain the properties to you. All of the properties are **optional**
 **Note**: Styling is done using [DecorationRenderOptions](https://code.visualstudio.com/api/references/vscode-api#DecorationRenderOptions). You are able to use all of the decoration properties to customize your keywords.
 
 - `group`: Which group the keyword does belong to. _(Keep in mind that the group does not actually have to exist in the ProVision.groups property, as that is primarily for styling)_
+- `mustIncludeColon`: When searching for the keywords, they need to have a colon (":") to be registered.
+- `caseSensitive`: If letter casing should match when searching for the keywords.
 
 ### Groups property
 
